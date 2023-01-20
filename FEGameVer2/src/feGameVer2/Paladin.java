@@ -89,7 +89,7 @@ public class Paladin extends Fighter{
 			this.axe =new Axe("トマホーク",13,14,55,5,3);
 		}
 	}
-	
+
 	//戦闘前武器装備メソッド
 	public void equipWeaponBeforeBattle() {
 		Weapon[] w={sword,lance,axe};

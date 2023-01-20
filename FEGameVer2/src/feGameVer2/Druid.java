@@ -1,5 +1,4 @@
 package feGameVer2;
-
 import java.util.Random;
 
 public class Druid extends Fighter{
@@ -36,25 +35,25 @@ public class Druid extends Fighter{
 				public void equipNewDarkSub() {
 					double rand = Math.random();
 					if(rand<0.3) {
-						this.dark=new Dark("ミィル",8,5,70,0,3);
+						this.darksub=new Dark("ミィル",8,5,70,0,3);
 					}
 					else if(rand<0.4) {
-						this.dark =new Dark("リザイア",12,6,70,10,3);
+						this.darksub =new Dark("リザイア",12,6,70,10,3);
 					}
 					else if(rand<0.5) {
-						this.dark =new Dark("イクリプス",20,18,50,20,3);
+						this.darksub =new Dark("イクリプス",20,18,50,20,3);
 					}
 					else if(rand<0.6) {
-						this.dark =new Dark("ノスフェラート",15,11,65,10,3);
+						this.darksub =new Dark("ノスフェラート",15,11,65,10,3);
 					}
 					else if(rand<0.7) {
-						this.dark =new Dark("グレイプニル",23,18,80,0,3);
+						this.darksub =new Dark("グレイプニル",23,18,80,0,3);
 					}
 					else if(rand<0.95) {
-						this.dark =new Dark("ルナ",10,8,65,20,3);
+						this.darksub =new Dark("ルナ",10,8,65,20,3);
 					}
 					else if(rand<1) {
-						this.dark =new Dark("アポカリプス",18,17,80,5,3);
+						this.darksub =new Dark("アポカリプス",18,17,80,5,3);
 					}
 				}
 		//戦闘前武器装備メソッド
@@ -89,7 +88,7 @@ public class Druid extends Fighter{
 		}
 		public Druid() {
 			//名前
-			
+
 			Random random=new Random();
 			int rand=random.nextInt(5);
 			switch(rand) {
@@ -344,6 +343,7 @@ public class Druid extends Fighter{
 				this.constitution=17;
 			}
 		}
+
 		public String toString() {
 			return "名前    "+this.name+"\n"+"クラス  "+this.getCName()+"\n"+"HP      "+this.hp+"\n"+"力      "+this.strength+"\n"
 					+"技      "+this.skill+"\n"+"速さ    "+this.speed+"\n"+"守備    "+this.defence+"\n"+

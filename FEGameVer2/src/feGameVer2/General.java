@@ -108,7 +108,7 @@ public class General extends Fighter{
 		Random random=new Random();
 		int rand=random.nextInt(10);
 		switch(rand) {
-	
+
 		case 0:
 			this.name="ボールス";
 			break;
@@ -139,7 +139,7 @@ public class General extends Fighter{
 		case 9:
 			this.name="ガトリー";
 			break;
-			
+
 		}
 		double rand1=Math.random();
 		double rand2=Math.random();

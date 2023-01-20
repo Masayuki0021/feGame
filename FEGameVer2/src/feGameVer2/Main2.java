@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Main2 {
 	public static void main(String[]args) throws InterruptedException {
 		//ランダムゲーム
-		
+
 		PrepareBattle pb =new PrepareBattle();
 		Fighter p1=null;
 		Fighter p2=null;
@@ -21,7 +21,7 @@ public class Main2 {
 		p2=pb.chooseCharacterRandom(p2);
 //		pb.putName(p2);
 		p2=pb.equipFighterBack(p2);
-		
+
 		System.out.println("名前\t\t"+p1.name+"\t\t\t\t\t"+p2.name);
 		System.out.println("クラス\t"+p1.getCName()+"\t\t\t\t"+p2.getCName());
 		System.out.println("HP\t\t"+p1.hp+"\t\t\t\t\t"+p2.hp);

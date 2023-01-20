@@ -270,7 +270,7 @@ public  class BattleField {
 						}
 					}
 				}
-				
+
 				if(this.p1attackSpeed>(this.p2attackSpeed+4)){
 					if(p1.hp>0&&p1.hp>0) {
 						System.out.println("\n"+p1.name+"("+p1.getCName()+")"+"の追撃！");

@@ -103,7 +103,7 @@ public class FalconKnight extends Fighter{
 		Random random=new Random();
 		int rand=random.nextInt(10);
 		switch(rand) {
-		
+
 		case 0:
 			this.name="シャニー";
 			break;
@@ -134,7 +134,7 @@ public class FalconKnight extends Fighter{
 		case 9:
 			this.name="エリンシア";
 			break;
-			
+
 		}
 		double rand1=Math.random();
 		double rand2=Math.random();

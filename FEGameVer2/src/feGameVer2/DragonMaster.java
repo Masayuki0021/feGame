@@ -103,7 +103,7 @@ public class DragonMaster extends Fighter{
 	}
 
 	public DragonMaster() {
-		
+
 		//名前
 		Random random=new Random();
 		int rand=random.nextInt(10);

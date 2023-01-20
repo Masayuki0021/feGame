@@ -1,10 +1,7 @@
 package feGameVer2;
 
-import java.util.Random;
-
 public class Berserker extends Fighter{
 	Axe axe;
-	Axe axesub;
 	String cName="バーサーカー";
 	//斧武器生成メソッド
 	public void equipNewAxe() {
@@ -16,7 +13,7 @@ public class Berserker extends Fighter{
 			this.axe =new Axe("ておの",7,15,50,0,3);
 		}
 		else if(rand<0.6) {
-			this.axe =new Axe("デビルアクス",24,18,20,0,1);
+			this.axe =new Axe("デビルアクス",18,18,30,0,1);
 		}
 		else if(rand<0.7) {
 			this.axe =new Axe("鋼の斧",11,15,50,0,1);
@@ -28,34 +25,9 @@ public class Berserker extends Fighter{
 			this.axe  =new Axe("銀の斧",15,12,55,0,1);
 		}
 		else if(rand<=1) {
-			this.axe =new Axe("トマホーク",13,14,55,5,3);
+			this.axe =new Axe("トマホーク",13,14,55,5,1);
 		}
 	}
-	//斧武器生成メソッド
-		public void equipNewAxeSub() {
-			double rand = Math.random();
-			if(rand<0.35) {
-				this.axesub=new Axe("鉄の斧",8,10,65,0,1);
-			}
-			else if(rand<0.5) {
-				this.axesub =new Axe("ておの",7,15,50,0,3);
-			}
-			else if(rand<0.6) {
-				this.axesub =new Axe("デビルアクス",24,18,20,0,1);
-			}
-			else if(rand<0.7) {
-				this.axesub =new Axe("鋼の斧",11,15,50,0,1);
-			}
-			else if(rand<0.8) {
-				this.axesub =new Axe("キラーアクス",11,11,65,30,1);
-			}
-			else if(rand<0.9) {
-				this.axesub  =new Axe("銀の斧",15,12,55,0,1);
-			}
-			else if(rand<=1) {
-				this.axesub =new Axe("トマホーク",13,14,55,5,3);
-			}
-		}
 
 	//戦闘前武器装備メソッド
 	public void equipWeaponBeforeBattle() {
@@ -64,7 +36,6 @@ public class Berserker extends Fighter{
 	//全武器一括生成メソッド
 	public void equipNewWeapon() {
 		this.equipNewAxe();
-		this.equipNewAxeSub();
 		this.equipWeaponBeforeBattle();
 		this.criticalUpper();
 	}
@@ -72,23 +43,11 @@ public class Berserker extends Fighter{
 
 	//戦闘中武器持ち替えメソッド
 	public void changeEquip(Weapon o) {
-		Random random=new Random();
-		int rand=random.nextInt(2);
 		if(o instanceof Lance) {
-			if(rand==0) {
-				if(o instanceof Weapon) {
-					this.equip=null;
-					this.equip=(Axe)this.axe;
-					System.out.println(this.name+"は"+this.equip.name+"を装備！");
-				}
-			}else if(rand==1){
-				if(o instanceof Weapon) {
-					this.equip=null;
-					this.equip=(Axe)this.axesub;
-					System.out.println(this.name+"は"+this.equip.name+"を装備！");
-				}
-			}
-		}
+			this.equip=null;
+			this.equip=(Axe)this.axe;
+			System.out.println(this.name+"は"+this.equip.name+"を装備！");
+	}
 	}
 	//必殺補正メソッド
 	public void criticalUpper() {
@@ -96,22 +55,6 @@ public class Berserker extends Fighter{
 	}
 
 	public Berserker() {
-		//名前
-		Random random=new Random();
-		int rand=random.nextInt(3);
-		switch(rand) {
-		case 0:
-			this.name="ゴンザレス";
-			break;
-		case 1:
-			this.name="ホークアイ";
-			break;
-		case 2:
-			this.name="ファーガス";
-			break;
-		case 3:
-			this.name="タジ？";
-		}
 		double rand1=Math.random();
 		double rand2=Math.random();
 		double rand3=Math.random();
@@ -148,8 +91,6 @@ public class Berserker extends Fighter{
 		else if(rand1<=1) {
 			this.hp=68;
 		}
-		this.MaxHP=this.hp;
-
 		//力
 		if(rand2<=0.1) {
 			this.strength=25;
@@ -348,9 +289,9 @@ public class Berserker extends Fighter{
 		}
 	}
 	public String toString() {
-		return "名前    "+this.name+"\n"+"クラス  "+this.getCName()+"\n"+"HP      "+this.hp+"\n"+"力      "+this.strength+"\n"
-	+"技      "+this.skill+"\n"+"速さ    "+this.speed+"\n"+"守備    "+this.defence+"\n"+
-				"魔防    "+this.resist+"\n"+"幸運    "+this.luck+"\n"+"体格    "+this.constitution;
+		return "名前 "+this.name+"\n"+"HP   "+this.hp+"\n"+"力   "+this.strength+"\n"
+	+"技   "+this.skill+"\n"+"速さ "+this.speed+"\n"+"守備 "+this.defence+"\n"+
+				"魔防 "+this.resist+"\n"+"幸運 "+this.luck+"\n"+"体格 "+this.constitution;
 
 	}
 	public void showSt() {
