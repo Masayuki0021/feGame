@@ -12,25 +12,25 @@ public class Warrior extends Fighter{
 	public void equipNewBow() {
 		double rand = Math.random();
 		if(rand<0.35) {
-			this.bow=new Bow("鉄の弓",6,5,80,0,2);
+			this.bow=new Bow("鉄の弓",6,5,80,10,2);
 		}
 		else if(rand<0.45) {
-			this.bow =new Bow("鋼の弓",9,9,65,0,2);
+			this.bow =new Bow("鋼の弓",9,9,65,10,2);
 		}
 		else if(rand<0.60) {
-			this.bow =new Bow("短弓",5,3,80,10,2);
+			this.bow =new Bow("短弓",5,3,80,20,2);
 		}
 		else if(rand<0.75) {
-			this.bow =new Bow("キラーボウ",9,7,80,30,2);
+			this.bow =new Bow("キラーボウ",9,7,80,40,2);
 		}
 		else if(rand<0.9) {
-			this.bow =new Bow("銀の弓",13,6,70,0,2);
+			this.bow =new Bow("銀の弓",13,6,70,10,2);
 		}
 		else if(rand<0.95) {
-			this.bow=new Bow("リヤンフルチェ",9,7,70,10,3);
+			this.bow=new Bow("リヤンフルチェ",9,7,70,20,3);
 		}
 		else if(rand<=1) {
-			this.bow  =new Bow("ミュルグレ",16,9,80,0,2);
+			this.bow  =new Bow("ミュルグレ",16,9,80,10,2);
 		}
 	}
 
@@ -45,7 +45,7 @@ public class Warrior extends Fighter{
 			this.axe =new Axe("ておの",7,15,50,0,3);
 		}
 		else if(rand<0.6) {
-			this.axe =new Axe("デビルアクス",18,18,30,0,1);
+			this.axe =new Axe("デビルアクス",24,18,20,0,1);
 		}
 		else if(rand<0.7) {
 			this.axe =new Axe("鋼の斧",11,15,50,0,1);
@@ -57,7 +57,7 @@ public class Warrior extends Fighter{
 			this.axe  =new Axe("銀の斧",15,12,55,0,1);
 		}
 		else if(rand<=1) {
-			this.axe =new Axe("トマホーク",13,14,55,5,1);
+			this.axe =new Axe("トマホーク",13,14,55,5,3);
 		}
 	}
 
@@ -107,6 +107,43 @@ public class Warrior extends Fighter{
 
 	}
 	public Warrior() {
+		//名前
+		Random random=new Random();
+		int rand=random.nextInt(11);
+		switch(rand) {
+		case 0:
+			this.name="バアトル";
+			break;
+		case 1:
+			this.name="ロット";
+			break;
+		case 2:
+			this.name="ドルカス";
+			break;
+		case 3:
+			this.name="ワード";
+			break;
+		case 4:
+			this.name="ガイツ";
+			break;
+		case 5:
+			this.name="ブレンダン";
+				break;
+		case 6:
+			this.name="ガルシア";
+			break;
+		case 7:
+			this.name="ロス";
+			break;
+		case 8:
+			this.name="マジ";
+			break;
+		case 9:
+			this.name="サジ";
+			break;
+		case 10:
+			this.name="タジ";
+		}
 		double rand1=Math.random();
 		double rand2=Math.random();
 		double rand3=Math.random();
@@ -143,33 +180,35 @@ public class Warrior extends Fighter{
 		else if(rand1<=1) {
 			this.hp=68;
 		}
+		this.MaxHP=this.hp;
+
 		//力
 		if(rand2<=0.1) {
-			this.strength=24;
-		}
-		else if(rand2<=0.2) {
-			this.strength=25;
-		}
-		else if(rand2<=0.3) {
-			this.strength=26;
-		}
-		else if(rand2<=0.4) {
 			this.strength=27;
 		}
-		else if(rand2<=0.6) {
+		else if(rand2<=0.2) {
 			this.strength=28;
 		}
-		else if(rand2<=0.7) {
+		else if(rand2<=0.3) {
 			this.strength=29;
 		}
-		else if(rand2<=0.8) {
+		else if(rand2<=0.4) {
 			this.strength=30;
 		}
-		else if(rand2<=0.9) {
+		else if(rand2<=0.6) {
 			this.strength=31;
 		}
-		else if(rand2<=1) {
+		else if(rand2<=0.7) {
 			this.strength=32;
+		}
+		else if(rand2<=0.8) {
+			this.strength=33;
+		}
+		else if(rand2<=0.9) {
+			this.strength=34;
+		}
+		else if(rand2<=1) {
+			this.strength=35;
 		}
 		//技
 		if(rand3<=0.1) {
@@ -341,9 +380,9 @@ public class Warrior extends Fighter{
 		}
 	}
 	public String toString() {
-		return "名前 "+this.name+"\n"+"HP   "+this.hp+"\n"+"力   "+this.strength+"\n"
-	+"技   "+this.skill+"\n"+"速さ "+this.speed+"\n"+"守備 "+this.defence+"\n"+
-				"魔防 "+this.resist+"\n"+"幸運 "+this.luck+"\n"+"体格 "+this.constitution;
+		return "名前    "+this.name+"\n"+"クラス  "+this.getCName()+"\n"+"HP      "+this.hp+"\n"+"力      "+this.strength+"\n"
+	+"技      "+this.skill+"\n"+"速さ    "+this.speed+"\n"+"守備    "+this.defence+"\n"+
+				"魔防    "+this.resist+"\n"+"幸運    "+this.luck+"\n"+"体格    "+this.constitution;
 
 	}
 	public void showSt() {

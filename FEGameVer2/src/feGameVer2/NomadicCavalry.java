@@ -22,17 +22,8 @@ public class NomadicCavalry extends Fighter {
 			else if(rand<0.6) {
 				this.sword =new Sword("キルソード",9,7,80,30,1);
 			}
-			else if(rand<0.7) {
-				this.sword =new Sword("銀の剣",13,8,75,0,1);
-			}
 			else if(rand<0.8) {
-				this.sword =new Sword("鉄の大剣",9,12,65,0,1);
-			}
-			else if(rand<0.88) {
-				this.sword =new Sword("鋼の大剣",11,14,60,0,1);
-			}
-			else if(rand<0.95) {
-				this.sword =new Sword("銀の大剣",17,13,55,0,1);
+				this.sword =new Sword("銀の剣",13,8,75,0,1);
 			}
 			else if(rand<=1) {
 				this.sword =new Sword("倭刀",8,5,75,40,1);
@@ -42,25 +33,25 @@ public class NomadicCavalry extends Fighter {
 		public void equipNewBow() {
 			double rand = Math.random();
 			if(rand<0.35) {
-				this.bow=new Bow("鉄の弓",6,5,80,0,2);
+				this.bow=new Bow("鉄の弓",6,5,80,10,2);
 			}
 			else if(rand<0.45) {
-				this.bow =new Bow("鋼の弓",9,9,65,0,2);
+				this.bow =new Bow("鋼の弓",9,9,65,10,2);
 			}
 			else if(rand<0.60) {
-				this.bow =new Bow("短弓",5,3,80,10,2);
+				this.bow =new Bow("短弓",5,3,80,20,2);
 			}
 			else if(rand<0.75) {
-				this.bow =new Bow("キラーボウ",9,7,80,30,2);
+				this.bow =new Bow("キラーボウ",9,7,80,40,2);
 			}
 			else if(rand<0.9) {
-				this.bow =new Bow("銀の弓",13,6,70,0,2);
+				this.bow =new Bow("銀の弓",13,6,70,10,2);
 			}
 			else if(rand<0.95) {
-				this.bow=new Bow("リヤンフルチェ",9,7,70,10,3);
+				this.bow=new Bow("リヤンフルチェ",9,7,70,20,3);
 			}
 			else if(rand<=1) {
-				this.bow  =new Bow("ミュルグレ",16,9,80,0,2);
+				this.bow  =new Bow("ミュルグレ",16,9,80,10,2);
 			}
 		}
 
@@ -111,6 +102,25 @@ public class NomadicCavalry extends Fighter {
 
 		}
 		public NomadicCavalry() {
+			//名前
+			Random random=new Random();
+			int rand=random.nextInt(5);
+			switch(rand) {
+			case 0:
+				this.name="ダヤン";
+				break;
+			case 1:
+				this.name="スー";
+				break;
+			case 2:
+				this.name="シン";
+				break;
+			case 3:
+				this.name="ラス";
+				break;
+			case 4:
+				this.name="ウハイ";
+			}
 			double rand1=Math.random();
 			double rand2=Math.random();
 			double rand3=Math.random();
@@ -147,6 +157,8 @@ public class NomadicCavalry extends Fighter {
 			else if(rand1<=1) {
 				this.hp=46;
 			}
+			this.MaxHP=this.hp;
+
 			//力
 			if(rand2<=0.1) {
 				this.strength=15;
@@ -345,9 +357,9 @@ public class NomadicCavalry extends Fighter {
 			}
 		}
 		public String toString() {
-			return "名前 "+this.name+"\n"+"HP   "+this.hp+"\n"+"力   "+this.strength+"\n"
-		+"技   "+this.skill+"\n"+"速さ "+this.speed+"\n"+"守備 "+this.defence+"\n"+
-					"魔防 "+this.resist+"\n"+"幸運 "+this.luck+"\n"+"体格 "+this.constitution;
+			return "名前    "+this.name+"\n"+"クラス  "+this.getCName()+"\n"+"HP      "+this.hp+"\n"+"力      "+this.strength+"\n"
+					+"技      "+this.skill+"\n"+"速さ    "+this.speed+"\n"+"守備    "+this.defence+"\n"+
+								"魔防    "+this.resist+"\n"+"幸運    "+this.luck+"\n"+"体格    "+this.constitution;
 
 		}
 		public void showSt() {

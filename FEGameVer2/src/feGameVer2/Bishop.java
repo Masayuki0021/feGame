@@ -1,10 +1,13 @@
 package feGameVer2;
 
+import java.util.Random;
+
 public class Bishop extends Fighter{
 	Light light;
+	Light lightsub;
 	String cName="司祭";
 
-	//闇魔法生成メソッド
+	//光魔法生成メソッド
 	public void equipNewLight() {
 		double rand = Math.random();
 		if(rand<0.3) {
@@ -17,15 +20,37 @@ public class Bishop extends Fighter{
 			this.light =new Light("シャイン",6,3,85,0,3);
 		}
 		else if(rand<0.6) {
-			this.light =new Light("パージ",10,8,70,5,3);
+			this.light =new Light("パージ",10,15,70,5,3);
 		}
 		else if(rand<0.7) {
 			this.light =new Light("アルジローレ",12,19,85,0,3);
 		}
 		else if(rand<1) {
-			this.light =new Light("アーリアル",15,10,90,5,3);
+			this.light =new Light("アーリアル",15,16,90,5,3);
 		}
 	}
+	//サブ光魔法生成メソッド
+		public void equipNewLightSub() {
+			double rand = Math.random();
+			if(rand<0.3) {
+				this.lightsub=new Light("ライトニング",5,1,75,0,3);
+			}
+			else if(rand<0.4) {
+				this.lightsub =new Light("ディヴァイン",8,3,75,0,3);
+			}
+			else if(rand<0.5) {
+				this.lightsub =new Light("シャイン",6,3,85,0,3);
+			}
+			else if(rand<0.6) {
+				this.lightsub =new Light("パージ",10,15,70,5,3);
+			}
+			else if(rand<0.7) {
+				this.lightsub =new Light("アルジローレ",12,19,85,0,3);
+			}
+			else if(rand<1) {
+				this.lightsub =new Light("アーリアル",15,16,90,5,3);
+			}
+		}
 	//戦闘前武器装備メソッド
 	public void equipWeaponBeforeBattle() {
 			this.equip=this.light;
@@ -33,17 +58,53 @@ public class Bishop extends Fighter{
 	//全武器一括生成メソッド
 	public void equipNewWeapon() {
 		this.equipNewLight();
+		this.equipNewLightSub();
 		this.equipWeaponBeforeBattle();
 	}
 	//戦闘中武器持ち替えメソッド
 	public void changeEquip(Weapon o) {
-		if(o instanceof Weapon) {
-			this.equip=null;
-			this.equip=(Light)this.light;
-			System.out.println(this.name+"は"+this.equip.name+"を装備！");
+		Random random=new Random();
+		int rand=random.nextInt(2);
+		if(o instanceof Dark) {
+			if(rand==0) {
+				if(o instanceof Weapon) {
+					this.equip=null;
+					this.equip=(Light)this.light;
+					System.out.println(this.name+"は"+this.equip.name+"を装備！");
+				}
+			}else if(rand==1){
+				if(o instanceof Weapon) {
+					this.equip=null;
+					this.equip=(Light)this.light;
+					System.out.println(this.name+"は"+this.equip.name+"を装備！");
+				}
+			}
 		}
 	}
 	public Bishop() {
+		//名前
+				Random random=new Random();
+				int rand=random.nextInt(6);
+				switch(rand) {
+				case 0:
+					this.name="ヨーデル";
+					break;
+				case 1:
+					this.name="エレン";
+					break;
+				case 2:
+					this.name="セーラ";
+					break;
+				case 3:
+					this.name="ルセア";
+					break;
+				case 4:
+					this.name="ナターシャ";
+						break;
+				case 5:
+					this.name="アーヴ";
+					break;
+				}
 		double rand1=Math.random();
 		double rand2=Math.random();
 		double rand3=Math.random();
@@ -80,6 +141,8 @@ public class Bishop extends Fighter{
 		else if(rand1<=1) {
 			this.hp=42;
 		}
+		this.MaxHP=this.hp;
+
 		//力
 		if(rand2<=0.1) {
 			this.strength=15;
@@ -278,9 +341,9 @@ public class Bishop extends Fighter{
 		}
 	}
 	public String toString() {
-		return "名前 "+this.name+"\n"+"HP   "+this.hp+"\n"+"力   "+this.strength+"\n"
-	+"技   "+this.skill+"\n"+"速さ "+this.speed+"\n"+"守備 "+this.defence+"\n"+
-				"魔防 "+this.resist+"\n"+"幸運 "+this.luck+"\n"+"体格 "+this.constitution;
+		return "名前    "+this.name+"\n"+"クラス  "+this.getCName()+"\n"+"HP      "+this.hp+"\n"+"力      "+this.strength+"\n"
+	+"技      "+this.skill+"\n"+"速さ    "+this.speed+"\n"+"守備    "+this.defence+"\n"+
+				"魔防    "+this.resist+"\n"+"幸運    "+this.luck+"\n"+"体格    "+this.constitution;
 
 	}
 	public void showSt() {

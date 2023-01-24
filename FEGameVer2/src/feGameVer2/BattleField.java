@@ -141,7 +141,7 @@ public  class BattleField {
 				this.p2ActHitRate=20;
 		}
 		if(this.p2ActHitRate>90) {
-			this.p1ActHitRate=90;
+			this.p2ActHitRate=90;
 		}
 		this.p2ActPowerPhy=p2power-p1.defence;
 		if(this.p2ActPowerPhy<=2) {
@@ -160,7 +160,7 @@ public  class BattleField {
 		System.out.println(p1.name+"\t\t\t\t"+p2.name);
 		System.out.println("クラス\t"+p1.getCName()+"\t\t\t\t"+p2.getCName());
 		System.out.println("HP\t\t"+p1.hp+"\t\t\t\t\t"+p2.hp);
-		System.out.println("命中率\t"+this.p1ActHitRate+"\t\t\t\t\t"+this.p2ActHitRate);
+		System.out.println("命中率\t"+this.p1ActHitRate+"%"+"\t\t\t\t\t"+this.p2ActHitRate+"%");
 		if(p1.equip instanceof PhysicsWeap&&p2.equip instanceof PhysicsWeap) {
 			System.out.println("攻撃力\t"+this.p1ActPowerPhy+"\t\t\t\t\t"+this.p2ActPowerPhy);
 	}else if(p1.equip instanceof MagicWeap&&p2.equip instanceof PhysicsWeap) {
@@ -170,9 +170,9 @@ public  class BattleField {
 	}else if(p1.equip instanceof MagicWeap&&p2.equip instanceof MagicWeap) {
 		System.out.println("攻撃力\t"+this.p1ActPowerMagic+"\t\t\t\t\t"+this.p2ActPowerMagic);
 	}
-		System.out.println("必殺\t"+this.p1ActCritical+"\t\t\t\t\t"+this.p2ActCritical);
+		System.out.println("必殺\t"+this.p1ActCritical+"%"+"\t\t\t\t\t"+this.p2ActCritical+"%");
 		System.out.println("\n武器\t"+p1.equip.name+"\t\t"+p2.equip.name);
-		System.out.println("攻撃回数\t"+this.p1attacktimes+"\t\t\t\t"+this.p2attacktimes);
+		System.out.println("攻撃回数\t"+this.p1attacktimes+"回"+"\t\t\t\t"+this.p2attacktimes+"回");
 		System.out.println();
 		Thread.sleep(5000);
 
@@ -270,7 +270,7 @@ public  class BattleField {
 						}
 					}
 				}
-				
+
 				if(this.p1attackSpeed>(this.p2attackSpeed+4)){
 					if(p1.hp>0&&p1.hp>0) {
 						System.out.println("\n"+p1.name+"("+p1.getCName()+")"+"の追撃！");
@@ -630,7 +630,7 @@ public  class BattleField {
 		System.out.println(p1.name+"\t\t\t\t"+p2.name);
 		System.out.println("クラス\t"+p1.getCName()+"\t\t\t\t"+p2.getCName());
 		System.out.println("HP\t\t"+p1.hp+"\t\t\t\t\t"+p2.hp);
-		System.out.println("命中率\t"+this.p1ActHitRate+"\t\t\t\t\t"+this.p2ActHitRate);
+		System.out.println("命中率\t"+this.p1ActHitRate+"%"+"\t\t\t\t\t"+this.p2ActHitRate+"%");
 		if(p1.equip instanceof PhysicsWeap&&p2.equip instanceof PhysicsWeap) {
 			System.out.println("攻撃力\t"+this.p1ActPowerPhy+"\t\t\t\t\t"+this.p2ActPowerPhy);
 	}else if(p1.equip instanceof MagicWeap&&p2.equip instanceof PhysicsWeap) {
@@ -640,9 +640,9 @@ public  class BattleField {
 	}else if(p1.equip instanceof MagicWeap&&p2.equip instanceof MagicWeap) {
 		System.out.println("攻撃力\t"+this.p1ActPowerMagic+"\t\t\t\t\t"+this.p2ActPowerMagic);
 	}
-		System.out.println("必殺\t"+this.p1ActCritical+"\t\t\t\t\t"+this.p2ActCritical);
+		System.out.println("必殺\t"+this.p1ActCritical+"%"+"\t\t\t\t\t"+this.p2ActCritical+"%");
 		System.out.println("\t\t"+p1.equip.name+"\t\t\t\t"+p2.equip.name);
-		System.out.println("攻撃回数\t"+this.p1attacktimes+"\t\t\t\t\t"+this.p2attacktimes);
+		System.out.println("攻撃回数\t"+this.p1attacktimes+"回"+"\t\t\t\t\t"+this.p2attacktimes+"回");
 
 		System.out.println();
 		Thread.sleep(5000);
@@ -922,10 +922,12 @@ public  class BattleField {
 			if(rand<0.65) {
 				Thread.sleep(1000);
 				p1.changeEquip(p2.equip);
+				System.out.println();
 				Thread.sleep(1000);
 			}else {
 				Thread.sleep(1000);
 				p2.changeEquip(p1.equip);
+				System.out.println();
 				Thread.sleep(1000);
 			}
 			p1.equip.three_way_relation(p2.equip);

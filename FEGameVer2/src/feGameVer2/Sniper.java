@@ -1,34 +1,62 @@
 package feGameVer2;
 
+import java.util.Random;
+
 public class Sniper extends Fighter{
 	Bow bow;
+	Bow bowsub;
 	String cName="スナイパー";
 
 	//弓武器生成メソッド
 	public void equipNewBow() {
 		double rand = Math.random();
 		if(rand<0.35) {
-			this.bow=new Bow("鉄の弓",6,5,80,0,2);
+			this.bow=new Bow("鉄の弓",6,5,80,10,2);
 		}
 		else if(rand<0.45) {
-			this.bow =new Bow("鋼の弓",9,9,65,0,2);
+			this.bow =new Bow("鋼の弓",9,9,65,10,2);
 		}
 		else if(rand<0.60) {
-			this.bow =new Bow("短弓",5,3,80,10,2);
+			this.bow =new Bow("短弓",5,3,80,20,2);
 		}
 		else if(rand<0.75) {
-			this.bow =new Bow("キラーボウ",9,7,80,30,2);
+			this.bow =new Bow("キラーボウ",9,7,80,40,2);
 		}
 		else if(rand<0.9) {
-			this.bow =new Bow("銀の弓",13,6,70,0,2);
+			this.bow =new Bow("銀の弓",13,6,70,10,2);
 		}
 		else if(rand<0.95) {
-			this.bow=new Bow("リヤンフルチェ",9,7,70,10,3);
+			this.bow=new Bow("リヤンフルチェ",9,7,70,20,3);
 		}
 		else if(rand<=1) {
-			this.bow  =new Bow("ミュルグレ",16,9,80,0,2);
+			this.bow  =new Bow("ミュルグレ",16,9,80,20,2);
 		}
 	}
+	//サブ弓武器生成メソッド
+		public void equipNewBowSub() {
+			double rand = Math.random();
+			if(rand<0.35) {
+				this.bowsub=new Bow("鉄の弓",6,5,80,10,2);
+			}
+			else if(rand<0.45) {
+				this.bowsub =new Bow("鋼の弓",9,9,65,10,2);
+			}
+			else if(rand<0.60) {
+				this.bowsub =new Bow("短弓",5,3,80,20,2);
+			}
+			else if(rand<0.75) {
+				this.bowsub =new Bow("キラーボウ",9,7,80,40,2);
+			}
+			else if(rand<0.9) {
+				this.bowsub =new Bow("銀の弓",13,6,70,10,2);
+			}
+			else if(rand<0.95) {
+				this.bowsub=new Bow("リヤンフルチェ",9,7,70,20,3);
+			}
+			else if(rand<=1) {
+				this.bowsub  =new Bow("ミュルグレ",16,9,80,20,2);
+			}
+		}
 	//戦闘前武器装備メソッド
 	public void equipWeaponBeforeBattle() {
 			this.equip=this.bow;
@@ -36,22 +64,68 @@ public class Sniper extends Fighter{
 	//全武器一括生成メソッド
 	public void equipNewWeapon() {
 		this.equipNewBow();
+		this.equipNewBowSub();
 		this.equipWeaponBeforeBattle();
 		this.criticalUpper();
 	}
 	//戦闘中武器持ち替えメソッド
 	public void changeEquip(Weapon o) {
+		Random random=new Random();
+		int rand=random.nextInt(2);
 		if(o instanceof Weapon) {
-			this.equip=null;
-			this.equip=(Bow)this.bow;
-			System.out.println(this.name+"は"+this.equip.name+"を装備！");
+			if(rand==0) {
+				if(o instanceof Weapon) {
+					this.equip=null;
+					this.equip=(Bow)this.bow;
+					System.out.println(this.name+"は"+this.equip.name+"を装備！");
+				}
+			}else if(rand==1){
+				if(o instanceof Weapon) {
+					this.equip=null;
+					this.equip=(Bow)this.bowsub;
+					System.out.println(this.name+"は"+this.equip.name+"を装備！");
+				}
+			}
 		}
 	}
 	//必殺補正メソッド
 		public void criticalUpper() {
-			this.equip.critical+=30;
+			this.equip.critical+=15;
 		}
 	public Sniper() {
+		//名前
+		Random random=new Random();
+		int rand=random.nextInt(9);
+		switch(rand) {
+		case 0:
+			this.name="ヒーニアス";
+			break;
+		case 1:
+			this.name="ウォルト";
+			break;
+		case 2:
+			this.name="クレイン";
+			break;
+		case 3:
+			this.name="イグレーヌ";
+			break;
+		case 4:
+			this.name="レベッカ";
+			break;
+		case 5:
+			this.name="ウィル";
+				break;
+		case 6:
+			this.name="ルイーズ";
+			break;
+		case 7:
+			this.name="ネイミー";
+			break;
+		case 8:
+			this.name="シノン";
+			break;
+		}
+
 		double rand1=Math.random();
 		double rand2=Math.random();
 		double rand3=Math.random();
@@ -88,6 +162,7 @@ public class Sniper extends Fighter{
 		else if(rand1<=1) {
 			this.hp=46;
 		}
+		this.MaxHP=this.hp;
 		//力
 		if(rand2<=0.1) {
 			this.strength=19;
@@ -285,10 +360,11 @@ public class Sniper extends Fighter{
 			this.constitution=28;
 		}
 	}
+
 	public String toString() {
-		return "名前 "+this.name+"\n"+"HP   "+this.hp+"\n"+"力   "+this.strength+"\n"
-	+"技   "+this.skill+"\n"+"速さ "+this.speed+"\n"+"守備 "+this.defence+"\n"+
-				"魔防 "+this.resist+"\n"+"幸運 "+this.luck+"\n"+"体格 "+this.constitution;
+		return "名前    "+this.name+"\n"+"クラス  "+this.getCName()+"\n"+"HP      "+this.hp+"\n"+"力      "+this.strength+"\n"
+				+"技      "+this.skill+"\n"+"速さ    "+this.speed+"\n"+"守備    "+this.defence+"\n"+
+				"魔防    "+this.resist+"\n"+"幸運    "+this.luck+"\n"+"体格    "+this.constitution;
 
 	}
 	public void showSt() {

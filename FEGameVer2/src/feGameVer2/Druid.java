@@ -1,7 +1,9 @@
 package feGameVer2;
+import java.util.Random;
 
 public class Druid extends Fighter{
 	Dark dark;
+	Dark darksub;
 	String cName="ドルイド";
 
 	//闇魔法生成メソッド
@@ -14,21 +16,46 @@ public class Druid extends Fighter{
 				this.dark =new Dark("リザイア",12,6,70,10,3);
 			}
 			else if(rand<0.5) {
-				this.dark =new Dark("イクリプス",20,13,50,20,3);
+				this.dark =new Dark("イクリプス",20,18,50,20,3);
 			}
 			else if(rand<0.6) {
 				this.dark =new Dark("ノスフェラート",15,11,65,10,3);
 			}
 			else if(rand<0.7) {
-				this.dark =new Dark("グレイプニル",23,13,80,0,3);
+				this.dark =new Dark("グレイプニル",23,18,80,0,3);
 			}
 			else if(rand<0.95) {
 				this.dark =new Dark("ルナ",10,8,65,20,3);
 			}
 			else if(rand<1) {
-				this.dark =new Dark("アポカリプス",18,12,80,5,3);
+				this.dark =new Dark("アポカリプス",18,17,80,5,3);
 			}
 		}
+		//サブ闇魔法生成メソッド
+				public void equipNewDarkSub() {
+					double rand = Math.random();
+					if(rand<0.3) {
+						this.darksub=new Dark("ミィル",8,5,70,0,3);
+					}
+					else if(rand<0.4) {
+						this.darksub =new Dark("リザイア",12,6,70,10,3);
+					}
+					else if(rand<0.5) {
+						this.darksub =new Dark("イクリプス",20,18,50,20,3);
+					}
+					else if(rand<0.6) {
+						this.darksub =new Dark("ノスフェラート",15,11,65,10,3);
+					}
+					else if(rand<0.7) {
+						this.darksub =new Dark("グレイプニル",23,18,80,0,3);
+					}
+					else if(rand<0.95) {
+						this.darksub =new Dark("ルナ",10,8,65,20,3);
+					}
+					else if(rand<1) {
+						this.darksub =new Dark("アポカリプス",18,17,80,5,3);
+					}
+				}
 		//戦闘前武器装備メソッド
 		public void equipWeaponBeforeBattle() {
 				this.equip=this.dark;
@@ -36,18 +63,51 @@ public class Druid extends Fighter{
 		//全武器一括生成メソッド
 		public void equipNewWeapon() {
 			this.equipNewDark();
+			this.equipNewDarkSub();
 			this.equipWeaponBeforeBattle();
 		}
 		//戦闘中武器持ち替えメソッド
 		public void changeEquip(Weapon o) {
-			if(o instanceof Weapon) {
-				this.equip=null;
-				this.equip=(Dark)this.dark;
-				System.out.println(this.name+"は"+this.equip.name+"を装備！");
-
+			Random random=new Random();
+			int rand=random.nextInt(2);
+			if(o instanceof Nature) {
+				if(rand==0) {
+					if(o instanceof Weapon) {
+						this.equip=null;
+						this.equip=(Dark)this.dark;
+						System.out.println(this.name+"は"+this.equip.name+"を装備！");
+					}
+				}else if(rand==1){
+					if(o instanceof Weapon) {
+						this.equip=null;
+						this.equip=(Dark)this.darksub;
+						System.out.println(this.name+"は"+this.equip.name+"を装備！");
+					}
+				}
 			}
 		}
 		public Druid() {
+			//名前
+
+			Random random=new Random();
+			int rand=random.nextInt(5);
+			switch(rand) {
+			case 0:
+				this.name="レイ";
+				break;
+			case 1:
+				this.name="ソフィーア";
+				break;
+			case 2:
+				this.name="ニイメ";
+				break;
+			case 3:
+				this.name="カナス";
+				break;
+			case 4:
+				this.name="ノール";
+				break;
+			}
 			double rand1=Math.random();
 			double rand2=Math.random();
 			double rand3=Math.random();
@@ -84,6 +144,8 @@ public class Druid extends Fighter{
 			else if(rand1<=1) {
 				this.hp=46;
 			}
+			this.MaxHP=this.hp;
+
 			//力
 			if(rand2<=0.1) {
 				this.strength=24;
@@ -281,10 +343,11 @@ public class Druid extends Fighter{
 				this.constitution=17;
 			}
 		}
+
 		public String toString() {
-			return "名前 "+this.name+"\n"+"HP   "+this.hp+"\n"+"力   "+this.strength+"\n"
-		+"技   "+this.skill+"\n"+"速さ "+this.speed+"\n"+"守備 "+this.defence+"\n"+
-					"魔防 "+this.resist+"\n"+"幸運 "+this.luck+"\n"+"体格 "+this.constitution;
+			return "名前    "+this.name+"\n"+"クラス  "+this.getCName()+"\n"+"HP      "+this.hp+"\n"+"力      "+this.strength+"\n"
+					+"技      "+this.skill+"\n"+"速さ    "+this.speed+"\n"+"守備    "+this.defence+"\n"+
+								"魔防    "+this.resist+"\n"+"幸運    "+this.luck+"\n"+"体格    "+this.constitution;
 
 		}
 		public void showSt() {

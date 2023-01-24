@@ -91,9 +91,51 @@ public class FalconKnight extends Fighter{
 			this.equip=(Sword)this.sword;
 			System.out.println(this.name+"は"+this.equip.name+"を装備！");
 		}
+		else if(o instanceof Lance) {
+			this.equip=null;
+			this.equip=(Lance)this.lance;
+			System.out.println(this.name+"は"+this.equip.name+"を装備！");
+		}
 
 	}
 	public FalconKnight() {
+		//名前
+		Random random=new Random();
+		int rand=random.nextInt(10);
+		switch(rand) {
+
+		case 0:
+			this.name="シャニー";
+			break;
+		case 1:
+			this.name="ティト";
+			break;
+		case 2:
+			this.name="ユーノ";
+			break;
+		case 3:
+			this.name="フロリーナ";
+			break;
+		case 4:
+			this.name="フィオーラ";
+			break;
+		case 5:
+			this.name="ファリナ";
+				break;
+		case 6:
+			this.name="ヴァネッサ";
+			break;
+		case 7:
+			this.name="ターナ";
+			break;
+		case 8:
+			this.name="タニス";
+			break;
+		case 9:
+			this.name="エリンシア";
+			break;
+
+		}
 		double rand1=Math.random();
 		double rand2=Math.random();
 		double rand3=Math.random();
@@ -130,89 +172,91 @@ public class FalconKnight extends Fighter{
 		else if(rand1<=1) {
 			this.hp=40;
 		}
+		this.MaxHP=this.hp;
+
 		//力
 		if(rand2<=0.1) {
-			this.strength=12;
-		}
-		else if(rand2<=0.2) {
-			this.strength=13;
-		}
-		else if(rand2<=0.3) {
 			this.strength=14;
 		}
-		else if(rand2<=0.4) {
+		else if(rand2<=0.2) {
 			this.strength=15;
 		}
-		else if(rand2<=0.6) {
+		else if(rand2<=0.3) {
 			this.strength=16;
 		}
-		else if(rand2<=0.7) {
+		else if(rand2<=0.4) {
 			this.strength=17;
 		}
-		else if(rand2<=0.8) {
+		else if(rand2<=0.6) {
 			this.strength=18;
 		}
-		else if(rand2<=0.9) {
+		else if(rand2<=0.7) {
 			this.strength=19;
 		}
-		else if(rand2<=1) {
+		else if(rand2<=0.8) {
 			this.strength=20;
+		}
+		else if(rand2<=0.9) {
+			this.strength=21;
+		}
+		else if(rand2<=1) {
+			this.strength=22;
 		}
 		//技
 		if(rand3<=0.1) {
-			this.skill=20;
-		}
-		else if(rand3<=0.2) {
-			this.skill=21;
-		}
-		else if(rand3<=0.3) {
 			this.skill=22;
 		}
-		else if(rand3<=0.4) {
+		else if(rand3<=0.2) {
 			this.skill=23;
 		}
-		else if(rand3<=0.6) {
+		else if(rand3<=0.3) {
 			this.skill=24;
 		}
-		else if(rand3<=0.7) {
+		else if(rand3<=0.4) {
 			this.skill=25;
 		}
-		else if(rand3<=0.8) {
+		else if(rand3<=0.6) {
 			this.skill=26;
 		}
-		else if(rand3<=0.9) {
+		else if(rand3<=0.7) {
 			this.skill=27;
 		}
-		else if(rand3<=1) {
+		else if(rand3<=0.8) {
 			this.skill=28;
+		}
+		else if(rand3<=0.9) {
+			this.skill=29;
+		}
+		else if(rand3<=1) {
+			this.skill=30;
 		}
 		//速さ
 		if(rand4<=0.1) {
-			this.speed=24;
-		}
-		else if(rand4<=0.2) {
-			this.speed=25;
-		}
-		else if(rand4<=0.3) {
 			this.speed=26;
 		}
-		else if(rand4<=0.4) {
+		else if(rand4<=0.2) {
 			this.speed=27;
 		}
-		else if(rand4<=0.6) {
+		else if(rand4<=0.3) {
 			this.speed=28;
 		}
-		else if(rand4<=0.7) {
+		else if(rand4<=0.4) {
 			this.speed=29;
 		}
-		else if(rand4<=0.8) {
+		else if(rand4<=0.6) {
 			this.speed=30;
 		}
-		else if(rand4<=0.9) {
+		else if(rand4<=0.7) {
 			this.speed=31;
 		}
-		else if(rand4<=1) {
+		else if(rand4<=0.8) {
 			this.speed=32;
+		}
+		else if(rand4<=0.9) {
+			this.speed=33;
+		}
+		else if(rand4<=1) {
+			this.speed=34;
 		}
 		//守備
 		if(rand5<=0.1) {
@@ -328,9 +372,9 @@ public class FalconKnight extends Fighter{
 		}
 	}
 	public String toString() {
-		return "名前 "+this.name+"\n"+"HP   "+this.hp+"\n"+"力   "+this.strength+"\n"
-	+"技   "+this.skill+"\n"+"速さ "+this.speed+"\n"+"守備 "+this.defence+"\n"+
-				"魔防 "+this.resist+"\n"+"幸運 "+this.luck+"\n"+"体格 "+this.constitution;
+		return "名前    "+this.name+"\n"+"クラス  "+this.getCName()+"\n"+"HP      "+this.hp+"\n"+"力      "+this.strength+"\n"
+	+"技      "+this.skill+"\n"+"速さ    "+this.speed+"\n"+"守備    "+this.defence+"\n"+
+				"魔防    "+this.resist+"\n"+"幸運    "+this.luck+"\n"+"体格    "+this.constitution;
 
 	}
 	public void showSt() {

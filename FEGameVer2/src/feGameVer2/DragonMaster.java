@@ -42,7 +42,7 @@ public class DragonMaster extends Fighter{
 			this.axe =new Axe("ておの",7,15,50,0,3);
 		}
 		else if(rand<0.6) {
-			this.axe =new Axe("デビルアクス",18,18,30,0,1);
+			this.axe =new Axe("デビルアクス",24,18,20,0,1);
 		}
 		else if(rand<0.7) {
 			this.axe =new Axe("鋼の斧",11,15,50,0,1);
@@ -54,7 +54,7 @@ public class DragonMaster extends Fighter{
 			this.axe  =new Axe("銀の斧",15,12,55,0,1);
 		}
 		else if(rand<=1) {
-			this.axe =new Axe("トマホーク",13,14,55,5,1);
+			this.axe =new Axe("トマホーク",13,14,55,5,3);
 		}
 	}
 
@@ -93,12 +93,52 @@ public class DragonMaster extends Fighter{
 			this.equip=null;
 			this.equip=(Axe)this.axe;
 			System.out.println(this.name+"は"+this.equip.name+"を装備！");
-
+		}else if(o instanceof Axe) {
+			this.equip=null;
+			this.equip=(Axe)this.axe;
+			System.out.println(this.name+"は"+this.equip.name+"を装備！");
 		}
+
 
 	}
 
 	public DragonMaster() {
+
+		//名前
+		Random random=new Random();
+		int rand=random.nextInt(10);
+		switch(rand) {
+		case 0:
+			this.name="ミレディ";
+			break;
+		case 1:
+			this.name="ツァイス";
+			break;
+		case 2:
+			this.name="ヒース";
+			break;
+		case 3:
+			this.name="ヴァイダ";
+			break;
+		case 4:
+			this.name="ナーシェン";
+			break;
+		case 5:
+			this.name="ゲイル";
+				break;
+		case 6:
+			this.name="ハール";
+			break;
+		case 7:
+			this.name="ジル";
+			break;
+		case 8:
+			this.name="グレン";
+			break;
+		case 9:
+			this.name="クーガー";
+			break;
+		}
 		double rand1=Math.random();
 		double rand2=Math.random();
 		double rand3=Math.random();
@@ -135,6 +175,8 @@ public class DragonMaster extends Fighter{
 		else if(rand1<=1) {
 			this.hp=57;
 		}
+		this.MaxHP=this.hp;
+
 		//力
 		if(rand2<=0.1) {
 			this.strength=21;
@@ -333,9 +375,9 @@ public class DragonMaster extends Fighter{
 		}
 	}
 	public String toString() {
-		return "名前 "+this.name+"\n"+"HP   "+this.hp+"\n"+"力   "+this.strength+"\n"
-	+"技   "+this.skill+"\n"+"速さ "+this.speed+"\n"+"守備 "+this.defence+"\n"+
-				"魔防 "+this.resist+"\n"+"幸運 "+this.luck+"\n"+"体格 "+this.constitution;
+		return "名前    "+this.name+"\n"+"クラス  "+this.getCName()+"\n"+"HP      "+this.hp+"\n"+"力      "+this.strength+"\n"
+	+"技      "+this.skill+"\n"+"速さ    "+this.speed+"\n"+"守備    "+this.defence+"\n"+
+				"魔防    "+this.resist+"\n"+"幸運    "+this.luck+"\n"+"体格    "+this.constitution;
 
 	}
 	public void showSt() {

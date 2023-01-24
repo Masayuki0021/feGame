@@ -31,11 +31,8 @@ public class Paladin extends Fighter{
 		else if(rand<0.88) {
 			this.sword =new Sword("鋼の大剣",11,14,60,0,1);
 		}
-		else if(rand<0.95) {
+		else if(rand<1) {
 			this.sword =new Sword("銀の大剣",17,13,55,0,1);
-		}
-		else if(rand<=1) {
-			this.sword =new Sword("倭刀",8,5,75,40,1);
 		}
 	}
 
@@ -80,19 +77,16 @@ public class Paladin extends Fighter{
 			this.axe =new Axe("ておの",7,15,50,0,3);
 		}
 		else if(rand<0.6) {
-			this.axe =new Axe("デビルアクス",18,18,30,0,1);
-		}
-		else if(rand<0.7) {
 			this.axe =new Axe("鋼の斧",11,15,50,0,1);
 		}
-		else if(rand<0.8) {
+		else if(rand<0.7) {
 			this.axe =new Axe("キラーアクス",11,11,65,30,1);
 		}
 		else if(rand<0.9) {
 			this.axe  =new Axe("銀の斧",15,12,55,0,1);
 		}
 		else if(rand<=1) {
-			this.axe =new Axe("トマホーク",13,14,55,5,1);
+			this.axe =new Axe("トマホーク",13,14,55,5,3);
 		}
 	}
 
@@ -151,6 +145,56 @@ public class Paladin extends Fighter{
 
 
 	public Paladin() {
+		//名前
+		Random random=new Random();
+		int rand=random.nextInt(15);
+		switch(rand) {
+		case 0:
+			this.name="マーカス";
+			break;
+		case 1:
+			this.name="ゼロット";
+			break;
+		case 2:
+			this.name="パーシバル";
+			break;
+		case 3:
+			this.name="アレン";
+			break;
+		case 4:
+			this.name="ランス";
+			break;
+		case 5:
+			this.name="ケント";
+				break;
+		case 6:
+			this.name="セイン";
+			break;
+		case 7:
+			this.name="ロウエン";
+			break;
+		case 8:
+			this.name="ゼト";
+			break;
+		case 9:
+			this.name="エリウッド";
+			break;
+		case 10:
+			this.name="イサドラ";
+			break;
+		case 11:
+			this.name="ティアマト";
+			break;
+		case 12:
+			this.name="エフラム";
+			break;
+		case 13:
+			this.name="エイリーク";
+			break;
+		case 14:
+			this.name="デュッセル";
+			break;
+		}
 		double rand1=Math.random();
 		double rand2=Math.random();
 		double rand3=Math.random();
@@ -187,6 +231,8 @@ public class Paladin extends Fighter{
 		else if(rand1<=1) {
 			this.hp=48;
 		}
+		this.MaxHP=this.hp;
+
 		//力
 		if(rand2<=0.1) {
 			this.strength=19;
@@ -385,9 +431,9 @@ public class Paladin extends Fighter{
 		}
 	}
 	public String toString() {
-		return "名前 "+this.name+"\n"+"HP   "+this.hp+"\n"+"力   "+this.strength+"\n"
-	+"技   "+this.skill+"\n"+"速さ "+this.speed+"\n"+"守備 "+this.defence+"\n"+
-				"魔防 "+this.resist+"\n"+"幸運 "+this.luck+"\n"+"体格 "+this.constitution;
+		return "名前    "+this.name+"\n"+"クラス  "+this.getCName()+"\n"+"HP      "+this.hp+"\n"+"力      "+this.strength+"\n"
+	+"技      "+this.skill+"\n"+"速さ    "+this.speed+"\n"+"守備    "+this.defence+"\n"+
+				"魔防    "+this.resist+"\n"+"幸運    "+this.luck+"\n"+"体格    "+this.constitution;
 
 	}
 	public void showSt() {

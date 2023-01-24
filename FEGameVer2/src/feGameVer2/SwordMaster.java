@@ -1,7 +1,10 @@
 package feGameVer2;
 
+import java.util.Random;
+
 public class SwordMaster extends Fighter{
 	Sword sword;
+	Sword swordsub;
 	String cName="ソードマスター";
 
 	//剣武器生成メソッド
@@ -26,6 +29,28 @@ public class SwordMaster extends Fighter{
 			this.sword =new Sword("倭刀",8,5,75,40,1);
 		}
 	}
+	//サブ剣武器生成メソッド
+		public void equipNewSwordsub() {
+			double rand = Math.random();
+			if(rand<0.3) {
+				this.sword=new Sword("鉄の剣",5,5,85,0,1);
+			}
+			else if(rand<0.4) {
+				this.sword =new Sword("細身の剣",3,2,95,5,1);
+			}
+			else if(rand<0.5) {
+				this.sword =new Sword("鋼の剣",8,10,70,0,1);
+			}
+			else if(rand<0.75) {
+				this.sword =new Sword("キルソード",9,7,80,30,1);
+			}
+			else if(rand<0.85) {
+				this.sword =new Sword("銀の剣",13,8,75,0,1);
+			}
+			else if(rand<=1) {
+				this.sword =new Sword("倭刀",8,5,75,40,1);
+			}
+		}
 	//戦闘前武器装備メソッド
 	public void equipWeaponBeforeBattle() {
 			this.equip=this.sword;
@@ -33,16 +58,30 @@ public class SwordMaster extends Fighter{
 	//全武器一括生成メソッド
 	public void equipNewWeapon() {
 		this.equipNewSword();
+		this.equipNewSwordsub();
 		this.equipWeaponBeforeBattle();
+		this.criticalUpper();
 	}
 
 
 	//戦闘中武器持ち替えメソッド
 	public void changeEquip(Weapon o) {
+		Random random=new Random();
+		int rand=random.nextInt(2);
 		if(o instanceof Axe) {
-			this.equip=null;
-			this.equip=(Sword)this.sword;
-			System.out.println(this.name+"は"+this.equip.name+"を装備！");
+			if(rand==0) {
+				if(o instanceof Weapon) {
+					this.equip=null;
+					this.equip=(Sword)this.sword;
+					System.out.println(this.name+"は"+this.equip.name+"を装備！");
+				}
+			}else if(rand==1){
+				if(o instanceof Weapon) {
+					this.equip=null;
+					this.equip=(Sword)this.swordsub;
+					System.out.println(this.name+"は"+this.equip.name+"を装備！");
+				}
+			}
 		}
 	}
 	//必殺補正メソッド
@@ -50,6 +89,41 @@ public class SwordMaster extends Fighter{
 		this.equip.critical+=30;
 	}
 	public SwordMaster() {
+		//名前
+		Random random=new Random();
+		int rand=random.nextInt(10);
+		switch(rand) {
+		case 0:
+			this.name="リン";
+			break;
+		case 1:
+			this.name="ギィ";
+			break;
+		case 2:
+			this.name="カレル";
+			break;
+		case 3:
+			this.name="カアラ";
+			break;
+		case 4:
+			this.name="フィル";
+			break;
+		case 5:
+			this.name="ルトガー";
+				break;
+		case 6:
+			this.name="ロイド";
+			break;
+		case 7:
+			this.name="ヨシュア";
+			break;
+		case 8:
+			this.name="マリカ";
+			break;
+		case 9:
+			this.name="ワユ";
+			break;
+		}
 		double rand1=Math.random();
 		double rand2=Math.random();
 		double rand3=Math.random();
@@ -86,6 +160,8 @@ public class SwordMaster extends Fighter{
 		else if(rand1<=1) {
 			this.hp=42;
 		}
+		this.MaxHP=this.hp;
+
 		//力
 		if(rand2<=0.1) {
 			this.strength=14;
@@ -284,9 +360,9 @@ public class SwordMaster extends Fighter{
 		}
 	}
 	public String toString() {
-		return "名前 "+this.name+"\n"+"HP   "+this.hp+"\n"+"力   "+this.strength+"\n"
-	+"技   "+this.skill+"\n"+"速さ "+this.speed+"\n"+"守備 "+this.defence+"\n"+
-				"魔防 "+this.resist+"\n"+"幸運 "+this.luck+"\n"+"体格 "+this.constitution;
+		return "名前    "+this.name+"\n"+"クラス  "+this.getCName()+"\n"+"HP      "+this.hp+"\n"+"力      "+this.strength+"\n"
+	+"技      "+this.skill+"\n"+"速さ    "+this.speed+"\n"+"守備    "+this.defence+"\n"+
+				"魔防    "+this.resist+"\n"+"幸運    "+this.luck+"\n"+"体格    "+this.constitution;
 
 	}
 	public void showSt() {

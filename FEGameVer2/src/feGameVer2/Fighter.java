@@ -4,6 +4,7 @@ public abstract class Fighter {
 	String name;
 	Weapon equip=null;
 	int hp;
+	int MaxHP;
 	int strength;		//力
 	int skill;			//技
 	int speed;			//速さ
@@ -12,13 +13,21 @@ public abstract class Fighter {
 	int constitution;	//体格
 	int luck;			//幸運
 
-
+	public void setName(String name) {
+		if(name==null) {
+			throw new IllegalArgumentException("名前が入っていません。入力して下さい");
+		}
+		if(name.length()<1) {
+			throw new IllegalArgumentException("名前が入っていません。入力して下さい");
+		}
+		this.name=name;
+	}
 	public abstract void changeEquip(Weapon o);
 	public abstract void equipWeaponBeforeBattle();
 	public String toString() {
-		return "名前 "+this.name+"\n"+"HP   "+this.hp+"\n"+"力   "+this.strength+"\n"
-	+"技   "+this.skill+"\n"+"速さ "+this.speed+"\n"+"守備 "+this.defence+"\n"+
-				"魔防 "+this.resist+"\n"+"幸運 "+this.luck+"\n"+"体格 "+this.constitution;
+		return "名前    "+this.name+"\n"+"クラス  "+this.getCName()+"\n"+"HP   "+this.hp+"\n"+"力      "+this.strength+"\n"
+	+"技      "+this.skill+"\n"+"速さ    "+this.speed+"\n"+"守備    "+this.defence+"\n"+
+				"魔防    "+this.resist+"\n"+"幸運    "+this.luck+"\n"+"体格    "+this.constitution;
 
 	}
 	public void showSt() {

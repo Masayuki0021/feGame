@@ -47,9 +47,6 @@ public class General extends Fighter{
 			this.axe =new Axe("ておの",7,15,50,0,3);
 		}
 		else if(rand<0.6) {
-			this.axe =new Axe("デビルアクス",18,18,30,0,1);
-		}
-		else if(rand<0.65) {
 			this.axe =new Axe("鋼の斧",11,15,50,0,1);
 		}
 		else if(rand<0.7) {
@@ -59,7 +56,7 @@ public class General extends Fighter{
 			this.axe  =new Axe("銀の斧",15,12,55,0,1);
 		}
 		else if(rand<=1) {
-			this.axe =new Axe("トマホーク",13,14,55,5,1);
+			this.axe =new Axe("トマホーク",13,14,55,5,3);
 		}
 	}
 
@@ -99,9 +96,51 @@ public class General extends Fighter{
 			this.equip=(Axe)this.axe;
 			System.out.println(this.name+"は"+this.equip.name+"を装備！");
 		}
+		else if(o instanceof Axe) {
+			this.equip=null;
+			this.equip=(Axe)this.axe;
+			System.out.println(this.name+"は"+this.equip.name+"を装備！");
+		}
 
 	}
 	public General() {
+		//名前
+		Random random=new Random();
+		int rand=random.nextInt(10);
+		switch(rand) {
+
+		case 0:
+			this.name="ボールス";
+			break;
+		case 1:
+			this.name="バース";
+			break;
+		case 2:
+			this.name="ウェンディ";
+			break;
+		case 3:
+			this.name="ダグラス";
+			break;
+		case 4:
+			this.name="ヘクトル";
+			break;
+		case 5:
+			this.name="マードック";
+				break;
+		case 6:
+			this.name="オズイン";
+			break;
+		case 7:
+			this.name="ワレス";
+			break;
+		case 8:
+			this.name="ギリアム";
+			break;
+		case 9:
+			this.name="ガトリー";
+			break;
+
+		}
 		double rand1=Math.random();
 		double rand2=Math.random();
 		double rand3=Math.random();
@@ -138,6 +177,8 @@ public class General extends Fighter{
 		else if(rand1<=1) {
 			this.hp=58;
 		}
+		this.MaxHP=this.hp;
+
 		//力
 		if(rand2<=0.1) {
 			this.strength=21;
@@ -168,31 +209,31 @@ public class General extends Fighter{
 		}
 		//技
 		if(rand3<=0.1) {
-			this.skill=17;
+			this.skill=14;
 		}
 		else if(rand3<=0.2) {
-			this.skill=18;
+			this.skill=15;
 		}
 		else if(rand3<=0.3) {
-			this.skill=19;
+			this.skill=16;
 		}
 		else if(rand3<=0.4) {
-			this.skill=20;
+			this.skill=17;
 		}
 		else if(rand3<=0.6) {
-			this.skill=21;
+			this.skill=18;
 		}
 		else if(rand3<=0.7) {
-			this.skill=22;
+			this.skill=19;
 		}
 		else if(rand3<=0.8) {
-			this.skill=23;
+			this.skill=20;
 		}
 		else if(rand3<=0.9) {
-			this.skill=24;
+			this.skill=21;
 		}
 		else if(rand3<=1) {
-			this.skill=25;
+			this.skill=22;
 		}
 		//速さ
 		if(rand4<=0.1) {
@@ -336,9 +377,9 @@ public class General extends Fighter{
 		}
 	}
 	public String toString() {
-		return "名前 "+this.name+"\n"+"HP   "+this.hp+"\n"+"力   "+this.strength+"\n"
-	+"技   "+this.skill+"\n"+"速さ "+this.speed+"\n"+"守備 "+this.defence+"\n"+
-				"魔防 "+this.resist+"\n"+"幸運 "+this.luck+"\n"+"体格 "+this.constitution;
+		return "名前    "+this.name+"\n"+"クラス  "+this.getCName()+"\n"+"HP      "+this.hp+"\n"+"力      "+this.strength+"\n"
+	+"技      "+this.skill+"\n"+"速さ    "+this.speed+"\n"+"守備    "+this.defence+"\n"+
+				"魔防    "+this.resist+"\n"+"幸運    "+this.luck+"\n"+"体格    "+this.constitution;
 
 	}
 	public void showSt() {

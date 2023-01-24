@@ -1,11 +1,39 @@
 package feGameVer2;
 
+import java.util.Random;
+
 public class Sage extends Fighter {
 	Nature nature;
+	Nature naturesub;
 	String cName="賢者";
 
 	//理魔法生成メソッド
 	public void equipNewNature() {
+		double rand = Math.random();
+		if(rand<0.3) {
+			this.nature=new Nature("ファイアー",5,2,90,0,3);
+		}
+		else if(rand<0.4) {
+			this.nature =new Nature("サンダー",8,4,80,5,3);
+		}
+		else if(rand<0.5) {
+			this.nature =new Nature("エルファイアー",10,6,85,0,3);
+		}
+		else if(rand<0.6) {
+			this.nature =new Nature("サンダーストーム",12,10,70,10,3);
+		}
+		else if(rand<0.7) {
+			this.nature =new Nature("フィンブル",13,8,80,5,3);
+		}
+		else if(rand<0.95) {
+			this.nature =new Nature("エイルカリバー",8,8,90,10,3);
+		}
+		else if(rand<1) {
+			this.nature =new Nature("フォルブレイズ",14,10,85,5,3);
+		}
+	}
+	//サブ理魔法生成メソッド
+	public void equipNewNatureSub() {
 		double rand = Math.random();
 		if(rand<0.3) {
 			this.nature=new Nature("ファイアー",5,2,90,0,3);
@@ -37,16 +65,57 @@ public class Sage extends Fighter {
 	//全武器一括生成メソッド
 	public void equipNewWeapon() {
 		this.equipNewNature();
+		this.equipNewNatureSub();
 		this.equipWeaponBeforeBattle();
 	}
 	//戦闘中武器持ち替えメソッド
 	public void changeEquip(Weapon o) {
-		if(o instanceof Weapon) {
-			this.equip=null;
-			this.equip=(Nature)this.nature;
+		Random random=new Random();
+		int rand=random.nextInt(2);
+		if(o instanceof Light) {
+			if(rand==0) {
+				if(o instanceof Weapon) {
+					this.equip=null;
+					this.equip=(Nature)this.nature;
+					System.out.println(this.name+"は"+this.equip.name+"を装備！");
+				}
+			}else if(rand==1){
+				if(o instanceof Weapon) {
+					this.equip=null;
+					this.equip=(Nature)this.naturesub;
+					System.out.println(this.name+"は"+this.equip.name+"を装備！");
+				}
+			}
 		}
 	}
 	public Sage() {
+		//名前
+		Random random=new Random();
+		int rand=random.nextInt(7);
+		switch(rand) {
+		case 0:
+			this.name="ルゥ";
+			break;
+		case 1:
+			this.name="リリーナ";
+			break;
+		case 2:
+			this.name="パント";
+			break;
+		case 3:
+			this.name="エルク";
+			break;
+		case 4:
+			this.name="ニノ";
+			break;
+		case 5:
+			this.name="ルーテ";
+				break;
+		case 6:
+			this.name="サレフ";
+			break;
+			
+		}
 		double rand1=Math.random();
 		double rand2=Math.random();
 		double rand3=Math.random();
@@ -83,6 +152,8 @@ public class Sage extends Fighter {
 		else if(rand1<=1) {
 			this.hp=46;
 		}
+		this.MaxHP=this.hp;
+
 		//力
 		if(rand2<=0.1) {
 			this.strength=20;
@@ -281,9 +352,9 @@ public class Sage extends Fighter {
 		}
 	}
 	public String toString() {
-		return "名前 "+this.name+"\n"+"HP   "+this.hp+"\n"+"力   "+this.strength+"\n"
-	+"技   "+this.skill+"\n"+"速さ "+this.speed+"\n"+"守備 "+this.defence+"\n"+
-				"魔防 "+this.resist+"\n"+"幸運 "+this.luck+"\n"+"体格 "+this.constitution;
+		return "名前    "+this.name+"\n"+"クラス  "+this.getCName()+"\n"+"HP      "+this.hp+"\n"+"力      "+this.strength+"\n"
+	+"技      "+this.skill+"\n"+"速さ    "+this.speed+"\n"+"守備    "+this.defence+"\n"+
+				"魔防    "+this.resist+"\n"+"幸運    "+this.luck+"\n"+"体格    "+this.constitution;
 
 	}
 	public void showSt() {

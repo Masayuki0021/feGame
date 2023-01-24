@@ -48,7 +48,7 @@ public class Hero extends Fighter {
 			this.axe =new Axe("ておの",7,15,50,0,3);
 		}
 		else if(rand<0.6) {
-			this.axe =new Axe("デビルアクス",18,18,30,0,1);
+			this.axe =new Axe("デビルアクス",24,18,20,0,1);
 		}
 		else if(rand<0.7) {
 			this.axe =new Axe("鋼の斧",11,15,50,0,1);
@@ -60,7 +60,7 @@ public class Hero extends Fighter {
 			this.axe  =new Axe("銀の斧",15,12,55,0,1);
 		}
 		else if(rand<=1) {
-			this.axe =new Axe("トマホーク",13,14,55,5,1);
+			this.axe =new Axe("トマホーク",13,14,55,5,3);
 		}
 	}
 	//戦闘前武器装備メソッド
@@ -97,8 +97,42 @@ public class Hero extends Fighter {
 			this.equip=(Sword)this.sword;
 			System.out.println(this.name+"は"+this.equip.name+"を装備！");
 		}
+		else if(o instanceof Sword) {
+			this.equip=null;
+			this.equip=(Sword)this.sword;
+			System.out.println(this.name+"は"+this.equip.name+"を装備！");
+		}
 	}
 	public Hero() {
+		//名前
+		Random random=new Random();
+		int rand=random.nextInt(8);
+		switch(rand) {
+		case 0:
+			this.name="ディーク";
+			break;
+		case 1:
+			this.name="エキドナ";
+			break;
+		case 2:
+			this.name="レイヴァン";
+			break;
+		case 3:
+			this.name="ハーケン";
+			break;
+		case 4:
+			this.name="ライナス";
+			break;
+		case 5:
+			this.name="ジスト";
+				break;
+		case 6:
+			this.name="ケセルダ";
+			break;
+		case 7:
+			this.name="アイク";
+			break;
+		}
 		double rand1=Math.random();
 		double rand2=Math.random();
 		double rand3=Math.random();
@@ -135,6 +169,8 @@ public class Hero extends Fighter {
 		else if(rand1<=1) {
 			this.hp=53;
 		}
+		this.MaxHP=this.hp;
+
 		//力
 		if(rand2<=0.1) {
 			this.strength=19;
@@ -334,9 +370,9 @@ public class Hero extends Fighter {
 	}
 
 	public String toString() {
-		return "名前 "+this.name+"\n"+"HP   "+this.hp+"\n"+"力   "+this.strength+"\n"
-				+"技   "+this.skill+"\n"+"速さ "+this.speed+"\n"+"守備 "+this.defence+"\n"+
-				"魔防 "+this.resist+"\n"+"幸運 "+this.luck+"\n"+"体格 "+this.constitution;
+		return "名前    "+this.name+"\n"+"クラス  "+this.getCName()+"\n"+"HP      "+this.hp+"\n"+"力      "+this.strength+"\n"
+	+"技      "+this.skill+"\n"+"速さ    "+this.speed+"\n"+"守備    "+this.defence+"\n"+
+				"魔防    "+this.resist+"\n"+"幸運    "+this.luck+"\n"+"体格    "+this.constitution;
 
 	}
 	public void showSt() {

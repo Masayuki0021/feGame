@@ -6,7 +6,6 @@ public class Sword extends PhysicsWeap{
 		if(o instanceof Axe) {
 			this.power+=1;
 			this.accuracy+=10;
-			System.out.println("自分剣	相手斧");
 		}
 	}
 	public void three_way_relation_back(Weapon o) {
