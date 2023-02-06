@@ -36,25 +36,25 @@ public class Valkyria extends Fighter{
 				public void equipNewNaturesub() {
 					double rand = Math.random();
 					if(rand<0.3) {
-						this.nature=new Nature("ファイアー",5,2,90,0,3);
+						this.naturesub=new Nature("ファイアー",5,2,90,0,3);
 					}
 					else if(rand<0.4) {
-						this.nature =new Nature("サンダー",8,4,80,5,3);
+						this.naturesub =new Nature("サンダー",8,4,80,5,3);
 					}
 					else if(rand<0.5) {
-						this.nature =new Nature("エルファイアー",10,6,85,0,3);
+						this.naturesub =new Nature("エルファイアー",10,6,85,0,3);
 					}
 					else if(rand<0.6) {
-						this.nature =new Nature("サンダーストーム",12,14,70,10,3);
+						this.naturesub =new Nature("サンダーストーム",12,14,70,10,3);
 					}
 					else if(rand<0.7) {
-						this.nature =new Nature("フィンブル",13,8,80,5,3);
+						this.naturesub =new Nature("フィンブル",13,8,80,5,3);
 					}
 					else if(rand<0.95) {
-						this.nature =new Nature("エイルカリバー",8,8,90,10,3);
+						this.naturesub =new Nature("エイルカリバー",8,8,90,10,3);
 					}
 					else if(rand<1) {
-						this.nature =new Nature("フォルブレイズ",14,16,85,5,3);
+						this.naturesub =new Nature("フォルブレイズ",14,16,85,5,3);
 					}
 				}
 		//戦闘前武器装備メソッド

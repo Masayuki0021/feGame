@@ -78,7 +78,7 @@ public class Assassin extends Fighter {
 		int rand=random.nextInt(2);
 		switch(rand) {
 		case 0:
-				this.name="ジャッファル";
+			this.name="ジャッファル";
 			break;
 		case 1:
 			this.name="ラガルト";

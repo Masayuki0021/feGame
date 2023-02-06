@@ -9,7 +9,7 @@ public class PrepareBattle {
 	int contiueNum;
 
 	public void setCharacterNum(int num) {
-		if(num>14||num<1) {
+		if(num>15||num<1) {
 			throw new IllegalArgumentException("1～14の中から選択してください");
 		}
 		this.c_Num=num;
@@ -46,7 +46,7 @@ public class PrepareBattle {
 			int	c_Number=new Scanner(System.in).nextInt();
 
 			while((c_Number>15||c_Number<1)) {
-				System.out.println("1～14までの数字が入力されていません\n"
+				System.out.println("1～15までの数字が入力されていません\n"
 						+ "正しい数字を入力してください");
 				c_Number=new Scanner(System.in).nextInt();
 			}
@@ -348,7 +348,7 @@ public void putName(Fighter f) {
 	public void downerPara(Fighter f) {
 		System.out.println("下げるパラメーターを二つ選んでください");
 		for(int i=0;i<2;i++) {
-			System.out.println("1:HP、2:力、3：技、4：速さ、5：守備、６：魔防、7：幸運、8：体格");
+			System.out.println("1:HP、2:力、3：技、4：速さ、\n5：守備、６：魔防、7：幸運、8：体格");
 			try {
 			int statusNum=new Scanner(System.in).nextInt();
 			setStatusNum(statusNum);
