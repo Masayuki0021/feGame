@@ -2,6 +2,11 @@ package feGameVer2;
 
 import java.util.Scanner;
 
+import feGameVer2.battle.BattleField;
+import feGameVer2.battle.PrepareBattle;
+import feGameVer2.fighter.Fighter;
+import feGameVer2.fighter.NewFighterClass;
+
 public class Main4 {
 
 	public static void main(String[] args) throws InterruptedException {
@@ -21,13 +26,13 @@ public class Main4 {
 		System.out.println();
 		p.name="プレイヤー";
 		p.hp=40;
-		p.strength=25;
-		p.skill=25;
-		p.speed=25;
-		p.defence=20;
-		p.resist=20;
-		p.luck=20;
-		p.constitution=10;
+		p.setStrength(25);
+		p.setSkill(25);
+		p.setSpeed(25);
+		p.setDefence(20);
+		p.setResist(20);
+		p.setLuck(20);
+		p.setConstitution(10);
 		//クラス変更
 		NewFighterClass cp=(NewFighterClass)p;
 		cp.equipNewWeapon();
@@ -61,7 +66,7 @@ public class Main4 {
 				}
 				pb.setContinueNum(contiNum);
 			}
-			if(pb.contiueNum==1) {
+			if(pb.getContiueNum()==1) {
 				p.hp=p.MaxHP;
 			}
 			while(p.hp>0&&o2.hp>0) {
@@ -83,7 +88,7 @@ public class Main4 {
 					}
 					pb.setContinueNum(contiNum);
 				}
-				if(pb.contiueNum==1) {
+				if(pb.getContiueNum()==1) {
 					p.hp=p.MaxHP;
 				}
 				while(p.hp>0&&o3.hp>0) {
@@ -106,7 +111,7 @@ public class Main4 {
 						}
 						pb.setContinueNum(contiNum);
 					}
-					if(pb.contiueNum==1) {
+					if(pb.getContiueNum()==1) {
 						p.hp=p.MaxHP;
 					}
 					while(p.hp>0&&o4.hp>0) {
@@ -129,7 +134,7 @@ public class Main4 {
 							}
 							pb.setContinueNum(contiNum);
 						}
-						if(pb.contiueNum==1) {
+						if(pb.getContiueNum()==1) {
 							p.hp=p.MaxHP;
 						}
 						while(p.hp>0&&o5.hp>0) {

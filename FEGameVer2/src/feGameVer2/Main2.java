@@ -3,6 +3,10 @@ package feGameVer2;
 
 import java.util.Scanner;
 
+import feGameVer2.battle.BattleField;
+import feGameVer2.battle.PrepareBattle;
+import feGameVer2.fighter.Fighter;
+
 public class Main2 {
 	public static void main(String[]args) throws InterruptedException {
 		//ランダムゲーム
@@ -22,31 +26,31 @@ public class Main2 {
 //		pb.putName(p2);
 		p2=pb.equipFighterBack(p2);
 
-		System.out.println("名前\t\t"+p1.name+"\t\t\t\t\t"+p2.name);
+		System.out.println("名前\t\t"+p1.getName()+"\t\t\t\t\t"+p2.getName());
 		System.out.println("クラス\t"+p1.getCName()+"\t\t\t\t"+p2.getCName());
-		System.out.println("HP\t\t"+p1.hp+"\t\t\t\t\t"+p2.hp);
-		System.out.println("力\t\t"+p1.strength+"\t\t\t\t\t"+p2.strength);
-		System.out.println("技\t\t"+p1.skill+"\t\t\t\t\t"+p2.skill);
-		System.out.println("速さ\t"+p1.speed+"\t\t\t\t\t"+p2.speed);
-		System.out.println("守備\t"+p1.defence+"\t\t\t\t\t"+p2.defence);
-		System.out.println("魔防\t"+p1.resist+"\t\t\t\t\t"+p2.resist);
-		System.out.println("幸運\t"+p1.luck+"\t\t\t\t\t"+p2.luck);
-		System.out.println("体格\t"+p1.constitution+"\t\t\t\t\t"+p2.constitution);
-		System.out.println("武器\t"+p1.equip.name+"\t\t\t\t\t"+p2.equip.name);
+		System.out.println("HP\t\t"+p1.getHp()+"\t\t\t\t\t"+p2.getHp());
+		System.out.println("力\t\t"+p1.getStrength()+"\t\t\t\t\t"+p2.getStrength());
+		System.out.println("技\t\t"+p1.getSkill()+"\t\t\t\t\t"+p2.getSkill());
+		System.out.println("速さ\t"+p1.getSpeed()+"\t\t\t\t\t"+p2.getSpeed());
+		System.out.println("守備\t"+p1.getDefence()+"\t\t\t\t\t"+p2.getDefence());
+		System.out.println("魔防\t"+p1.getResist()+"\t\t\t\t\t"+p2.getResist());
+		System.out.println("幸運\t"+p1.getLuck()+"\t\t\t\t\t"+p2.getLuck());
+		System.out.println("体格\t"+p1.getConstitution()+"\t\t\t\t\t"+p2.getConstitution());
+		System.out.println("武器\t"+p1.getEquip().getName()+"\t\t\t\t\t"+p2.getEquip().getName());
 		System.out.println();
 
 
 		Thread.sleep(5000);
 
 		BattleField b=new BattleField(p1,p2);
-		while(p1.hp>0&&p2.hp>0) {
+		while(p1.getHp()>0&&p2.getHp()>0) {
 			b.BattleSet(p1, p2,b);
 		}
-		if(p1.hp<=0) {
-			System.out.println(p2.name+"の勝利！！！");
+		if(p1.getHp()<=0) {
+			System.out.println(p2.getName()+"の勝利！！！");
 		}
-		if(p2.hp<=0) {
-			System.out.println(p1.name+"の勝利！！！");
+		if(p2.getHp()<=0) {
+			System.out.println(p1.getName()+"の勝利！！！");
 		}
 		System.out.println("続ける? 1:yes 2:no  番号を入力して下さい");
 		try {
@@ -63,17 +67,17 @@ public class Main2 {
 			}
 			pb.setContinueNum(contiNum);
 		}
-		while(pb.contiueNum==1) {
-			p1.hp=p1.MaxHP;
-			p2.hp=p2.MaxHP;
-			while(p1.hp>0&&p2.hp>0) {
+		while(pb.getContiueNum()==1) {
+			p1.setHp(p1.getMaxHp());
+			p2.setHp(p2.getMaxHp());
+			while(p1.getHp()>0&&p2.getHp()>0) {
 				b.BattleSet(p1, p2,b);
 			}
-			if(p1.hp<=0) {
-				System.out.println(p2.name+"の勝利！！！");
+			if(p1.getHp()<=0) {
+				System.out.println(p2.getName()+"の勝利！！！");
 			}
-			if(p2.hp<=0) {
-				System.out.println(p1.name+"の勝利！！！");
+			if(p2.getHp()<=0) {
+				System.out.println(p1.getName()+"の勝利！！！");
 			}
 			System.out.println("続ける? 1:yes 2:no  番号を入力して下さい");
 			try {

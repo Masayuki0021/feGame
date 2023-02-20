@@ -2,6 +2,10 @@ package feGameVer2;
 
 import java.util.Scanner;
 
+import feGameVer2.battle.BattleField;
+import feGameVer2.battle.PrepareBattle;
+import feGameVer2.fighter.Fighter;
+
 public class Main3 {
 //2体キャラ作って対戦
 	public static void main(String[] args) throws InterruptedException {
@@ -49,7 +53,7 @@ public class Main3 {
 			}
 			pb.setContinueNum(contiNum);
 		}
-		while(pb.contiueNum==1) {
+		while(pb.getContiueNum()==1) {
 			p1.hp=p1.MaxHP;
 			p2.hp=p2.MaxHP;
 			while(p1.hp>0&&p2.hp>0) {
