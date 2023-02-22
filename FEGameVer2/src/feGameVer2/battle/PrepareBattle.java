@@ -46,7 +46,7 @@ public class PrepareBattle {
 	}
 
 	public Fighter chooseCharacter(Fighter f) {
-		System.out.println("クラスの選択");
+		System.out.println("クラス(兵種)の選択");
 		System.out.println("番号を入力してください");
 		System.out.println("1:パラディン、2：ジェネラル、3：ウォーリアー");
 		System.out.println("4:ファルコンナイト、5：バーサーカー、6：ソードマスター");

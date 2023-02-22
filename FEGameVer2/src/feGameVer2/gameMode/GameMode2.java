@@ -1,4 +1,4 @@
-package feGameVer2;
+package feGameVer2.gameMode;
 
 import java.util.Scanner;
 
@@ -6,9 +6,10 @@ import feGameVer2.battle.BattleField;
 import feGameVer2.battle.PrepareBattle;
 import feGameVer2.fighter.Fighter;
 
-public class Main3 {
-//2体キャラ作って対戦
-	public static void main(String[] args) throws InterruptedException {
+public class GameMode2 {
+	public void playGameMode2() throws InterruptedException {
+		//2体キャラ作って対戦
+
 		PrepareBattle pb =new PrepareBattle();
 		Fighter p1=null;
 		Fighter p2=null;
@@ -29,14 +30,14 @@ public class Main3 {
 		p2=pb.equipFighterBack(p2);
 
 		BattleField b=new BattleField(p1,p2);
-		while(p1.hp>0&&p2.hp>0) {
+		while(p1.getHp()>0&&p2.getHp()>0) {
 			b.BattleSet(p1, p2,b);
 		}
-		if(p1.hp<=0) {
-			System.out.println(p2.name+"の勝利！！！");
+		if(p1.getHp()<=0) {
+			System.out.println(p2.getName()+"の勝利！！！");
 		}
-		if(p2.hp<=0) {
-			System.out.println(p1.name+"の勝利！！！");
+		if(p2.getHp()<=0) {
+			System.out.println(p1.getName()+"の勝利！！！");
 		}
 		System.out.println("続ける? 1:yes 2:no  番号を入力して下さい");
 		try {
@@ -54,16 +55,16 @@ public class Main3 {
 			pb.setContinueNum(contiNum);
 		}
 		while(pb.getContiueNum()==1) {
-			p1.hp=p1.MaxHP;
-			p2.hp=p2.MaxHP;
-			while(p1.hp>0&&p2.hp>0) {
+			p1.setHp(p1.getMaxHp());
+			p2.setHp(p2.getMaxHp());
+			while(p1.getHp()>0&&p2.getHp()>0) {
 				b.BattleSet(p1, p2,b);
 			}
-			if(p1.hp<=0) {
-				System.out.println(p2.name+"の勝利！！！");
+			if(p1.getHp()<=0) {
+				System.out.println(p2.getName()+"の勝利！！！");
 			}
-			if(p2.hp<=0) {
-				System.out.println(p1.name+"の勝利！！！");
+			if(p2.getHp()<=0) {
+				System.out.println(p1.getName()+"の勝利！！！");
 			}
 			System.out.println("続ける? 1:yes 2:no  番号を入力して下さい");
 			try {
@@ -101,5 +102,7 @@ public class Main3 {
 			System.out.println(p1.name+"の勝利！！！");
 		}
 	}*/
+
+
 
 

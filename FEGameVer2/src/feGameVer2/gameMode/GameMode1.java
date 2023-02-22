@@ -1,4 +1,4 @@
-package feGameVer2;
+package feGameVer2.gameMode;
 
 
 import java.util.Scanner;
@@ -7,8 +7,9 @@ import feGameVer2.battle.BattleField;
 import feGameVer2.battle.PrepareBattle;
 import feGameVer2.fighter.Fighter;
 
-public class Main2 {
-	public static void main(String[]args) throws InterruptedException {
+public class GameMode1 {
+
+	public void playGameMode1() throws InterruptedException {
 		//ランダムゲーム
 
 		PrepareBattle pb =new PrepareBattle();
@@ -95,6 +96,8 @@ public class Main2 {
 				pb.setContinueNum(contiNum);
 			}
 		}
+
+
 	}
 }
 /*

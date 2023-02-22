@@ -1,4 +1,4 @@
-package feGameVer2;
+package feGameVer2.gameMode;
 
 import java.util.Scanner;
 
@@ -7,7 +7,7 @@ import feGameVer2.battle.PrepareBattle;
 import feGameVer2.fighter.Fighter;
 import feGameVer2.fighter.NewFighterClass;
 
-public class Main4 {
+public class GameMode3 {
 
 	public static void main(String[] args) throws InterruptedException {
 		// １体パラメータからキャラメイク
@@ -24,8 +24,8 @@ public class Main4 {
 		p= new NewFighterClass();
 		p.showSt();
 		System.out.println();
-		p.name="プレイヤー";
-		p.hp=40;
+		p.setName("プレイヤー");
+		p.setHp(40);
 		p.setStrength(25);
 		p.setSkill(25);
 		p.setSpeed(25);
