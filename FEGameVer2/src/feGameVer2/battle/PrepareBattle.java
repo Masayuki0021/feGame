@@ -51,7 +51,7 @@ public class PrepareBattle {
 	}
 	public void setLevelUpNum(int num,int[] statusList,int i) {
 		if(num<1||num>7||num==statusList[0]||num==statusList[1]||num==statusList[2]||
-				num==statusList[3]||num==statusList[4]||num==statusList[5]||num==statusList[6]||) {
+				num==statusList[3]||num==statusList[4]||num==statusList[5]||num==statusList[6]) {
 			throw new IllegalArgumentException("1～7の中から選択してください");
 		}
 		this.levelUpNum=num;
@@ -569,7 +569,8 @@ public void putName(Fighter f) {
 						+ "正しい数字を入力してください");
 				int	num=new Scanner(System.in).nextInt();
 
-				while(num<1||num>7||num==statusList[i]) {
+				while(num<1||num>7||num==statusList[0]||num==statusList[1]||num==statusList[2]||
+						num==statusList[3]||num==statusList[4]||num==statusList[5]||num==statusList[6]) {
 					System.out.println("1～7までの数字が入力されていません\n"
 							+ "正しい数字を入力してください");
 
