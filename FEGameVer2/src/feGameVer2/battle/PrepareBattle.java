@@ -1,5 +1,6 @@
 package feGameVer2.battle;
 
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -542,8 +543,13 @@ public void putName(Fighter f) {
 	public void levelUp(Fighter f) {
 		System.out.println("キャラクターの能力値をランダムに10回上げます（レベルアップ）");
 		System.out.println("どの能力値を優先的に上げるのか選択することが出来ます");
-		for(int i=0;i<2;i++) {
-			System.out.println("1:HP、2:力、3：技、4：速さ、\n5：守備、６：魔防、7：幸運、8：体格");
+		System.out.println("優先的に上げたい能力値を順に選択してください");
+		int[] statusList=new int[6];
+		ArrayList<String>statusPriority=new ArrayList<>();
+		statusPriority.add("1:HP");statusPriority.add("2:力");statusPriority.add("3:技");statusPriority.add("4:速さ");
+		statusPriority.add("5:守備");statusPriority.add("6:魔防");statusPriority.add("7:幸運");
+		for(int i=0;i<7;i++) {
+			System.out.println(statusPriority.get(i));
 			try {
 				int statusNum=new Scanner(System.in).nextInt();
 				setStatusNum(statusNum);
@@ -561,32 +567,11 @@ public void putName(Fighter f) {
 				setCharacterNum(statusNum);
 			}
 
-
-			if(status_Num==1) {
-				f.setHp(f.getHp() + 8);
+0
+			if(this.status_Num==statusPriority.get(i)) {
+				statusList[i]=statusPriority.get(i)
 			}
-			if(status_Num==2) {
-				f.setStrength(f.getStrength() + 4);
-			}
-			if(status_Num==3) {
-				f.setSkill(f.getSkill() + 4);
-			}
-			if(status_Num==4) {
-				f.setSpeed(f.getSpeed() + 4);
-			}
-			if(status_Num==5) {
-				f.setDefence(f.getDefence() + 4);
-			}
-			if(status_Num==6) {
-				f.setResist(f.getResist() + 4);
-			}
-			if(status_Num==7) {
-				f.setLuck(f.getLuck() + 4);
-			}
-			if(status_Num==8) {
-				f.setConstitution(f.getConstitution() + 4);
-			}
-			f.showSt();
+					f.showSt();
 
 		}
 	}
