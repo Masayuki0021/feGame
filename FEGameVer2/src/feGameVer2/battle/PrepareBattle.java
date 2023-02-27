@@ -23,7 +23,7 @@ import feGameVer2.fighter.Warrior;
 public class PrepareBattle {
 	private int c_Num;
 	private int status_Num;
-	private int contiueNum;
+	private int yesNoNum;
 
 	public void setCharacterNum(int num) {
 		if(num>15||num<1) {
@@ -37,12 +37,15 @@ public class PrepareBattle {
 		}
 		this.status_Num=num;
 	}
-	public void setContinueNum(int num) {
+	public void setYesNoNum(int num) {
 		if(num<1||num>2) {
 			throw new IllegalArgumentException("1か2の中から選択してください");
 
 		}
-		this.setContiueNum(num);
+		this.yesNoNum=num;
+	}
+	public int getYesNoNum() {
+		return yesNoNum;
 	}
 
 	public Fighter chooseCharacter(Fighter f) {
@@ -262,6 +265,23 @@ public class PrepareBattle {
 	}
 
 public void putName(Fighter f) {
+
+	try{
+		System.out.println("名前を入力しなおしますか？↓（しない場合はこのまま決定されます。）"
+				+ "\nする場合は1を、しない場合は2を入力して下さい");
+		int nameNum=new Scanner(System.in).nextInt();
+		setYesNoNum(nameNum);
+	}catch(IllegalArgumentException e) {
+		System.out.println("1か2を入力してください");
+		int	nameNum=new Scanner(System.in).nextInt();
+
+		while((nameNum>2||nameNum<1)) {
+			System.out.println("1か2を入力してください");
+			nameNum=new Scanner(System.in).nextInt();
+		}
+		setYesNoNum(nameNum);
+	}
+	if(this.yesNoNum==1) {
 		try {
 		System.out.print("名前を入力してください→");
 		String pName=new Scanner(System.in).nextLine();
@@ -278,7 +298,13 @@ public void putName(Fighter f) {
 			f.setName(pName);
 		}
 		f.showSt();
+		System.out.println("");
+	}else {
+		f.showSt();
+		System.out.println("");
 	}
+
+}
 	public void upperPara(Fighter f) {
 		System.out.println("上げるパラメーターを二つ選んでください");
 		for(int i=0;i<2;i++) {
@@ -513,11 +539,57 @@ public void putName(Fighter f) {
 		}
 
 	}
-	public int getContiueNum() {
-		return contiueNum;
+	public void levelUp(Fighter f) {
+		System.out.println("キャラクターの能力値をランダムに10回上げます（レベルアップ）");
+		System.out.println("どの能力値を優先的に上げるのか選択することが出来ます");
+		for(int i=0;i<2;i++) {
+			System.out.println("1:HP、2:力、3：技、4：速さ、\n5：守備、６：魔防、7：幸運、8：体格");
+			try {
+				int statusNum=new Scanner(System.in).nextInt();
+				setStatusNum(statusNum);
+			}catch(IllegalArgumentException e){
+				System.out.println("1～8までの数字が入力されていません\n"
+						+ "正しい数字を入力してください");
+				int	statusNum=new Scanner(System.in).nextInt();
+
+				while(statusNum>8||statusNum<1) {
+					System.out.println("1～8までの数字が入力されていません\n"
+							+ "正しい数字を入力してください");
+
+					statusNum=new Scanner(System.in).nextInt();
+				}
+				setCharacterNum(statusNum);
+			}
+
+
+			if(status_Num==1) {
+				f.setHp(f.getHp() + 8);
+			}
+			if(status_Num==2) {
+				f.setStrength(f.getStrength() + 4);
+			}
+			if(status_Num==3) {
+				f.setSkill(f.getSkill() + 4);
+			}
+			if(status_Num==4) {
+				f.setSpeed(f.getSpeed() + 4);
+			}
+			if(status_Num==5) {
+				f.setDefence(f.getDefence() + 4);
+			}
+			if(status_Num==6) {
+				f.setResist(f.getResist() + 4);
+			}
+			if(status_Num==7) {
+				f.setLuck(f.getLuck() + 4);
+			}
+			if(status_Num==8) {
+				f.setConstitution(f.getConstitution() + 4);
+			}
+			f.showSt();
+
+		}
 	}
-	public void setContiueNum(int contiueNum) {
-		this.contiueNum = contiueNum;
-	}
+
 
 }

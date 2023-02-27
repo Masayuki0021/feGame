@@ -12,13 +12,50 @@ public class GameMode3 {
 	public static void main(String[] args) throws InterruptedException {
 		// １体パラメータからキャラメイク
 		// そのキャラでランダムキャラと連戦
-		PrepareBattle pb=new PrepareBattle();
+		PrepareBattle pb =new PrepareBattle();
 		Fighter p=null;
 		Fighter o1=null;
 		Fighter o2=null;
 		Fighter o3=null;
 		Fighter o4=null;
 		Fighter o5=null;
+		System.out.println("このゲームモードではプレイヤーは\n"
+				+ "キャラクターを一体作り、そのキャラクターと\n"
+				+ "ランダムに生成されたキャラクターとで連戦を行います。\n"
+				+ "相手キャラは合計5体...全員を倒せればゲームクリアとなります\n"
+				+ "一試合ごとに回復ありのモードと回復無しのモードがあります。");
+		System.out.println();
+		System.out.println("モード選択です。\n"
+				+ "回復ありの場合は1を、なしの場合は2を入力してください。↓");
+		try {
+			int num=new Scanner(System.in).nextInt();
+
+			pb.setYesNoNum(num);
+		}catch(IllegalArgumentException e){
+			System.out.println("1か2を入力してください");
+			int	num=new Scanner(System.in).nextInt();
+
+			while((num>2||num<1)) {
+				System.out.println("1か2を入力してください");
+				num=new Scanner(System.in).nextInt();
+			}
+			pb.setYesNoNum(num);
+		}
+		if(pb.getYesNoNum()==1) {
+			System.out.println("");
+
+			System.out.println("プレイヤー1のキャラメイクです。");
+			System.out.println();
+			p=pb.chooseCharacter(p);
+			pb.putName(p);
+			pb.upperPara(p);
+			pb.downerPara(p);
+			System.out.println("このモードでは、さらにキャラクターを強化することができます");
+			p=pb.equipFighterBack(p);
+			System.out.println();
+
+		}
+	
 		
 		//クラス変更
 		p= new NewFighterClass();

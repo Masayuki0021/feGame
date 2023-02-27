@@ -2,6 +2,7 @@ package feGameVer2.gameMode;
 
 import java.util.Scanner;
 
+import feGameVer2.ChooseGameMode;
 import feGameVer2.battle.BattleField;
 import feGameVer2.battle.PrepareBattle;
 import feGameVer2.fighter.Fighter;
@@ -9,25 +10,31 @@ import feGameVer2.fighter.Fighter;
 public class GameMode2 {
 	public void playGameMode2() throws InterruptedException {
 		//2体キャラ作って対戦
-
+		System.out.println("このゲームモードではプレイヤーは\n"
+				+ "プレイヤー1とプレイヤー2に分かれて\n"
+				+ "それぞれキャラメイクを行い戦わせます");
+		System.out.println("");
 		PrepareBattle pb =new PrepareBattle();
 		Fighter p1=null;
 		Fighter p2=null;
-		Fighter p3=null;
-		Fighter p4=null;
 
-
+		System.out.println("プレイヤー1のキャラメイクです。");
+		System.out.println();
 		p1=pb.chooseCharacter(p1);
-//		pb.putName(p1);
+		pb.putName(p1);
 		pb.upperPara(p1);
 		pb.downerPara(p1);
 		p1=pb.equipFighterBack(p1);
+		System.out.println();
 
+		System.out.println("プレイヤー2のキャラメイクです。");
+		System.out.println();
 		p2=pb.chooseCharacter(p2);
-//		pb.putName(p2);
+		pb.putName(p2);
 		pb.upperPara(p2);
 		pb.downerPara(p2);
 		p2=pb.equipFighterBack(p2);
+		System.out.println();
 
 		BattleField b=new BattleField(p1,p2);
 		while(p1.getHp()>0&&p2.getHp()>0) {
@@ -43,7 +50,7 @@ public class GameMode2 {
 		try {
 			int contiNum=new Scanner(System.in).nextInt();
 
-			pb.setContinueNum(contiNum);
+			pb.setYesNoNum(contiNum);
 		}catch(IllegalArgumentException e){
 			System.out.println("1か2を入力してください");
 			int	contiNum=new Scanner(System.in).nextInt();
@@ -52,9 +59,9 @@ public class GameMode2 {
 				System.out.println("1か2を入力してください");
 				contiNum=new Scanner(System.in).nextInt();
 			}
-			pb.setContinueNum(contiNum);
+			pb.setYesNoNum(contiNum);
 		}
-		while(pb.getContiueNum()==1) {
+		while(pb.getYesNoNum()==1) {
 			p1.setHp(p1.getMaxHp());
 			p2.setHp(p2.getMaxHp());
 			while(p1.getHp()>0&&p2.getHp()>0) {
@@ -70,7 +77,7 @@ public class GameMode2 {
 			try {
 				int contiNum=new Scanner(System.in).nextInt();
 
-				pb.setContinueNum(contiNum);
+				pb.setYesNoNum(contiNum);
 			}catch(IllegalArgumentException e){
 				System.out.println("1か2を入力してください");
 				int	contiNum=new Scanner(System.in).nextInt();
@@ -79,9 +86,14 @@ public class GameMode2 {
 					System.out.println("1か2を入力してください");
 					contiNum=new Scanner(System.in).nextInt();
 				}
-				pb.setContinueNum(contiNum);
+				pb.setYesNoNum(contiNum);
 			}
 		}
+		System.out.println("メインメニューに戻ります。");
+		Thread.sleep(1000);
+		ChooseGameMode.chooseGameMode();
+
+
 	}
 }
 /*
