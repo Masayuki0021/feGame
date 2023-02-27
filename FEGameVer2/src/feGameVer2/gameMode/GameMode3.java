@@ -51,6 +51,7 @@ public class GameMode3 {
 			pb.upperPara(p);
 			pb.downerPara(p);
 			System.out.println("このモードでは、さらにキャラクターを強化することができます");
+			pb.levelUp(p);
 			p=pb.equipFighterBack(p);
 			System.out.println();
 

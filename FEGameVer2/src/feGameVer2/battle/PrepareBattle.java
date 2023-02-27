@@ -1,6 +1,7 @@
 package feGameVer2.battle;
 
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -25,6 +26,7 @@ public class PrepareBattle {
 	private int c_Num;
 	private int status_Num;
 	private int yesNoNum;
+	private int levelUpNum;
 
 	public void setCharacterNum(int num) {
 		if(num>15||num<1) {
@@ -41,14 +43,19 @@ public class PrepareBattle {
 	public void setYesNoNum(int num) {
 		if(num<1||num>2) {
 			throw new IllegalArgumentException("1か2の中から選択してください");
-
 		}
 		this.yesNoNum=num;
 	}
 	public int getYesNoNum() {
 		return yesNoNum;
 	}
-
+	public void setLevelUpNum(int num,int[] statusList,int i) {
+		if(num<1||num>7||num==statusList[0]||num==statusList[1]||num==statusList[2]||
+				num==statusList[3]||num==statusList[4]||num==statusList[5]||num==statusList[6]||) {
+			throw new IllegalArgumentException("1～7の中から選択してください");
+		}
+		this.levelUpNum=num;
+	}
 	public Fighter chooseCharacter(Fighter f) {
 		System.out.println("クラス(兵種)の選択");
 		System.out.println("番号を入力してください");
@@ -328,28 +335,28 @@ public void putName(Fighter f) {
 			}
 
 
-			if(status_Num==1) {
+			if(this.status_Num==1) {
 				f.setHp(f.getHp() + 8);
 			}
-			if(status_Num==2) {
+			if(this.status_Num==2) {
 				f.setStrength(f.getStrength() + 4);
 			}
-			if(status_Num==3) {
+			if(this.status_Num==3) {
 				f.setSkill(f.getSkill() + 4);
 			}
-			if(status_Num==4) {
+			if(this.status_Num==4) {
 				f.setSpeed(f.getSpeed() + 4);
 			}
-			if(status_Num==5) {
+			if(this.status_Num==5) {
 				f.setDefence(f.getDefence() + 4);
 			}
-			if(status_Num==6) {
+			if(this.status_Num==6) {
 				f.setResist(f.getResist() + 4);
 			}
-			if(status_Num==7) {
+			if(this.status_Num==7) {
 				f.setLuck(f.getLuck() + 4);
 			}
-			if(status_Num==8) {
+			if(this.status_Num==8) {
 				f.setConstitution(f.getConstitution() + 4);
 			}
 			f.showSt();
@@ -362,28 +369,28 @@ public void putName(Fighter f) {
 				int rand=random.nextInt(8);
 				this.status_Num=rand+1;
 
-			if(status_Num==1) {
+			if(this.status_Num==1) {
 				f.setHp(f.getHp() + 8);
 			}
-			if(status_Num==2) {
+			if(this.status_Num==2) {
 				f.setStrength(f.getStrength() + 4);
 			}
-			if(status_Num==3) {
+			if(this.status_Num==3) {
 				f.setSkill(f.getSkill() + 4);
 			}
-			if(status_Num==4) {
+			if(this.status_Num==4) {
 				f.setSpeed(f.getSpeed() + 4);
 			}
-			if(status_Num==5) {
+			if(this.status_Num==5) {
 				f.setDefence(f.getDefence() + 4);
 			}
-			if(status_Num==6) {
+			if(this.status_Num==6) {
 				f.setResist(f.getResist() + 4);
 			}
-			if(status_Num==7) {
+			if(this.status_Num==7) {
 				f.setLuck(f.getLuck() + 4);
 			}
-			if(status_Num==8) {
+			if(this.status_Num==8) {
 				f.setConstitution(f.getConstitution() + 4);
 			}
 
@@ -409,28 +416,28 @@ public void putName(Fighter f) {
 				}
 				setCharacterNum(statusNum);
 			}
-			if(status_Num==1) {
+			if(this.status_Num==1) {
 				f.setHp(f.getHp() - 8);
 			}
-			if(status_Num==2) {
+			if(this.status_Num==2) {
 				f.setStrength(f.getStrength() - 4);
 			}
-			if(status_Num==3) {
+			if(this.status_Num==3) {
 				f.setSkill(f.getSkill() - 4);
 			}
-			if(status_Num==4) {
+			if(this.status_Num==4) {
 				f.setSpeed(f.getSpeed() - 4);
 			}
-			if(status_Num==5) {
+			if(this.status_Num==5) {
 				f.setDefence(f.getDefence() - 4);
 			}
-			if(status_Num==6) {
+			if(this.status_Num==6) {
 				f.setResist(f.getResist() - 4);
 			}
-			if(status_Num==7) {
+			if(this.status_Num==7) {
 				f.setLuck(f.getLuck() - 4);
 			}
-			if(status_Num==8) {
+			if(this.status_Num==8) {
 				f.setConstitution(f.getConstitution() - 4);
 			}
 			f.showSt();
@@ -442,28 +449,28 @@ public void putName(Fighter f) {
 			Random random=new Random();
 			int rand=random.nextInt(8);
 			this.status_Num=rand+1;
-			if(status_Num==1) {
+			if(this.status_Num==1) {
 				f.setHp(f.getHp() - 8);
 			}
-			if(status_Num==2) {
+			if(this.status_Num==2) {
 				f.setStrength(f.getStrength() - 4);
 			}
-			if(status_Num==3) {
+			if(this.status_Num==3) {
 				f.setSkill(f.getSkill() - 4);
 			}
-			if(status_Num==4) {
+			if(this.status_Num==4) {
 				f.setSpeed(f.getSpeed() - 4);
 			}
-			if(status_Num==5) {
+			if(this.status_Num==5) {
 				f.setDefence(f.getDefence() - 4);
 			}
-			if(status_Num==6) {
+			if(this.status_Num==6) {
 				f.setResist(f.getResist() - 4);
 			}
-			if(status_Num==7) {
+			if(this.status_Num==7) {
 				f.setLuck(f.getLuck() - 4);
 			}
-			if(status_Num==8) {
+			if(this.status_Num==8) {
 				f.setConstitution(f.getConstitution() - 4);
 			}
 
@@ -540,41 +547,554 @@ public void putName(Fighter f) {
 		}
 
 	}
-	public void levelUp(Fighter f) {
+	public void levelUp(Fighter f) throws InterruptedException  {
 		System.out.println("キャラクターの能力値をランダムに10回上げます（レベルアップ）");
 		System.out.println("どの能力値を優先的に上げるのか選択することが出来ます");
 		System.out.println("優先的に上げたい能力値を順に選択してください");
 		int[] statusList=new int[6];
-		ArrayList<String>statusPriority=new ArrayList<>();
-		statusPriority.add("1:HP");statusPriority.add("2:力");statusPriority.add("3:技");statusPriority.add("4:速さ");
-		statusPriority.add("5:守備");statusPriority.add("6:魔防");statusPriority.add("7:幸運");
-		for(int i=0;i<7;i++) {
-			System.out.println(statusPriority.get(i));
+		Map<Integer,String>statusPriority=new HashMap<>();
+		statusPriority.put(1,"1:HP");statusPriority.put(2,"2:力");statusPriority.put(3,"3:技");statusPriority.put(4,"4:速さ");
+		statusPriority.put(5,"5:守備");statusPriority.put(6,"6:魔防");statusPriority.put(7,"7:幸運");
+		for(int i=0;i<statusPriority.size();i++) {
+			for (int j=1;j<=7;j++) {
+				System.out.println(statusPriority.get(j));
+			}
+			System.out.println();
+			System.out.println((i+1)+"番目に強化したい能力値を入力してください↓");
 			try {
-				int statusNum=new Scanner(System.in).nextInt();
-				setStatusNum(statusNum);
+				int num=new Scanner(System.in).nextInt();
+				setLevelUpNum(num,statusList,i);
 			}catch(IllegalArgumentException e){
-				System.out.println("1～8までの数字が入力されていません\n"
+				System.out.println("1～7までの数字が入力されていません\n"
 						+ "正しい数字を入力してください");
-				int	statusNum=new Scanner(System.in).nextInt();
+				int	num=new Scanner(System.in).nextInt();
 
-				while(statusNum>8||statusNum<1) {
-					System.out.println("1～8までの数字が入力されていません\n"
+				while(num<1||num>7||num==statusList[i]) {
+					System.out.println("1～7までの数字が入力されていません\n"
 							+ "正しい数字を入力してください");
 
-					statusNum=new Scanner(System.in).nextInt();
+					num=new Scanner(System.in).nextInt();
 				}
-				setCharacterNum(statusNum);
+				setLevelUpNum(num,statusList,i);
 			}
-
-0
-			if(this.status_Num==statusPriority.get(i)) {
-				statusList[i]=statusPriority.get(i)
-			}
-					f.showSt();
-
+			levelUpPriority(f,i);
+			statusPriority.remove(this.levelUpNum);
+			statusList[i]=this.levelUpNum;
 		}
 	}
+	public void levelUpPriority(Fighter f,int i) throws InterruptedException {
+		if(i==0) {
+			if(this.levelUpNum==1) {
+				for(int j=0;j<10;j++) {
+					double rand=Math.random();
+					if(rand<=0.6) {
+						f.setHp(f.getHp()+1);
+						System.out.println("hpが1上がった！");
+						Thread.sleep(500);
+					}
+				}
+			}
+			if(this.levelUpNum==2) {
+				for(int j=0;j<10;j++) {
+					double rand=Math.random();
+					if(rand<=0.6) {
+						f.setStrength(f.getStrength()+1);
+						System.out.println("力が1上がった！");
+						Thread.sleep(500);
+					}
+				}
+			}
+			if(this.levelUpNum==3) {
+				for(int j=0;j<10;j++) {
+					double rand=Math.random();
+					if(rand<=0.6) {
+						f.setSkill(f.getSkill()+1);
+						System.out.println("技が1上がった！");
+						Thread.sleep(500);
+					}
+				}
+			}
+			if(this.levelUpNum==4) {
+				for(int j=0;j<10;j++) {
+					double rand=Math.random();
+					if(rand<=0.6) {
+						f.setSpeed(f.getSpeed()+1);
+						System.out.println("速さが1上がった！");
+						Thread.sleep(500);
+					}
+				}
+			}
+			if(this.levelUpNum==5) {
+				for(int j=0;j<10;j++) {
+					double rand=Math.random();
+					if(rand<=0.6) {
+						f.setDefence(f.getDefence()+1);
+						System.out.println("守備が1上がった！");
+						Thread.sleep(500);
+					}
+				}
+			}
+			if(this.levelUpNum==6) {
+				for(int j=0;j<10;j++) {
+					double rand=Math.random();
+					if(rand<=0.6) {
+						f.setResist(f.getResist()+1);
+						System.out.println("魔防が1上がった！");
+						Thread.sleep(500);
+					}
+				}
+			}
+			if(this.levelUpNum==7) {
+				for(int j=0;j<10;j++) {
+					double rand=Math.random();
+					if(rand<=0.6) {
+						f.setLuck(f.getLuck()+1);
+						System.out.println("幸運が1上がった！");
+						Thread.sleep(500);
+					}
+				}
+			}
+		}
+		if(i==1) {
+
+			if(this.levelUpNum==1) {
+				for(int j=0;j<10;j++) {
+					double rand=Math.random();
+					if(rand<=0.5) {
+						f.setHp(f.getHp()+1);
+						System.out.println("hpが1上がった！");
+						Thread.sleep(500);
+					}
+				}
+			}
+			if(this.levelUpNum==2) {
+				for(int j=0;j<10;j++) {
+					double rand=Math.random();
+					if(rand<=0.5) {
+						f.setStrength(f.getStrength()+1);
+						System.out.println("力が1上がった！");
+						Thread.sleep(500);
+					}
+				}
+			}
+			if(this.levelUpNum==3) {
+				for(int j=0;j<10;j++) {
+					double rand=Math.random();
+					if(rand<=0.5) {
+						f.setSkill(f.getSkill()+1);
+						System.out.println("技が1上がった！");
+						Thread.sleep(500);
+					}
+				}
+			}
+			if(this.levelUpNum==4) {
+				for(int j=0;j<10;j++) {
+					double rand=Math.random();
+					if(rand<=0.5) {
+						f.setSpeed(f.getSpeed()+1);
+						System.out.println("速さが1上がった！");
+						Thread.sleep(500);
+					}
+				}
+			}
+			if(this.levelUpNum==5) {
+				for(int j=0;j<10;j++) {
+					double rand=Math.random();
+					if(rand<=0.5) {
+						f.setDefence(f.getDefence()+1);
+						System.out.println("守備が1上がった！");
+						Thread.sleep(500);
+					}
+				}
+			}
+			if(this.levelUpNum==6) {
+				for(int j=0;j<10;j++) {
+					double rand=Math.random();
+					if(rand<=0.5) {
+						f.setResist(f.getResist()+1);
+						System.out.println("魔防が1上がった！");
+						Thread.sleep(500);
+					}
+				}
+			}
+			if(this.levelUpNum==7) {
+				for(int j=0;j<10;j++) {
+					double rand=Math.random();
+					if(rand<=0.5) {
+						f.setLuck(f.getLuck()+1);
+						System.out.println("幸運が1上がった！");
+						Thread.sleep(500);
+					}
+				}
+			}
+		}
+		if(i==2) {
+			if(this.levelUpNum==1) {
+				for(int j=0;j<10;j++) {
+					double rand=Math.random();
+					if(rand<=0.4) {
+						f.setHp(f.getHp()+1);
+						System.out.println("hpが1上がった！");
+						Thread.sleep(500);
+					}
+				}
+			}
+			if(this.levelUpNum==2) {
+				for(int j=0;j<10;j++) {
+					double rand=Math.random();
+					if(rand<=0.4) {
+						f.setStrength(f.getStrength()+1);
+						System.out.println("力が1上がった！");
+						Thread.sleep(500);
+					}
+				}
+			}
+			if(this.levelUpNum==3) {
+				for(int j=0;j<10;j++) {
+					double rand=Math.random();
+					if(rand<=0.4) {
+						f.setSkill(f.getSkill()+1);
+						System.out.println("技が1上がった！");
+						Thread.sleep(500);
+					}
+				}
+			}
+			if(this.levelUpNum==4) {
+				for(int j=0;j<10;j++) {
+					double rand=Math.random();
+					if(rand<=0.4) {
+						f.setSpeed(f.getSpeed()+1);
+						System.out.println("速さが1上がった！");
+						Thread.sleep(500);
+					}
+				}
+			}
+			if(this.levelUpNum==5) {
+				for(int j=0;j<10;j++) {
+					double rand=Math.random();
+					if(rand<=0.4) {
+						f.setDefence(f.getDefence()+1);
+						System.out.println("守備が1上がった！");
+						Thread.sleep(500);
+					}
+				}
+			}
+			if(this.levelUpNum==6) {
+				for(int j=0;j<10;j++) {
+					double rand=Math.random();
+					if(rand<=0.4) {
+						f.setResist(f.getResist()+1);
+						System.out.println("魔防が1上がった！");
+						Thread.sleep(500);
+					}
+				}
+			}
+			if(this.levelUpNum==7) {
+				for(int j=0;j<10;j++) {
+					double rand=Math.random();
+					if(rand<=0.4) {
+						f.setLuck(f.getLuck()+1);
+						System.out.println("幸運が1上がった！");
+						Thread.sleep(500);
+					}
+				}
+			}
 
 
+		}if(i==3) {
+			if(this.levelUpNum==1) {
+				for(int j=0;j<10;j++) {
+					double rand=Math.random();
+					if(rand<=0.3) {
+						f.setHp(f.getHp()+1);
+						System.out.println("hpが1上がった！");
+						Thread.sleep(500);
+					}
+				}
+			}
+			if(this.levelUpNum==2) {
+				for(int j=0;j<10;j++) {
+					double rand=Math.random();
+					if(rand<=0.3) {
+						f.setStrength(f.getStrength()+1);
+						System.out.println("力が1上がった！");
+						Thread.sleep(500);
+					}
+				}
+			}
+			if(this.levelUpNum==3) {
+				for(int j=0;j<10;j++) {
+					double rand=Math.random();
+					if(rand<=0.3) {
+						f.setSkill(f.getSkill()+1);
+						System.out.println("技が1上がった！");
+						Thread.sleep(500);
+					}
+				}
+			}
+			if(this.levelUpNum==4) {
+				for(int j=0;j<10;j++) {
+					double rand=Math.random();
+					if(rand<=0.3) {
+						f.setSpeed(f.getSpeed()+1);
+						System.out.println("速さが1上がった！");
+						Thread.sleep(500);
+					}
+				}
+			}
+			if(this.levelUpNum==5) {
+				for(int j=0;j<10;j++) {
+					double rand=Math.random();
+					if(rand<=0.3) {
+						f.setDefence(f.getDefence()+1);
+						System.out.println("守備が1上がった！");
+						Thread.sleep(500);
+					}
+				}
+			}
+			if(this.levelUpNum==6) {
+				for(int j=0;j<10;j++) {
+					double rand=Math.random();
+					if(rand<=0.3) {
+						f.setResist(f.getResist()+1);
+						System.out.println("魔防が1上がった！");
+						Thread.sleep(500);
+					}
+				}
+			}
+			if(this.levelUpNum==7) {
+				for(int j=0;j<10;j++) {
+					double rand=Math.random();
+					if(rand<=0.3) {
+						f.setLuck(f.getLuck()+1);
+						System.out.println("幸運が1上がった！");
+						Thread.sleep(500);
+					}
+				}
+			}
+
+
+		}
+		if(i==4) {
+			if(this.levelUpNum==1) {
+				for(int j=0;j<10;j++) {
+					double rand=Math.random();
+					if(rand<=0.2) {
+						f.setHp(f.getHp()+1);
+						System.out.println("hpが1上がった！");
+						Thread.sleep(500);
+					}
+				}
+			}
+			if(this.levelUpNum==2) {
+				for(int j=0;j<10;j++) {
+					double rand=Math.random();
+					if(rand<=0.2) {
+						f.setStrength(f.getStrength()+1);
+						System.out.println("力が1上がった！");
+						Thread.sleep(500);
+					}
+				}
+			}
+			if(this.levelUpNum==3) {
+				for(int j=0;j<10;j++) {
+					double rand=Math.random();
+					if(rand<=0.2) {
+						f.setSkill(f.getSkill()+1);
+						System.out.println("技が1上がった！");
+						Thread.sleep(500);
+					}
+				}
+			}
+			if(this.levelUpNum==4) {
+				for(int j=0;j<10;j++) {
+					double rand=Math.random();
+					if(rand<=0.2) {
+						f.setSpeed(f.getSpeed()+1);
+						System.out.println("速さが1上がった！");
+						Thread.sleep(500);
+					}
+				}
+			}
+			if(this.levelUpNum==5) {
+				for(int j=0;j<10;j++) {
+					double rand=Math.random();
+					if(rand<=0.2) {
+						f.setDefence(f.getDefence()+1);
+						System.out.println("守備が1上がった！");
+						Thread.sleep(500);
+					}
+				}
+			}
+			if(this.levelUpNum==6) {
+				for(int j=0;j<10;j++) {
+					double rand=Math.random();
+					if(rand<=0.2) {
+						f.setResist(f.getResist()+1);
+						System.out.println("魔防が1上がった！");
+						Thread.sleep(500);
+					}
+				}
+			}
+			if(this.levelUpNum==7) {
+				for(int j=0;j<10;j++) {
+					double rand=Math.random();
+					if(rand<=0.2) {
+						f.setLuck(f.getLuck()+1);
+						System.out.println("幸運が1上がった！");
+						Thread.sleep(500);
+					}
+				}
+			}
+
+
+		}if(i==5) {
+			if(this.levelUpNum==1) {
+				for(int j=0;j<10;j++) {
+					double rand=Math.random();
+					if(rand<=0.1) {
+						f.setHp(f.getHp()+1);
+						System.out.println("hpが1上がった！");
+						Thread.sleep(500);
+					}
+				}
+			}
+			if(this.levelUpNum==2) {
+				for(int j=0;j<10;j++) {
+					double rand=Math.random();
+					if(rand<=0.1) {
+						f.setStrength(f.getStrength()+1);
+						System.out.println("力が1上がった！");
+						Thread.sleep(500);
+					}
+				}
+			}
+			if(this.levelUpNum==3) {
+				for(int j=0;j<10;j++) {
+					double rand=Math.random();
+					if(rand<=0.1) {
+						f.setSkill(f.getSkill()+1);
+						System.out.println("技が1上がった！");
+						Thread.sleep(500);
+					}
+				}
+			}
+			if(this.levelUpNum==4) {
+				for(int j=0;j<10;j++) {
+					double rand=Math.random();
+					if(rand<=0.1) {
+						f.setSpeed(f.getSpeed()+1);
+						System.out.println("速さが1上がった！");
+						Thread.sleep(500);
+					}
+				}
+			}
+			if(this.levelUpNum==5) {
+				for(int j=0;j<10;j++) {
+					double rand=Math.random();
+					if(rand<=0.1) {
+						f.setDefence(f.getDefence()+1);
+						System.out.println("守備が1上がった！");
+						Thread.sleep(500);
+					}
+				}
+			}
+			if(this.levelUpNum==6) {
+				for(int j=0;j<10;j++) {
+					double rand=Math.random();
+					if(rand<=0.1) {
+						f.setResist(f.getResist()+1);
+						System.out.println("魔防が1上がった！");
+						Thread.sleep(500);
+					}
+				}
+			}
+			if(this.levelUpNum==7) {
+				for(int j=0;j<10;j++) {
+					double rand=Math.random();
+					if(rand<=0.1) {
+						f.setLuck(f.getLuck()+1);
+						System.out.println("幸運が1上がった！");
+						Thread.sleep(500);
+					}
+				}
+			}
+
+
+		}if(i==6) {
+			if(this.levelUpNum==1) {
+				for(int j=0;j<10;j++) {
+					double rand=Math.random();
+					if(rand<=0.05) {
+						f.setHp(f.getHp()+1);
+						System.out.println("hpが1上がった！");
+						Thread.sleep(500);
+					}
+				}
+			}
+			if(this.levelUpNum==2) {
+				for(int j=0;j<10;j++) {
+					double rand=Math.random();
+					if(rand<=0.05) {
+						f.setStrength(f.getStrength()+1);
+						System.out.println("力が1上がった！");
+						Thread.sleep(500);
+					}
+				}
+			}
+			if(this.levelUpNum==3) {
+				for(int j=0;j<10;j++) {
+					double rand=Math.random();
+					if(rand<=0.05) {
+						f.setSkill(f.getSkill()+1);
+						System.out.println("技が1上がった！");
+						Thread.sleep(500);
+					}
+				}
+			}
+			if(this.levelUpNum==4) {
+				for(int j=0;j<10;j++) {
+					double rand=Math.random();
+					if(rand<=0.05) {
+						f.setSpeed(f.getSpeed()+1);
+						System.out.println("速さが1上がった！");
+						Thread.sleep(500);
+					}
+				}
+			}
+			if(this.levelUpNum==5) {
+				for(int j=0;j<10;j++) {
+					double rand=Math.random();
+					if(rand<=0.05) {
+						f.setDefence(f.getDefence()+1);
+						System.out.println("守備が1上がった！");
+						Thread.sleep(500);
+					}
+				}
+			}
+			if(this.levelUpNum==6) {
+				for(int j=0;j<10;j++) {
+					double rand=Math.random();
+					if(rand<=0.05) {
+						f.setResist(f.getResist()+1);
+						System.out.println("魔防が1上がった！");
+						Thread.sleep(500);
+					}
+				}
+			}
+			if(this.levelUpNum==7) {
+				for(int j=0;j<10;j++) {
+					double rand=Math.random();
+					if(rand<=0.05) {
+						f.setLuck(f.getLuck()+1);
+						System.out.println("幸運が1上がった！");
+						Thread.sleep(500);
+					}
+				}
+			}
+		}
+	}
 }
+
+
+
