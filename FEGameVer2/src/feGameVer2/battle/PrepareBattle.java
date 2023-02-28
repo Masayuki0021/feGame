@@ -49,9 +49,8 @@ public class PrepareBattle {
 	public int getYesNoNum() {
 		return yesNoNum;
 	}
-	public void setLevelUpNum(int num,int[] statusList,int i) {
-		if(num<1||num>7||num==statusList[0]||num==statusList[1]||num==statusList[2]||
-				num==statusList[3]||num==statusList[4]||num==statusList[5]||num==statusList[6]) {
+	public void setLevelUpNum(int num,Map<Integer,String> statusMap) {
+		if(num<1||num>7||statusMap.get(num)==null) {
 			throw new IllegalArgumentException("1～7の中から選択してください");
 		}
 		this.levelUpNum=num;
@@ -563,20 +562,19 @@ public void putName(Fighter f) {
 			System.out.println((i+1)+"番目に強化したい能力値を入力してください↓");
 			try {
 				int num=new Scanner(System.in).nextInt();
-				setLevelUpNum(num,statusList,i);
+				setLevelUpNum(num,statusPriority);
 			}catch(IllegalArgumentException e){
 				System.out.println("1～7までの数字が入力されていません\n"
 						+ "正しい数字を入力してください");
 				int	num=new Scanner(System.in).nextInt();
 
-				while(num<1||num>7||num==statusList[0]||num==statusList[1]||num==statusList[2]||
-						num==statusList[3]||num==statusList[4]||num==statusList[5]||num==statusList[6]) {
+				while(num<1||num>7||statusPriority.get(num)==null) {
 					System.out.println("1～7までの数字が入力されていません\n"
 							+ "正しい数字を入力してください");
 
 					num=new Scanner(System.in).nextInt();
 				}
-				setLevelUpNum(num,statusList,i);
+				setLevelUpNum(num,statusPriority);
 			}
 			levelUpPriority(f,i);
 			statusPriority.remove(this.levelUpNum);
