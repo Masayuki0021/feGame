@@ -2,14 +2,14 @@ package feGameVer2.gameMode;
 
 import java.util.Scanner;
 
+import feGameVer2.ChooseGameMode;
 import feGameVer2.battle.BattleField;
 import feGameVer2.battle.PrepareBattle;
 import feGameVer2.fighter.Fighter;
-import feGameVer2.fighter.NewFighterClass;
 
 public class GameMode3 {
 
-	public static void main(String[] args) throws InterruptedException {
+	public void playGameMode3() throws InterruptedException {
 		// １体パラメータからキャラメイク
 		// そのキャラでランダムキャラと連戦
 		PrepareBattle pb =new PrepareBattle();
@@ -30,7 +30,7 @@ public class GameMode3 {
 		try {
 			int num=new Scanner(System.in).nextInt();
 
-			pb.setYesNoNum(num);
+			pb.setGameMode3_ModeNum(num);
 		}catch(IllegalArgumentException e){
 			System.out.println("1か2を入力してください");
 			int	num=new Scanner(System.in).nextInt();
@@ -39,9 +39,9 @@ public class GameMode3 {
 				System.out.println("1か2を入力してください");
 				num=new Scanner(System.in).nextInt();
 			}
-			pb.setYesNoNum(num);
+			pb.setGameMode3_ModeNum(num);
 		}
-		if(pb.getYesNoNum()==1) {
+
 			System.out.println("");
 
 			System.out.println("プレイヤー1のキャラメイクです。");
@@ -55,27 +55,9 @@ public class GameMode3 {
 			p=pb.equipFighterBack(p);
 			System.out.println();
 
-		}
-	
-		
-		//クラス変更
-		p= new NewFighterClass();
-		p.showSt();
-		System.out.println();
-		p.setName("プレイヤー");
-		p.setHp(40);
-		p.setStrength(25);
-		p.setSkill(25);
-		p.setSpeed(25);
-		p.setDefence(20);
-		p.setResist(20);
-		p.setLuck(20);
-		p.setConstitution(10);
-		//クラス変更
-		NewFighterClass cp=(NewFighterClass)p;
-		cp.equipNewWeapon();
-		
-		
+
+
+
 		//対戦相手
 		o1=pb.chooseCharacterRandom(o1);o1=pb.equipFighterBack(o1);
 		o2=pb.chooseCharacterRandom(o2);o2=pb.equipFighterBack(o2);
@@ -84,119 +66,60 @@ public class GameMode3 {
 		o5=pb.chooseCharacterRandom(o5);o5=pb.equipFighterBack(o5);
 		//対戦
 		BattleField b=new BattleField(p,o1);
-		while(p.hp>0&&o1.hp>0) {
+		while(p.getHp()>0&&o1.getHp()>0) {
 			b.BattleSet(p,o1,b);
 		}
-		if(o1.hp<=0) {
-			System.out.println(p.name+"の勝利！！！");
-			System.out.println("回復する?1:yes 2:no  番号を入力して下さい");
-			try {
-				int contiNum=new Scanner(System.in).nextInt();
+		if(o1.getHp()<=0) {
+			System.out.println(p.getName()+"の勝利！！！");
 
-				pb.setContinueNum(contiNum);
-			}catch(IllegalArgumentException e){
-				System.out.println("1か2を入力してください");
-				int	contiNum=new Scanner(System.in).nextInt();
-
-				while((contiNum>2||contiNum<1)) {
-					System.out.println("1か2を入力してください");
-					contiNum=new Scanner(System.in).nextInt();
-				}
-				pb.setContinueNum(contiNum);
-			}
-			if(pb.getContiueNum()==1) {
-				p.hp=p.MaxHP;
-			}
-			while(p.hp>0&&o2.hp>0) {
+			if(pb.getGameMode3_modeNum()==1) {	p.setHp(p.getMaxHp());}
+		}else {System.out.println("ゲームオーバー....");
+			System.out.println("メインメニューに戻ります。");
+			Thread.sleep(1000);
+			ChooseGameMode.chooseGameMode();
+		}
+		while(p.getHp()>0&&o2.getHp()>0) {
 				b.BattleSet(p, o2,b);
-			}if(o1.hp<=0) {
-				System.out.println(p.name+"の勝利！！！2連勝");
-				System.out.println("回復する?1:yes 2:no  番号を入力して下さい");
-				try {
-					int contiNum=new Scanner(System.in).nextInt();
-
-					pb.setContinueNum(contiNum);
-				}catch(IllegalArgumentException e){
-					System.out.println("1か2を入力してください");
-					int	contiNum=new Scanner(System.in).nextInt();
-
-					while((contiNum>2||contiNum<1)) {
-						System.out.println("1か2を入力してください");
-						contiNum=new Scanner(System.in).nextInt();
-					}
-					pb.setContinueNum(contiNum);
-				}
-				if(pb.getContiueNum()==1) {
-					p.hp=p.MaxHP;
-				}
-				while(p.hp>0&&o3.hp>0) {
-					b.BattleSet(p, o3,b);
-				}
-				if(o1.hp<=0) {
-					System.out.println(p.name+"の勝利！！！3連勝");
-					System.out.println("回復する?1:yes 2:no  番号を入力して下さい");
-					try {
-						int contiNum=new Scanner(System.in).nextInt();
-
-						pb.setContinueNum(contiNum);
-					}catch(IllegalArgumentException e){
-						System.out.println("1か2を入力してください");
-						int	contiNum=new Scanner(System.in).nextInt();
-
-						while((contiNum>2||contiNum<1)) {
-							System.out.println("1か2を入力してください");
-							contiNum=new Scanner(System.in).nextInt();
-						}
-						pb.setContinueNum(contiNum);
-					}
-					if(pb.getContiueNum()==1) {
-						p.hp=p.MaxHP;
-					}
-					while(p.hp>0&&o4.hp>0) {
-						b.BattleSet(p, o4,b);
-					}
-					if(o1.hp<=0) {
-						System.out.println(p.name+"の勝利！！！4連勝");
-						System.out.println("回復する?1:yes 2:no  番号を入力して下さい");
-						try {
-							int contiNum=new Scanner(System.in).nextInt();
-
-							pb.setContinueNum(contiNum);
-						}catch(IllegalArgumentException e){
-							System.out.println("1か2を入力してください");
-							int	contiNum=new Scanner(System.in).nextInt();
-
-							while((contiNum>2||contiNum<1)) {
-								System.out.println("1か2を入力してください");
-								contiNum=new Scanner(System.in).nextInt();
-							}
-							pb.setContinueNum(contiNum);
-						}
-						if(pb.getContiueNum()==1) {
-							p.hp=p.MaxHP;
-						}
-						while(p.hp>0&&o5.hp>0) {
-							b.BattleSet(p, o5,b);
-						}
-						if(o1.hp<=0) {
-							System.out.println(p.name+"の勝利！！！5連勝");
-						}else {
-							System.out.println("ゲームオーバー...");
-						}
-					}else {
-						System.out.println("ゲームオーバー...");
-					}
-
-				}else {
-					System.out.println("ゲームオーバー...");
-				}
-
-			}else {
-				System.out.println("ゲームオーバー...");
-			}
-
-		}else {
-			System.out.println("ゲームオーバー...");
+		}
+		if(o2.getHp()<=0) {
+			System.out.println(p.getName()+"の勝利！！！2連勝");
+			if(pb.getGameMode3_modeNum()==1) {	p.setHp(p.getMaxHp());}
+		}else {System.out.println("ゲームオーバー....");
+			System.out.println("メインメニューに戻ります。");
+			Thread.sleep(1000);
+			ChooseGameMode.chooseGameMode();
+		}
+		while(p.getHp()>0&&o3.getHp()>0) {
+				b.BattleSet(p, o3,b);
+		}
+		if(o3.getHp()<=0) {
+			System.out.println(p.getName()+"の勝利！！！3連勝");
+			if(pb.getGameMode3_modeNum()==1) {	p.setHp(p.getMaxHp());}
+		}else {System.out.println("ゲームオーバー....");
+			System.out.println("メインメニューに戻ります。");
+			Thread.sleep(1000);
+			ChooseGameMode.chooseGameMode();
+		}
+		while(p.getHp()>0&&o4.getHp()>0) {
+				b.BattleSet(p, o4,b);
+		}
+		if(o4.getHp()<=0) {
+			System.out.println(p.getName()+"の勝利！！！4連勝");
+			if(pb.getGameMode3_modeNum()==1) {	p.setHp(p.getMaxHp());}
+		}else {System.out.println("ゲームオーバー....");
+			System.out.println("メインメニューに戻ります。");
+			Thread.sleep(1000);
+			ChooseGameMode.chooseGameMode();
+		}
+		while(p.getHp()>0&&o5.getHp()>0) {
+			b.BattleSet(p, o5,b);
+		}
+		if(o5.getHp()<=0) {
+			System.out.println(p.getName()+"の勝利！！！5連勝");
+		}else {System.out.println("ゲームオーバー....");
+			System.out.println("メインメニューに戻ります。");
+			Thread.sleep(1000);
+			ChooseGameMode.chooseGameMode();
 		}
 	}
 }

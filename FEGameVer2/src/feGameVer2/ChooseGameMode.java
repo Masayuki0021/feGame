@@ -16,7 +16,7 @@ public class ChooseGameMode {
 			G2.playGameMode2();
 		}else if(gameNum==3) {
 			GameMode3 G3=new GameMode3();
-	//		G3.playGameMode3();
+			G3.playGameMode3();
 		}
 	}
 }

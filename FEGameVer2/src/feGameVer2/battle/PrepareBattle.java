@@ -27,6 +27,7 @@ public class PrepareBattle {
 	private int status_Num;
 	private int yesNoNum;
 	private int levelUpNum;
+	private int gameMode3_ModeNum;
 
 	public void setCharacterNum(int num) {
 		if(num>15||num<1) {
@@ -54,6 +55,15 @@ public class PrepareBattle {
 			throw new IllegalArgumentException("1～7の中から選択してください");
 		}
 		this.levelUpNum=num;
+	}
+	public void setGameMode3_ModeNum(int num) {
+		if(num<1||num>2) {
+			throw new IllegalArgumentException("1か2の中から選択してください");
+		}
+		this.gameMode3_ModeNum=num;
+	}
+	public int getGameMode3_modeNum() {
+		return this.gameMode3_ModeNum;
 	}
 	public Fighter chooseCharacter(Fighter f) {
 		System.out.println("クラス(兵種)の選択");
@@ -550,11 +560,10 @@ public void putName(Fighter f) {
 		System.out.println("キャラクターの能力値をランダムに10回上げます（レベルアップ）");
 		System.out.println("どの能力値を優先的に上げるのか選択することが出来ます");
 		System.out.println("優先的に上げたい能力値を順に選択してください");
-		int[] statusList=new int[6];
 		Map<Integer,String>statusPriority=new HashMap<>();
 		statusPriority.put(1,"1:HP");statusPriority.put(2,"2:力");statusPriority.put(3,"3:技");statusPriority.put(4,"4:速さ");
 		statusPriority.put(5,"5:守備");statusPriority.put(6,"6:魔防");statusPriority.put(7,"7:幸運");
-		for(int i=0;i<statusPriority.size();i++) {
+		for(int i=0;i<7;i++) {
 			for (int j=1;j<=7;j++) {
 				System.out.println(statusPriority.get(j));
 			}
@@ -564,13 +573,11 @@ public void putName(Fighter f) {
 				int num=new Scanner(System.in).nextInt();
 				setLevelUpNum(num,statusPriority);
 			}catch(IllegalArgumentException e){
-				System.out.println("1～7までの数字が入力されていません\n"
-						+ "正しい数字を入力してください");
+				System.out.println("正しい数字を入力してください!");
 				int	num=new Scanner(System.in).nextInt();
 
 				while(num<1||num>7||statusPriority.get(num)==null) {
-					System.out.println("1～7までの数字が入力されていません\n"
-							+ "正しい数字を入力してください");
+					System.out.println( "正しい数字を入力してください!");
 
 					num=new Scanner(System.in).nextInt();
 				}
@@ -578,7 +585,6 @@ public void putName(Fighter f) {
 			}
 			levelUpPriority(f,i);
 			statusPriority.remove(this.levelUpNum);
-			statusList[i]=this.levelUpNum;
 		}
 	}
 	public void levelUpPriority(Fighter f,int i) throws InterruptedException {
