@@ -7,7 +7,7 @@ import feGameVer2.gameMode.GameMode3;
 public class ChooseGameMode {
 	public static void chooseGameMode() throws InterruptedException {
 		int gameNum=SetGameModeNumber.setGameModeNumbere();
-
+		//各ゲームモードインスタンス取得、メソッド呼び出し
 		if(gameNum==1) {
 			GameMode1 G1=new GameMode1();
 			G1.playGameMode1();

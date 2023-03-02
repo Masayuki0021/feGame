@@ -9,6 +9,7 @@ public class Main {
 				+ "戦闘システムを参考に作った同人ゲームです。");
 		System.out.println("お楽しみ下さい！！");
 		System.out.println("\n\n\n");
+		//ゲームモード選択メソッド呼び出し
 	ChooseGameMode.chooseGameMode();
 
 	}

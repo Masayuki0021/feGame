@@ -14,16 +14,25 @@ public class GameMode2 {
 				+ "プレイヤー1とプレイヤー2に分かれて\n"
 				+ "それぞれキャラメイクを行い戦わせます");
 		System.out.println("");
+		//バトル前のキャラステータスを計算する戦場準備インスタンスpb生成
 		PrepareBattle pb =new PrepareBattle();
+		//キャラクター変数宣言
 		Fighter p1=null;
 		Fighter p2=null;
 
 		System.out.println("プレイヤー1のキャラメイクです。");
 		System.out.println();
+		//キャラクター1インスタンス生成
+		//クラス（兵種）を選び、インスタンスを生成する
+		//キャラステータスはそのクラス（兵種）に応じてをコンストラクタでランダムに取得する。
 		p1=pb.chooseCharacter(p1);
+		//名前付けメソッド　つけないを選択するとすでに選ばれている名前になる
 		pb.putName(p1);
+		//重要だと思うステータスを二回上昇させる
 		pb.upperPara(p1);
+		//重要でないと思うステータスを二回下げる
 		pb.downerPara(p1);
+		//キャラクター変数をそれぞれの型に合わせる
 		p1=pb.equipFighterBack(p1);
 		System.out.println();
 
@@ -96,24 +105,6 @@ public class GameMode2 {
 
 	}
 }
-/*
-		System.out.println("では続けて勝った方と新たなキャラでバトル！！");
-		p3=pb.chooseCharacter(p3);
-		pb.putName(p3);
-		pb.upperPara(p3);
-		pb.downerPara(p3);
-		p3=pb.equipFighterBack(p3);
-		if()
-		while(p1.hp>0&&p3.hp>0) {
-			b.BattleSet(p1, p2,b);
-		}
-		if(p1.hp<=0) {
-			System.out.println(p2.name+"の勝利！！！");
-		}
-		if(p2.hp<=0) {
-			System.out.println(p1.name+"の勝利！！！");
-		}
-	}*/
 
 
 

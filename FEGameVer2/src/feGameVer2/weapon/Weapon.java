@@ -2,19 +2,18 @@ package feGameVer2.weapon;
 
 public abstract class Weapon {
 	String name;
-	int power;
-	int weight;
-	int accuracy;
-	private int critical;
-	//renge 距離	1：近距離、2：遠距離、3：近遠両方
-	int range;
+	int power;				//名前
+	int weight;				//重さ
+	int accuracy;			//命中率
+	private int critical;	//必殺
+	int range;				//renge 距離	1：近距離、2：遠距離、3：近遠両方
 
 	public Weapon(String name, int power,int weight,int accuracy, int critical,int range) {
 		this.name=name;
 		this.power=power;
 		this.weight=weight;
 		this.accuracy=accuracy;
-		this.setCritical(critical);
+		this.critical=critical;
 		this.range=range;
 	}
 

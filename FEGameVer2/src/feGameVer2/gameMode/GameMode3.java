@@ -13,6 +13,7 @@ public class GameMode3 {
 		// １体パラメータからキャラメイク
 		// そのキャラでランダムキャラと連戦
 		PrepareBattle pb =new PrepareBattle();
+		//キャラクター変数宣言
 		Fighter p=null;
 		Fighter o1=null;
 		Fighter o2=null;
@@ -39,6 +40,7 @@ public class GameMode3 {
 				System.out.println("1か2を入力してください");
 				num=new Scanner(System.in).nextInt();
 			}
+			//pbインスタンスに選択番号を保存
 			pb.setGameMode3_ModeNum(num);
 		}
 

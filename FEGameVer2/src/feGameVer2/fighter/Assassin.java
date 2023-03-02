@@ -7,7 +7,7 @@ import feGameVer2.weapon.Sword;
 import feGameVer2.weapon.Weapon;
 
 public class Assassin extends Fighter {
-	Sword sword;
+	Sword sword;				
 	Sword swordsub;
 	String cName="アサシン";
 
@@ -68,7 +68,7 @@ public class Assassin extends Fighter {
 		this.equip.setCritical(this.equip.getCritical() + 50);
 	}
 	//暗殺メソッド
-	public void Assassinate(Fighter me,Fighter o) {
+/*	public void Assassinate(Fighter me,Fighter o) {
 		double rand=Math.random();
 		if((me.getSkill()/4)>(rand*100)) {
 			System.out.println("スキル：瞬殺！");
@@ -76,6 +76,7 @@ public class Assassin extends Fighter {
 			System.out.println(o.name+"は倒れた");
 		}
 	}
+*/	
 	public Assassin() {
 		//名前
 		Random random=new Random();

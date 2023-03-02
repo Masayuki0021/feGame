@@ -23,11 +23,17 @@ import feGameVer2.fighter.Valkyria;
 import feGameVer2.fighter.Warrior;
 
 public class PrepareBattle {
+	//ユーザーにクラス（兵種）を選択させる時に使用する番号
 	private int c_Num;
+	//キャラステータスを微調整するために、ユーザーにどのステータスを調整するか選択させる時に使用する番号
 	private int status_Num;
+	//ユーザーにyesかnoか選択させる時に使用する番号
 	private int yesNoNum;
+	//ゲームモード3、使用時、ユーザーの作ったキャラクターをさらにパワーアップさせる時、
+	//ユーザーにどのステータスを調整するか選択させる時に使用する番号
 	private int levelUpNum;
-	private int gameMode3_ModeNum;
+	//ゲームモード3，使用時、連戦後キャラクターを回復するかどうか選択させる時に使用する番号
+	private int gameMode3_ModeNum;	//
 
 	public void setCharacterNum(int num) {
 		if(num>15||num<1) {
@@ -76,8 +82,10 @@ public class PrepareBattle {
 		System.out.println("↓");
 		try {
 			int c_Number=new Scanner(System.in).nextInt();
+			//setter使用時に異常な値の場合エラーが出る
 			setCharacterNum(c_Number);
 		}catch(IllegalArgumentException e){
+			//こちらで正しい数値が入れられるまでwhileでまわす。
 			System.out.println("1～15までの数字が入力されていません\n"
 					+ "正しい数字を入力してください");
 			int	c_Number=new Scanner(System.in).nextInt();
@@ -89,6 +97,7 @@ public class PrepareBattle {
 			}
 			setCharacterNum(c_Number);
 		}
+		//キャラクターインスタンスを生成
 		if(c_Num==1) {
 			f= new Paladin();
 			f.showSt();
@@ -183,7 +192,9 @@ public class PrepareBattle {
 
 	}
 
+	//ランダムにキャラクターインスタンスを生成
 	public Fighter chooseCharacterRandom(Fighter f) {
+		//乱数でクラス（兵種）ランダムに指定
 		Random random=new Random();
 		int rand=random.nextInt(15);
 		this.c_Num=rand+1;
@@ -280,48 +291,48 @@ public class PrepareBattle {
 		return f;
 
 	}
-
-public void putName(Fighter f) {
-
-	try{
-		System.out.println("名前を入力しなおしますか？↓（しない場合はこのまま決定されます。）"
-				+ "\nする場合は1を、しない場合は2を入力して下さい");
-		int nameNum=new Scanner(System.in).nextInt();
-		setYesNoNum(nameNum);
-	}catch(IllegalArgumentException e) {
-		System.out.println("1か2を入力してください");
-		int	nameNum=new Scanner(System.in).nextInt();
-
-		while((nameNum>2||nameNum<1)) {
-			System.out.println("1か2を入力してください");
-			nameNum=new Scanner(System.in).nextInt();
-		}
-		setYesNoNum(nameNum);
-	}
-	if(this.yesNoNum==1) {
-		try {
-		System.out.print("名前を入力してください→");
-		String pName=new Scanner(System.in).nextLine();
-		f.setName(pName);
+	//キャラクター名変更メソッド
+	public void putName(Fighter f) {
+		try{
+			System.out.println("名前を入力しなおしますか？↓（しない場合はこのまま決定されます。）"
+					+ "\nする場合は1を、しない場合は2を入力して下さい");
+			int nameNum=new Scanner(System.in).nextInt();
+			setYesNoNum(nameNum);
 		}catch(IllegalArgumentException e) {
-			System.out.println("名前が入っていません\n"
-					+ "名前を入力してください");
+			System.out.println("1か2を入力してください");
+			int	nameNum=new Scanner(System.in).nextInt();
+
+			while((nameNum>2||nameNum<1)) {
+				System.out.println("1か2を入力してください");
+				nameNum=new Scanner(System.in).nextInt();
+			}
+			setYesNoNum(nameNum);
+		}
+		if(this.yesNoNum==1) {
+			try {
+			System.out.print("名前を入力してください→");
 			String pName=new Scanner(System.in).nextLine();
-			while(pName==null||pName.length()<1) {
+			f.setName(pName);
+			}catch(IllegalArgumentException e) {
 				System.out.println("名前が入っていません\n"
 						+ "名前を入力してください");
-				pName=new Scanner(System.in).nextLine();
+				String pName=new Scanner(System.in).nextLine();
+				while(pName==null||pName.length()<1) {
+					System.out.println("名前が入っていません\n"
+							+ "名前を入力してください");
+					pName=new Scanner(System.in).nextLine();
+				}
+				f.setName(pName);
 			}
-			f.setName(pName);
+			f.showSt();
+			System.out.println("");
+		}else {
+			f.showSt();
+			System.out.println("");
 		}
-		f.showSt();
-		System.out.println("");
-	}else {
-		f.showSt();
-		System.out.println("");
-	}
 
-}
+	}
+	//キャラステータス微調整メソッド
 	public void upperPara(Fighter f) {
 		System.out.println("上げるパラメーターを二つ選んでください");
 		for(int i=0;i<2;i++) {
@@ -372,6 +383,7 @@ public void putName(Fighter f) {
 
 		}
 	}
+	//キャラステータス微調整メソッド（ランダム）
 	public void upperParaRandom(Fighter f) {
 		for(int i=0;i<2;i++) {
 				Random random=new Random();
@@ -405,6 +417,7 @@ public void putName(Fighter f) {
 
 		}
 	}
+	//キャラステータス微調整メソッド
 	public void downerPara(Fighter f) {
 		System.out.println("下げるパラメーターを二つ選んでください");
 		for(int i=0;i<2;i++) {
@@ -453,6 +466,7 @@ public void putName(Fighter f) {
 
 		}
 	}
+	//キャラステータス微調整メソッド（ランダム）
 	public void downerParaRandom(Fighter f) {
 		for(int i=0;i<2;i++) {
 			Random random=new Random();
@@ -485,10 +499,11 @@ public void putName(Fighter f) {
 
 		}
 	}
-
+//変数の型を各兵種に更新
 	public Fighter equipFighterBack(Fighter f) {
 		if(f instanceof Paladin) {
 			Paladin fP=(Paladin)f;
+			//各クラス（兵種）に応じた武器インスタンスを生成
 			fP.equipNewWeapon();
 			return fP;
 		}
@@ -556,6 +571,8 @@ public void putName(Fighter f) {
 		}
 
 	}
+	//ゲームモード3の時、ユーザーのキャラクターをパワーアップさせるメソッド
+	//どのステータスをあげるか選択させる
 	public void levelUp(Fighter f) throws InterruptedException  {
 		System.out.println("キャラクターの能力値をランダムに10回上げます（レベルアップ）");
 		System.out.println("どの能力値を優先的に上げるのか選択することが出来ます");
@@ -587,6 +604,9 @@ public void putName(Fighter f) {
 			statusPriority.remove(this.levelUpNum);
 		}
 	}
+	//上記のメソッド中に呼び出される　実際にステータスをあげるメソッド
+	//優先的に選ばれたステータスから（60％,50％,40％,30％,20％,10％,5％）の確率で能力値を1つあげる
+	//これを10回繰り返している
 	public void levelUpPriority(Fighter f,int i) throws InterruptedException {
 		if(i==0) {
 			if(this.levelUpNum==1) {

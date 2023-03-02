@@ -6,13 +6,15 @@ import feGameVer2.weapon.Lance;
 import feGameVer2.weapon.Sword;
 import feGameVer2.weapon.Weapon;
 public class Paladin extends Fighter{
-	Sword sword;
-	Lance lance;
-	Axe axe;
-	String cName="パラディン";
+	Sword sword;						//手持ち武器:剣
+	Lance lance;						//手持ち武器:槍
+	Axe axe;							//手持ち武器:斧
+	String cName="パラディン";			//クラス（兵種）名
 
 
 	//剣武器生成メソッド
+	//ランダムで（偏りあり）武器インスタンス生成する
+	//　兵種によって生成する武器は若干異なる
 	public void equipNewSword() {
 		double rand = Math.random();
 		if(rand<0.3) {
@@ -42,7 +44,7 @@ public class Paladin extends Fighter{
 	}
 
 
-	//槍武器生成メソッド
+	//槍武器生成メソッド　説明同上
 	public void equipNewLance() {
 		double rand = Math.random();
 		if(rand<0.35) {
@@ -72,7 +74,7 @@ public class Paladin extends Fighter{
 
 	}
 
-	//斧武器生成メソッド
+	//斧武器生成メソッド　説明同上
 	public void equipNewAxe() {
 		double rand = Math.random();
 		if(rand<0.35) {
@@ -96,6 +98,7 @@ public class Paladin extends Fighter{
 	}
 
 	//戦闘前武器装備メソッド
+	//このパラディンインスタンスが生成するされた時の最初の武器を決める
 	public void equipWeaponBeforeBattle() {
 		Weapon[] w={sword,lance,axe};
 		Random random=new Random();
@@ -115,6 +118,7 @@ public class Paladin extends Fighter{
 
 	}
 	//全武器一括生成メソッド
+	//全武器を生成しランダムにどれかを装備する
 	public void equipNewWeapon() {
 		this.equipNewSword();
 		this.equipNewLance();
@@ -124,6 +128,7 @@ public class Paladin extends Fighter{
 
 
 	//戦闘中武器持ち替えメソッド
+	//戦闘ターン中に使用される、相手の武器をみて相性の良い武器選び装備する
 	public void changeEquip(Weapon o) {
 		if(o instanceof Sword) {
 			this.equip=null;
@@ -148,7 +153,9 @@ public class Paladin extends Fighter{
 
 
 
-
+		//コンストラクタ
+		//名前と各ステータスをランダムで決定する
+		//ステータスは各クラス（兵種）ごとに偏りが異なる
 	public Paladin() {
 		//名前
 		Random random=new Random();

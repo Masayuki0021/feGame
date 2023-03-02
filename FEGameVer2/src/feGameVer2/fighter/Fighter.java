@@ -3,8 +3,9 @@ package feGameVer2.fighter;
 import feGameVer2.weapon.Weapon;
 
 public abstract class Fighter {
+	//Fighterを継承しているクラスの説明コメントはPaladin(パラディン)クラス参照
 	String name;
-	Weapon equip=null;
+	Weapon equip=null;			//装備武器
 	int hp;
 	int MaxHP;
 	private int strength;		//力
