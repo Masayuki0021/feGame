@@ -15,6 +15,7 @@ public abstract class Fighter {
 	private int resist;			//魔防
 	private int constitution;	//体格
 	private int luck;			//幸運
+	
 
 	public void setName(String name) {
 		if(name==null) {

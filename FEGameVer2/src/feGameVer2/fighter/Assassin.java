@@ -2,14 +2,16 @@ package feGameVer2.fighter;
 
 import java.util.Random;
 
+import feGameVer2.CheckNumber;
 import feGameVer2.weapon.Axe;
 import feGameVer2.weapon.Sword;
 import feGameVer2.weapon.Weapon;
 
 public class Assassin extends Fighter {
-	Sword sword;				
+	Sword sword;
 	Sword swordsub;
 	String cName="アサシン";
+
 
 	//剣武器生成メソッド
 	public void equipNewSword() {
@@ -21,6 +23,15 @@ public class Assassin extends Fighter {
 			this.sword =new Sword("銀の剣",13,8,75,0,1);
 		}
 	}
+	//選択剣武器生成メソッド
+		public void chooseEquipNewSword(int num) {
+			if(num==1) {
+				this.sword =new Sword("キルソード",9,7,80,30,1);
+			}
+			else if(num==2) {
+				this.sword =new Sword("銀の剣",13,8,75,0,1);
+			}
+		}
 	//サブ剣武器生成メソッド
 	public void equipNewSwordSub() {
 		double rand = Math.random();
@@ -28,6 +39,15 @@ public class Assassin extends Fighter {
 			this.swordsub =new Sword("キルソード",9,7,80,30,1);
 		}
 		else if(rand<1) {
+			this.swordsub =new Sword("銀の剣",13,8,75,0,1);
+		}
+	}
+	//選択サブ剣武器生成メソッド
+	public void chooseEquipNewSwordSub(int num) {
+		if(num==1) {
+			this.swordsub =new Sword("キルソード",9,7,80,30,1);
+		}
+		else if(num==2) {
 			this.swordsub =new Sword("銀の剣",13,8,75,0,1);
 		}
 	}
@@ -39,6 +59,25 @@ public class Assassin extends Fighter {
 	public void equipNewWeapon() {
 		this.equipNewSword();
 		this.equipNewSwordSub();
+		this.equipWeaponBeforeBattle();
+		this.criticalUpper();
+	}
+	//武器選択、生成メソッド
+	public void chooseEquipNewWeapon(){
+		System.out.println("メイン武器を選択してください");
+		System.out.println("名前　威力　重さ　命中　必殺　距離");
+		System.out.println("1:	キルソード,9,7,80,30,近");
+		System.out.println("2:	銀の剣,13,8,75,0,近");
+		System.out.println("↓");
+		int num=CheckNumber.checkAndReturnNumber(1,2);
+		this.chooseEquipNewSword(num);
+		System.out.println("サブ武器を選択してください");
+		System.out.println("名前　威力　重さ　命中　必殺　距離");
+		System.out.println("1:	キルソード,9,7,80,30,近");
+		System.out.println("2:	銀の剣,13,8,75,0,近");
+		System.out.println("↓");
+		num=CheckNumber.checkAndReturnNumber(1,2);
+		this.chooseEquipNewSwordSub(num);
 		this.equipWeaponBeforeBattle();
 		this.criticalUpper();
 	}
@@ -76,7 +115,7 @@ public class Assassin extends Fighter {
 			System.out.println(o.name+"は倒れた");
 		}
 	}
-*/	
+*/
 	public Assassin() {
 		//名前
 		Random random=new Random();

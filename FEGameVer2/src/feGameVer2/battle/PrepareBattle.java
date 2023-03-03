@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.Random;
 import java.util.Scanner;
 
+import feGameVer2.CheckNumber;
 import feGameVer2.fighter.Assassin;
 import feGameVer2.fighter.Berserker;
 import feGameVer2.fighter.Bishop;
@@ -23,10 +24,6 @@ import feGameVer2.fighter.Valkyria;
 import feGameVer2.fighter.Warrior;
 
 public class PrepareBattle {
-	//ユーザーにクラス（兵種）を選択させる時に使用する番号
-	private int c_Num;
-	//キャラステータスを微調整するために、ユーザーにどのステータスを調整するか選択させる時に使用する番号
-	private int status_Num;
 	//ユーザーにyesかnoか選択させる時に使用する番号
 	private int yesNoNum;
 	//ゲームモード3、使用時、ユーザーの作ったキャラクターをさらにパワーアップさせる時、
@@ -35,18 +32,7 @@ public class PrepareBattle {
 	//ゲームモード3，使用時、連戦後キャラクターを回復するかどうか選択させる時に使用する番号
 	private int gameMode3_ModeNum;	//
 
-	public void setCharacterNum(int num) {
-		if(num>15||num<1) {
-			throw new IllegalArgumentException("1～14の中から選択してください");
-		}
-		this.c_Num=num;
-	}
-	public void setStatusNum(int num) {
-		if(num<1||num>8) {
-			throw new IllegalArgumentException("1～8の中から選択してください");
-		}
-		this.status_Num=num;
-	}
+
 	public void setYesNoNum(int num) {
 		if(num<1||num>2) {
 			throw new IllegalArgumentException("1か2の中から選択してください");
@@ -80,109 +66,93 @@ public class PrepareBattle {
 		System.out.println("10:勇者、11:遊牧騎兵、12：賢者、13：司祭、14：ヴァルキュリア\n"
 				+ "15：アサシン");
 		System.out.println("↓");
-		try {
-			int c_Number=new Scanner(System.in).nextInt();
-			//setter使用時に異常な値の場合エラーが出る
-			setCharacterNum(c_Number);
-		}catch(IllegalArgumentException e){
-			//こちらで正しい数値が入れられるまでwhileでまわす。
-			System.out.println("1～15までの数字が入力されていません\n"
-					+ "正しい数字を入力してください");
-			int	c_Number=new Scanner(System.in).nextInt();
-
-			while((c_Number>15||c_Number<1)) {
-				System.out.println("1～15までの数字が入力されていません\n"
-						+ "正しい数字を入力してください");
-				c_Number=new Scanner(System.in).nextInt();
-			}
-			setCharacterNum(c_Number);
-		}
+		int num=CheckNumber.checkAndReturnNumber(1,15);
 		//キャラクターインスタンスを生成
-		if(c_Num==1) {
+		if(num==1) {
 			f= new Paladin();
 			f.showSt();
 			System.out.println();
 			return f;
 		}
-		if(c_Num==2) {
+		if(num==2) {
 			f=new General();
 			f.showSt();
 			System.out.println();
 			return f;
 		}
-		if(c_Num==3) {
+		if(num==3) {
 			f=new Warrior();
 			f.showSt();
 			System.out.println();
 			return f;
 		}
-		if(c_Num==4) {
+		if(num==4) {
 			f=new FalconKnight();
 			f.showSt();
 			System.out.println();
 			return f;
 		}
-		if(c_Num==5) {
+		if(num==5) {
 			f=new Berserker();
 			f.showSt();
 			System.out.println();
 			return f;
 		}
-		if(c_Num==6) {
+		if(num==6) {
 			f=new SwordMaster();
 			f.showSt();
 			System.out.println();
 			return f;
 		}
-		if(c_Num==7) {
+		if(num==7) {
 			f=new Sniper();
 			f.showSt();
 			System.out.println();
 			return f;
 		}
-		if(c_Num==8) {
+		if(num==8) {
 			f=new DragonMaster();
 			f.showSt();
 			System.out.println();
 			return f;
 		}
-		if(c_Num==9) {
+		if(num==9) {
 			f=new Druid();
 			f.showSt();
 			System.out.println();
 			return f;
 		}
-		if(c_Num==10) {
+		if(num==10) {
 			f=new Hero();
 			f.showSt();
 			System.out.println();
 			return f;
 		}
-		if(c_Num==11) {
+		if(num==11) {
 			f=new NomadicCavalry();
 			f.showSt();
 			System.out.println();
 			return f;
 		}
-		if(c_Num==12) {
+		if(num==12) {
 			f=new Sage();
 			f.showSt();
 			System.out.println();
 			return f;
 		}
-		if(c_Num==13) {
+		if(num==13) {
 			f=new Bishop();
 			f.showSt();
 			System.out.println();
 			return f;
 		}
-		if(c_Num==14) {
+		if(num==14) {
 			f=new Valkyria();
 			f.showSt();
 			System.out.println();
 			return f;
 		}
-		if(c_Num==15) {
+		if(num==15) {
 			f=new Assassin();
 			f.showSt();
 			System.out.println();
@@ -197,92 +167,91 @@ public class PrepareBattle {
 		//乱数でクラス（兵種）ランダムに指定
 		Random random=new Random();
 		int rand=random.nextInt(15);
-		this.c_Num=rand+1;
-		if(c_Num==1) {
+		if(rand==0) {
 			f= new Paladin();
 			f.showSt();
 			System.out.println();
 			return f;
 		}
-		if(c_Num==2) {
+		if(rand==1) {
 			f=new General();
 			f.showSt();
 			System.out.println();
 			return f;
 		}
-		if(c_Num==3) {
+		if(rand==2) {
 			f=new Warrior();
 			f.showSt();
 			System.out.println();
 			return f;
 		}
-		if(c_Num==4) {
+		if(rand==3) {
 			f=new FalconKnight();
 			f.showSt();
 			System.out.println();
 			return f;
 		}
-		if(c_Num==5) {
+		if(rand==4) {
 			f=new Berserker();
 			f.showSt();
 			System.out.println();
 			return f;
 		}
-		if(c_Num==6) {
+		if(rand==5) {
 			f=new SwordMaster();
 			f.showSt();
 			System.out.println();
 			return f;
 		}
-		if(c_Num==7) {
+		if(rand==6) {
 			f=new Sniper();
 			f.showSt();
 			System.out.println();
 			return f;
 		}
-		if(c_Num==8) {
+		if(rand==7) {
 			f=new DragonMaster();
 			f.showSt();
 			System.out.println();
 			return f;
 		}
-		if(c_Num==9) {
+		if(rand==8) {
 			f=new Druid();
 			f.showSt();
 			System.out.println();
 			return f;
 		}
-		if(c_Num==10) {
+		if(rand==9) {
 			f=new Hero();
 			f.showSt();
 			System.out.println();
 			return f;
 		}
-		if(c_Num==11) {
+		if(rand==10) {
 			f=new NomadicCavalry();
 			f.showSt();
 			System.out.println();
 			return f;
 		}
-		if(c_Num==12) {
+		if(rand==11) {
 			f=new Sage();
 			f.showSt();
 			System.out.println();
 			return f;
 		}
-		if(c_Num==13) {
+		if(rand==12) {
 			f=new Bishop();
 			f.showSt();
 			System.out.println();
 			return f;
 		}
-		if(c_Num==14) {
+		if(rand==13) {
 			f=new Valkyria();
 			f.showSt();
 			System.out.println();
 			return f;
 		}
-		if(c_Num==15) {
+		if(rand==14) {
 			f=new Assassin();
 			f.showSt();
 			System.out.println();
@@ -293,22 +262,10 @@ public class PrepareBattle {
 	}
 	//キャラクター名変更メソッド
 	public void putName(Fighter f) {
-		try{
 			System.out.println("名前を入力しなおしますか？↓（しない場合はこのまま決定されます。）"
 					+ "\nする場合は1を、しない場合は2を入力して下さい");
-			int nameNum=new Scanner(System.in).nextInt();
-			setYesNoNum(nameNum);
-		}catch(IllegalArgumentException e) {
-			System.out.println("1か2を入力してください");
-			int	nameNum=new Scanner(System.in).nextInt();
-
-			while((nameNum>2||nameNum<1)) {
-				System.out.println("1か2を入力してください");
-				nameNum=new Scanner(System.in).nextInt();
-			}
-			setYesNoNum(nameNum);
-		}
-		if(this.yesNoNum==1) {
+			int num=CheckNumber.checkAndReturnNumber(1,2);
+		if(num==1) {
 			try {
 			System.out.print("名前を入力してください→");
 			String pName=new Scanner(System.in).nextLine();
@@ -337,46 +294,31 @@ public class PrepareBattle {
 		System.out.println("上げるパラメーターを二つ選んでください");
 		for(int i=0;i<2;i++) {
 			System.out.println("1:HP、2:力、3：技、4：速さ、\n5：守備、６：魔防、7：幸運、8：体格");
-			try {
-				int statusNum=new Scanner(System.in).nextInt();
-				setStatusNum(statusNum);
-			}catch(IllegalArgumentException e){
-				System.out.println("1～8までの数字が入力されていません\n"
-						+ "正しい数字を入力してください");
-				int	statusNum=new Scanner(System.in).nextInt();
-
-				while(statusNum>8||statusNum<1) {
-					System.out.println("1～8までの数字が入力されていません\n"
-							+ "正しい数字を入力してください");
-
-					statusNum=new Scanner(System.in).nextInt();
-				}
-				setCharacterNum(statusNum);
-			}
+			int num=CheckNumber.checkAndReturnNumber(1,8);
 
 
-			if(this.status_Num==1) {
+			if(num==1) {
 				f.setHp(f.getHp() + 8);
 			}
-			if(this.status_Num==2) {
+			if(num==2) {
 				f.setStrength(f.getStrength() + 4);
 			}
-			if(this.status_Num==3) {
+			if(num==3) {
 				f.setSkill(f.getSkill() + 4);
 			}
-			if(this.status_Num==4) {
+			if(num==4) {
 				f.setSpeed(f.getSpeed() + 4);
 			}
-			if(this.status_Num==5) {
+			if(num==5) {
 				f.setDefence(f.getDefence() + 4);
 			}
-			if(this.status_Num==6) {
+			if(num==6) {
 				f.setResist(f.getResist() + 4);
 			}
-			if(this.status_Num==7) {
+			if(num==7) {
 				f.setLuck(f.getLuck() + 4);
 			}
-			if(this.status_Num==8) {
+			if(num==8) {
 				f.setConstitution(f.getConstitution() + 4);
 			}
 			f.showSt();
@@ -388,30 +330,29 @@ public class PrepareBattle {
 		for(int i=0;i<2;i++) {
 				Random random=new Random();
 				int rand=random.nextInt(8);
-				this.status_Num=rand+1;
 
-			if(this.status_Num==1) {
+			if(rand==0) {
 				f.setHp(f.getHp() + 8);
 			}
-			if(this.status_Num==2) {
+			if(rand==1) {
 				f.setStrength(f.getStrength() + 4);
 			}
-			if(this.status_Num==3) {
+			if(rand==2) {
 				f.setSkill(f.getSkill() + 4);
 			}
-			if(this.status_Num==4) {
+			if(rand==3) {
 				f.setSpeed(f.getSpeed() + 4);
 			}
-			if(this.status_Num==5) {
+			if(rand==4) {
 				f.setDefence(f.getDefence() + 4);
 			}
-			if(this.status_Num==6) {
+			if(rand==5) {
 				f.setResist(f.getResist() + 4);
 			}
-			if(this.status_Num==7) {
+			if(rand==6) {
 				f.setLuck(f.getLuck() + 4);
 			}
-			if(this.status_Num==8) {
+			if(rand==7) {
 				f.setConstitution(f.getConstitution() + 4);
 			}
 
@@ -422,44 +363,29 @@ public class PrepareBattle {
 		System.out.println("下げるパラメーターを二つ選んでください");
 		for(int i=0;i<2;i++) {
 			System.out.println("1:HP、2:力、3：技、4：速さ、\n5：守備、６：魔防、7：幸運、8：体格");
-			try {
-			int statusNum=new Scanner(System.in).nextInt();
-			setStatusNum(statusNum);
-				}catch(IllegalArgumentException e){
-				System.out.println("1～8までの数字が入力されていません\n"
-						+ "正しい数字を入力してください");
-				int	statusNum=new Scanner(System.in).nextInt();
-
-				while(statusNum>8||statusNum<1) {
-					System.out.println("1～8までの数字が入力されていません\n"
-							+ "正しい数字を入力してください");
-
-					statusNum=new Scanner(System.in).nextInt();
-				}
-				setCharacterNum(statusNum);
-			}
-			if(this.status_Num==1) {
+			int num=CheckNumber.checkAndReturnNumber(1,8);
+			if(num==1) {
 				f.setHp(f.getHp() - 8);
 			}
-			if(this.status_Num==2) {
+			if(num==2) {
 				f.setStrength(f.getStrength() - 4);
 			}
-			if(this.status_Num==3) {
+			if(num==3) {
 				f.setSkill(f.getSkill() - 4);
 			}
-			if(this.status_Num==4) {
+			if(num==4) {
 				f.setSpeed(f.getSpeed() - 4);
 			}
-			if(this.status_Num==5) {
+			if(num==5) {
 				f.setDefence(f.getDefence() - 4);
 			}
-			if(this.status_Num==6) {
+			if(num==6) {
 				f.setResist(f.getResist() - 4);
 			}
-			if(this.status_Num==7) {
+			if(num==7) {
 				f.setLuck(f.getLuck() - 4);
 			}
-			if(this.status_Num==8) {
+			if(num==8) {
 				f.setConstitution(f.getConstitution() - 4);
 			}
 			f.showSt();
@@ -471,29 +397,28 @@ public class PrepareBattle {
 		for(int i=0;i<2;i++) {
 			Random random=new Random();
 			int rand=random.nextInt(8);
-			this.status_Num=rand+1;
-			if(this.status_Num==1) {
+			if(rand==0) {
 				f.setHp(f.getHp() - 8);
 			}
-			if(this.status_Num==2) {
+			if(rand==1) {
 				f.setStrength(f.getStrength() - 4);
 			}
-			if(this.status_Num==3) {
+			if(rand==2) {
 				f.setSkill(f.getSkill() - 4);
 			}
-			if(this.status_Num==4) {
+			if(rand==3) {
 				f.setSpeed(f.getSpeed() - 4);
 			}
-			if(this.status_Num==5) {
+			if(rand==4) {
 				f.setDefence(f.getDefence() - 4);
 			}
-			if(this.status_Num==6) {
+			if(rand==5) {
 				f.setResist(f.getResist() - 4);
 			}
-			if(this.status_Num==7) {
+			if(rand==6) {
 				f.setLuck(f.getLuck() - 4);
 			}
-			if(this.status_Num==8) {
+			if(rand==7) {
 				f.setConstitution(f.getConstitution() - 4);
 			}
 
