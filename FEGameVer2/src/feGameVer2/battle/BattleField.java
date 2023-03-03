@@ -77,7 +77,7 @@ public  class BattleField {
 		}
 
 		//実必殺率　自身の仮必殺率-相手の幸運
-		this.p1ActCritical=p1critical+p2.getLuck();
+		this.p1ActCritical=p1critical-p2.getLuck();
 
 		//p2 戦闘数値	計算
 		this.p2ActHitRate=p2hitRate-p1avoidRate;
@@ -92,7 +92,7 @@ public  class BattleField {
 		if(this.p2ActPowerMagic<=2) {
 			this.p2ActPowerMagic=2;
 		}
-		this.p2ActCritical=p2critical+p1.getLuck();
+		this.p2ActCritical=p2critical-p1.getLuck();
 
 
 		//攻撃回数attacktimes 計算
