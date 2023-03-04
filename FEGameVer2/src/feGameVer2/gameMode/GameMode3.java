@@ -54,18 +54,18 @@ public class GameMode3 {
 			pb.downerPara(p);
 			System.out.println("このモードでは、さらにキャラクターを強化することができます");
 			pb.levelUp(p);
-			p=pb.equipFighterBack(p);
+			p=pb.equipFighterBack(p,3);
 			System.out.println();
 
 
 
 
 		//対戦相手
-		o1=pb.chooseCharacterRandom(o1);o1=pb.equipFighterBack(o1);
-		o2=pb.chooseCharacterRandom(o2);o2=pb.equipFighterBack(o2);
-		o3=pb.chooseCharacterRandom(o3);o3=pb.equipFighterBack(o3);
-		o4=pb.chooseCharacterRandom(o4);o4=pb.equipFighterBack(o4);
-		o5=pb.chooseCharacterRandom(o5);o5=pb.equipFighterBack(o5);
+		o1=pb.chooseCharacterRandom(o1);o1=pb.equipFighterBack(o1,3);
+		o2=pb.chooseCharacterRandom(o2);o2=pb.equipFighterBack(o2,3);
+		o3=pb.chooseCharacterRandom(o3);o3=pb.equipFighterBack(o3,3);
+		o4=pb.chooseCharacterRandom(o4);o4=pb.equipFighterBack(o4,3);
+		o5=pb.chooseCharacterRandom(o5);o5=pb.equipFighterBack(o5,3);
 		//対戦
 		BattleField b=new BattleField(p,o1);
 		while(p.getHp()>0&&o1.getHp()>0) {

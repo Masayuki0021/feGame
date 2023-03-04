@@ -24,8 +24,6 @@ import feGameVer2.fighter.Valkyria;
 import feGameVer2.fighter.Warrior;
 
 public class PrepareBattle {
-	//ユーザーにyesかnoか選択させる時に使用する番号
-	private int yesNoNum;
 	//ゲームモード3、使用時、ユーザーの作ったキャラクターをさらにパワーアップさせる時、
 	//ユーザーにどのステータスを調整するか選択させる時に使用する番号
 	private int levelUpNum;
@@ -33,15 +31,6 @@ public class PrepareBattle {
 	private int gameMode3_ModeNum;	//
 
 
-	public void setYesNoNum(int num) {
-		if(num<1||num>2) {
-			throw new IllegalArgumentException("1か2の中から選択してください");
-		}
-		this.yesNoNum=num;
-	}
-	public int getYesNoNum() {
-		return yesNoNum;
-	}
 	public void setLevelUpNum(int num,Map<Integer,String> statusMap) {
 		if(num<1||num>7||statusMap.get(num)==null) {
 			throw new IllegalArgumentException("1～7の中から選択してください");
@@ -425,74 +414,143 @@ public class PrepareBattle {
 		}
 	}
 //変数の型を各兵種に更新
-	public Fighter equipFighterBack(Fighter f) {
-		if(f instanceof Paladin) {
-			Paladin fP=(Paladin)f;
-			//各クラス（兵種）に応じた武器インスタンスを生成
-			fP.equipNewWeapon();
-			return fP;
-		}
-		else if(f instanceof Warrior) {
-			Warrior fW=(Warrior) f;
-			fW.equipNewWeapon();
-			return fW;
-		}
-		else if(f instanceof General) {
-			General fG=(General) f;
-			fG.equipNewWeapon();
-			return fG;
-		}else if(f instanceof FalconKnight) {
-			FalconKnight fF=(FalconKnight) f;
-			fF.equipNewWeapon();
-			return fF;
-		}else if(f instanceof Berserker) {
-			Berserker fB=(Berserker) f;
-			fB.equipNewWeapon();
-			return fB;
-		}else if(f instanceof SwordMaster) {
-			SwordMaster fS=(SwordMaster) f;
-			fS.equipNewWeapon();
-			return fS;
-		}else if(f instanceof Sniper) {
-			Sniper fS=(Sniper) f;
-			fS.equipNewWeapon();
-			return fS;
-		}else if(f instanceof DragonMaster) {
-			DragonMaster fD=(DragonMaster) f;
-			fD.equipNewWeapon();
-			return fD;
-		}else if(f instanceof Druid) {
-			Druid fD=(Druid) f;
-			fD.equipNewWeapon();
-			return fD;
-		}else if(f instanceof Hero) {
-			Hero fH=(Hero) f;
-			fH.equipNewWeapon();
-			return fH;
-		}else if(f instanceof NomadicCavalry) {
-			NomadicCavalry fN=(NomadicCavalry) f;
-			fN.equipNewWeapon();
-			return fN;
-		}else if(f instanceof Sage) {
-			Sage fS=(Sage) f;
-			fS.equipNewWeapon();
-			return fS;
-		}else if(f instanceof Bishop) {
-			Bishop fB=(Bishop) f;
-			fB.equipNewWeapon();
-			return fB;
-		}else if(f instanceof Valkyria) {
-			Valkyria fV=(Valkyria) f;
-			fV.equipNewWeapon();
-			return fV;
-		}else if(f instanceof Assassin) {
-			Assassin fA=(Assassin) f;
-			fA.equipNewWeapon();
-			return fA;
-		}
-
-		else {
-			return f;
+	public Fighter equipFighterBack(Fighter f,int gameMode) {
+		if(gameMode==1) {
+			if(f instanceof Paladin) {
+				Paladin fP=(Paladin)f;
+				//各クラス（兵種）に応じた武器インスタンスを生成
+				fP.equipNewWeapon();
+				return fP;
+			}
+			else if(f instanceof Warrior) {
+				Warrior fW=(Warrior) f;
+				fW.equipNewWeapon();
+				return fW;
+			}
+			else if(f instanceof General) {
+				General fG=(General) f;
+				fG.equipNewWeapon();
+				return fG;
+			}else if(f instanceof FalconKnight) {
+				FalconKnight fF=(FalconKnight) f;
+				fF.equipNewWeapon();
+				return fF;
+			}else if(f instanceof Berserker) {
+				Berserker fB=(Berserker) f;
+				fB.equipNewWeapon();
+				return fB;
+			}else if(f instanceof SwordMaster) {
+				SwordMaster fS=(SwordMaster) f;
+				fS.equipNewWeapon();
+				return fS;
+			}else if(f instanceof Sniper) {
+				Sniper fS=(Sniper) f;
+				fS.equipNewWeapon();
+				return fS;
+			}else if(f instanceof DragonMaster) {
+				DragonMaster fD=(DragonMaster) f;
+				fD.equipNewWeapon();
+				return fD;
+			}else if(f instanceof Druid) {
+				Druid fD=(Druid) f;
+				fD.equipNewWeapon();
+				return fD;
+			}else if(f instanceof Hero) {
+				Hero fH=(Hero) f;
+				fH.equipNewWeapon();
+				return fH;
+			}else if(f instanceof NomadicCavalry) {
+				NomadicCavalry fN=(NomadicCavalry) f;
+				fN.equipNewWeapon();
+				return fN;
+			}else if(f instanceof Sage) {
+				Sage fS=(Sage) f;
+				fS.equipNewWeapon();
+				return fS;
+			}else if(f instanceof Bishop) {
+				Bishop fB=(Bishop) f;
+				fB.equipNewWeapon();
+				return fB;
+			}else if(f instanceof Valkyria) {
+				Valkyria fV=(Valkyria) f;
+				fV.equipNewWeapon();
+				return fV;
+			}else if(f instanceof Assassin) {
+				Assassin fA=(Assassin) f;
+				fA.equipNewWeapon();
+				return fA;
+			}
+			else {
+				return f;
+			}
+		}else {
+			if(f instanceof Paladin) {
+				Paladin fP=(Paladin)f;
+				//各クラス（兵種）に応じた武器インスタンスを生成
+				fP.equipNewWeapon();
+				return fP;
+			}
+			else if(f instanceof Warrior) {
+				Warrior fW=(Warrior) f;
+				fW.equipNewWeapon();
+				return fW;
+			}
+			else if(f instanceof General) {
+				General fG=(General) f;
+				fG.equipNewWeapon();
+				return fG;
+			}else if(f instanceof FalconKnight) {
+				FalconKnight fF=(FalconKnight) f;
+				fF.equipNewWeapon();
+				return fF;
+			}else if(f instanceof Berserker) {
+				Berserker fB=(Berserker) f;
+				fB.equipNewWeapon();
+				return fB;
+			}else if(f instanceof SwordMaster) {
+				SwordMaster fS=(SwordMaster) f;
+				fS.equipNewWeapon();
+				return fS;
+			}else if(f instanceof Sniper) {
+				Sniper fS=(Sniper) f;
+				fS.equipNewWeapon();
+				return fS;
+			}else if(f instanceof DragonMaster) {
+				DragonMaster fD=(DragonMaster) f;
+				fD.equipNewWeapon();
+				return fD;
+			}else if(f instanceof Druid) {
+				Druid fD=(Druid) f;
+				fD.equipNewWeapon();
+				return fD;
+			}else if(f instanceof Hero) {
+				Hero fH=(Hero) f;
+				fH.equipNewWeapon();
+				return fH;
+			}else if(f instanceof NomadicCavalry) {
+				NomadicCavalry fN=(NomadicCavalry) f;
+				fN.equipNewWeapon();
+				return fN;
+			}else if(f instanceof Sage) {
+				Sage fS=(Sage) f;
+				fS.equipNewWeapon();
+				return fS;
+			}else if(f instanceof Bishop) {
+				Bishop fB=(Bishop) f;
+				fB.equipNewWeapon();
+				return fB;
+			}else if(f instanceof Valkyria) {
+				Valkyria fV=(Valkyria) f;
+				fV.equipNewWeapon();
+				return fV;
+			}else if(f instanceof Assassin) {
+				Assassin fA=(Assassin) f;
+				fA.chooseEquipNewWeapon();
+				return fA;
+			}
+			else {
+				return f;
+			}
 		}
 
 	}

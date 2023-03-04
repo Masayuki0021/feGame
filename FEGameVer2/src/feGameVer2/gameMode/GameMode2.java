@@ -1,7 +1,6 @@
 package feGameVer2.gameMode;
 
-import java.util.Scanner;
-
+import feGameVer2.CheckNumber;
 import feGameVer2.ChooseGameMode;
 import feGameVer2.battle.BattleField;
 import feGameVer2.battle.PrepareBattle;
@@ -33,7 +32,7 @@ public class GameMode2 {
 		//重要でないと思うステータスを二回下げる
 		pb.downerPara(p1);
 		//キャラクター変数をそれぞれの型に合わせる
-		p1=pb.equipFighterBack(p1);
+		p1=pb.equipFighterBack(p1,2);
 		System.out.println();
 
 		System.out.println("プレイヤー2のキャラメイクです。");
@@ -42,7 +41,7 @@ public class GameMode2 {
 		pb.putName(p2);
 		pb.upperPara(p2);
 		pb.downerPara(p2);
-		p2=pb.equipFighterBack(p2);
+		p2=pb.equipFighterBack(p2,2);
 		System.out.println();
 
 		BattleField b=new BattleField(p1,p2);
@@ -56,21 +55,8 @@ public class GameMode2 {
 			System.out.println(p1.getName()+"の勝利！！！");
 		}
 		System.out.println("続ける? 1:yes 2:no  番号を入力して下さい");
-		try {
-			int contiNum=new Scanner(System.in).nextInt();
-
-			pb.setYesNoNum(contiNum);
-		}catch(IllegalArgumentException e){
-			System.out.println("1か2を入力してください");
-			int	contiNum=new Scanner(System.in).nextInt();
-
-			while((contiNum>2||contiNum<1)) {
-				System.out.println("1か2を入力してください");
-				contiNum=new Scanner(System.in).nextInt();
-			}
-			pb.setYesNoNum(contiNum);
-		}
-		while(pb.getYesNoNum()==1) {
+		int num=CheckNumber.checkAndReturnNumber(1,2);
+		while(num==1) {
 			p1.setHp(p1.getMaxHp());
 			p2.setHp(p2.getMaxHp());
 			while(p1.getHp()>0&&p2.getHp()>0) {
@@ -83,20 +69,7 @@ public class GameMode2 {
 				System.out.println(p1.getName()+"の勝利！！！");
 			}
 			System.out.println("続ける? 1:yes 2:no  番号を入力して下さい");
-			try {
-				int contiNum=new Scanner(System.in).nextInt();
-
-				pb.setYesNoNum(contiNum);
-			}catch(IllegalArgumentException e){
-				System.out.println("1か2を入力してください");
-				int	contiNum=new Scanner(System.in).nextInt();
-
-				while((contiNum>2||contiNum<1)) {
-					System.out.println("1か2を入力してください");
-					contiNum=new Scanner(System.in).nextInt();
-				}
-				pb.setYesNoNum(contiNum);
-			}
+			num=CheckNumber.checkAndReturnNumber(1,2);
 		}
 		System.out.println("メインメニューに戻ります。");
 		Thread.sleep(1000);

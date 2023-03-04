@@ -2,6 +2,7 @@ package feGameVer2.fighter;
 
 import java.util.Random;
 
+import feGameVer2.CheckNumber;
 import feGameVer2.weapon.Axe;
 import feGameVer2.weapon.Lance;
 import feGameVer2.weapon.Sword;
@@ -37,6 +38,31 @@ public class DragonMaster extends Fighter{
 			this.lance =new Lance("スレンドスピア",10,10,65,5,3);
 		}
 	}
+	//槍武器生成メソッド
+	public void chooseEquipNewLance(int num) {
+		if(num==1) {
+			this.lance=new Lance("鉄の槍",7,8,70,0,1);
+		}
+		else if(num==2) {
+			this.lance =new Lance("てやり",6,11,55,0,3);
+		}
+		else if(num==3) {
+			this.lance =new Lance("細身の槍",4,4,80,5,1);
+		}
+		else if(num==4) {
+			this.lance =new Lance("鋼の槍",10,13,55,0,1);
+		}
+		else if(num==5) {
+			this.lance =new Lance("キラーランス",10,9,75,30,1);
+		}
+		else if(num==6) {
+			this.lance =new Lance("銀の槍",14,10,65,0,1);
+		}
+		else if(num==7) {
+			this.lance =new Lance("スレンドスピア",10,10,65,5,3);
+		}
+	}
+
 	//斧武器生成メソッド
 	public void equipNewAxe() {
 		double rand = Math.random();
@@ -62,6 +88,31 @@ public class DragonMaster extends Fighter{
 			this.axe =new Axe("トマホーク",13,14,55,5,3);
 		}
 	}
+	//斧武器生成メソッド
+	public void chooseEquipNewAxe(int num) {
+		if(num==1) {
+			this.axe=new Axe("鉄の斧",8,10,65,0,1);
+		}
+		else if(num==2) {
+			this.axe =new Axe("ておの",7,15,50,0,3);
+		}
+		else if(num==3) {
+			this.axe =new Axe("デビルアクス",24,18,20,0,1);
+		}
+		else if(num==4) {
+			this.axe =new Axe("鋼の斧",11,15,50,0,1);
+		}
+		else if(num==5) {
+			this.axe =new Axe("キラーアクス",11,11,65,30,1);
+		}
+		else if(num==6) {
+			this.axe  =new Axe("銀の斧",15,12,55,0,1);
+		}
+		else if(num==7) {
+			this.axe =new Axe("トマホーク",13,14,55,5,3);
+		}
+	}
+
 
 	//戦闘前武器装備メソッド
 	public void equipWeaponBeforeBattle() {
@@ -85,7 +136,32 @@ public class DragonMaster extends Fighter{
 		this.equipNewAxe();
 		this.equipWeaponBeforeBattle();
 	}
-
+	//武器選択、生成メソッド
+	public void chooseEquipNewWeapon(){
+		System.out.println("メイン武器を選択してください");
+		System.out.println(" :名前			威力	重さ	命中	必殺	距離");
+		System.out.println("1:鉄の槍		7,		8,		70,		0,		近");
+		System.out.println("2:てやり		6,		11,		55,		0,		遠近");
+		System.out.println("3:細身の槍		4,		4,		80,		5,		近");
+		System.out.println("4:鋼の槍\",10,13,55,0,1近");
+		System.out.println("5:アルジローレ	12,		19,		85,		0,		遠近");
+		System.out.println("6:アーリアル	15,		16,		90,		5,		遠近");
+		System.out.println("↓");
+		int num=CheckNumber.checkAndReturnNumber(1,6);
+		this.chooseEquipNewLight(num);
+		System.out.println("サブ武器を選択してください");
+		System.out.println(" :名前			威力	重さ	命中	必殺	距離");
+		System.out.println("1:ライトニング	5,		1,		75,		0,		遠近");
+		System.out.println("2:ディヴァイン	8,		3,		75,		0,		遠近");
+		System.out.println("3:シャイン		6,		3,		85,		0,		遠近");
+		System.out.println("4:パージ		10,		15,		70,		5,		遠近");
+		System.out.println("5:アルジローレ	12,		19,		85,		0,		遠近");
+		System.out.println("6:アーリアル	15,		16,		90,		5,		遠近");
+		System.out.println("↓");
+		num=CheckNumber.checkAndReturnNumber(1,6);
+		this.chooseEquipNewLightSub(num);
+		this.equipWeaponBeforeBattle();
+}
 
 	//戦闘中武器持ち替えメソッド
 	public void changeEquip(Weapon o) {

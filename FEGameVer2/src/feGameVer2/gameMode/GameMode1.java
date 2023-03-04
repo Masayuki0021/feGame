@@ -1,8 +1,7 @@
 package feGameVer2.gameMode;
 
 
-import java.util.Scanner;
-
+import feGameVer2.CheckNumber;
 import feGameVer2.ChooseGameMode;
 import feGameVer2.battle.BattleField;
 import feGameVer2.battle.PrepareBattle;
@@ -27,13 +26,13 @@ public class GameMode1 {
 		p1=pb.chooseCharacterRandom(p1);
 		//変数の型を各クラス（兵種）に更新
 		//それぞれのクラスのメソッドを使用しそれぞれの武器インスタンスを生成する
-		p1=pb.equipFighterBack(p1);
+		p1=pb.equipFighterBack(p1,1);
 
 		Thread.sleep(1000);
 		System.out.println("キャラクター2はこちら！");
 		//キャラクター2のインスタンスを生成
 		p2=pb.chooseCharacterRandom(p2);
-		p2=pb.equipFighterBack(p2);
+		p2=pb.equipFighterBack(p2,1);
 
 
 
@@ -52,22 +51,9 @@ public class GameMode1 {
 		}
 		//続けるかどうかの選択
 		System.out.println("続ける? 1:yes 2:no  番号を入力して下さい");
-		try {
-			int num=new Scanner(System.in).nextInt();
-
-			pb.setYesNoNum(num);
-		}catch(IllegalArgumentException e){
-			System.out.println("1か2を入力してください");
-			int	num=new Scanner(System.in).nextInt();
-
-			while((num>2||num<1)) {
-				System.out.println("1か2を入力してください");
-				num=new Scanner(System.in).nextInt();
-			}
-			pb.setYesNoNum(num);
-		}
+		int num=CheckNumber.checkAndReturnNumber(1,2);
 		//戦闘を続ける場合、両方のキャラクターを回復させる
-		if(pb.getYesNoNum()==1) {
+		if(num==1) {
 			p1.setHp(p1.getMaxHp());
 			p2.setHp(p2.getMaxHp());
 			while(p1.getHp()>0&&p2.getHp()>0) {
@@ -80,20 +66,7 @@ public class GameMode1 {
 				System.out.println(p1.getName()+"の勝利！！！");
 			}
 			System.out.println("続ける? 1:yes 2:no  番号を入力して下さい");
-			try {
-				int num=new Scanner(System.in).nextInt();
-
-				pb.setYesNoNum(num);
-			}catch(IllegalArgumentException e){
-				System.out.println("1か2を入力してください");
-				int	num=new Scanner(System.in).nextInt();
-
-				while((num>2||num<1)) {
-					System.out.println("1か2を入力してください");
-					num=new Scanner(System.in).nextInt();
-				}
-				pb.setYesNoNum(num);
-			}
+			num=CheckNumber.checkAndReturnNumber(1,2);
 		}
 		System.out.println("メインメニューに戻ります。");
 		Thread.sleep(1000);

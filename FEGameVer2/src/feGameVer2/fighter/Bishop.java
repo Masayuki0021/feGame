@@ -2,6 +2,7 @@ package feGameVer2.fighter;
 
 import java.util.Random;
 
+import feGameVer2.CheckNumber;
 import feGameVer2.weapon.Dark;
 import feGameVer2.weapon.Light;
 import feGameVer2.weapon.Weapon;
@@ -33,6 +34,28 @@ public class Bishop extends Fighter{
 			this.light =new Light("アーリアル",15,16,90,5,3);
 		}
 	}
+	//選択光魔法生成メソッド
+	public void chooseEquipNewLight(int num) {
+		if(num==1) {
+			this.light=new Light("ライトニング",5,1,75,0,3);
+		}
+		else if(num==2) {
+			this.light =new Light("ディヴァイン",8,3,75,0,3);
+		}
+		else if(num==3) {
+			this.light =new Light("シャイン",6,3,85,0,3);
+		}
+		else if(num==4) {
+			this.light =new Light("パージ",10,15,70,5,3);
+		}
+		else if(num==5) {
+			this.light =new Light("アルジローレ",12,19,85,0,3);
+		}
+		else if(num==6) {
+			this.light =new Light("アーリアル",15,16,90,5,3);
+		}
+	}
+
 	//サブ光魔法生成メソッド
 		public void equipNewLightSub() {
 			double rand = Math.random();
@@ -55,6 +78,27 @@ public class Bishop extends Fighter{
 				this.lightsub =new Light("アーリアル",15,16,90,5,3);
 			}
 		}
+//選択サブ光魔法生成メソッド
+		public void chooseEquipNewLightSub(int num) {
+			if(num==1) {
+				this.lightsub=new Light("ライトニング",5,1,75,0,3);
+			}
+			else if(num==2) {
+				this.lightsub =new Light("ディヴァイン",8,3,75,0,3);
+			}
+			else if(num==3) {
+				this.lightsub =new Light("シャイン",6,3,85,0,3);
+			}
+			else if(num==4) {
+				this.lightsub =new Light("パージ",10,15,70,5,3);
+			}
+			else if(num==5) {
+				this.lightsub =new Light("アルジローレ",12,19,85,0,3);
+			}
+			else if(num==6) {
+				this.lightsub =new Light("アーリアル",15,16,90,5,3);
+			}
+		}
 	//戦闘前武器装備メソッド
 	public void equipWeaponBeforeBattle() {
 			this.equip=this.light;
@@ -65,6 +109,32 @@ public class Bishop extends Fighter{
 		this.equipNewLightSub();
 		this.equipWeaponBeforeBattle();
 	}
+	//武器選択、生成メソッド
+	public void chooseEquipNewWeapon(){
+		System.out.println("メイン武器を選択してください");
+		System.out.println(" :名前			威力	重さ	命中	必殺	距離");
+		System.out.println("1:ライトニング	5,		1,		75,		0,		遠近");
+		System.out.println("2:ディヴァイン	8,		3,		75,		0,		遠近");
+		System.out.println("3:シャイン		6,		3,		85,		0,		遠近");
+		System.out.println("4:パージ		10,		15,		70,		5,		遠近");
+		System.out.println("5:アルジローレ	12,		19,		85,		0,		遠近");
+		System.out.println("6:アーリアル	15,		16,		90,		5,		遠近");
+		System.out.println("↓");
+		int num=CheckNumber.checkAndReturnNumber(1,6);
+		this.chooseEquipNewLight(num);
+		System.out.println("サブ武器を選択してください");
+		System.out.println(" :名前			威力	重さ	命中	必殺	距離");
+		System.out.println("1:ライトニング	5,		1,		75,		0,		遠近");
+		System.out.println("2:ディヴァイン	8,		3,		75,		0,		遠近");
+		System.out.println("3:シャイン		6,		3,		85,		0,		遠近");
+		System.out.println("4:パージ		10,		15,		70,		5,		遠近");
+		System.out.println("5:アルジローレ	12,		19,		85,		0,		遠近");
+		System.out.println("6:アーリアル	15,		16,		90,		5,		遠近");
+		System.out.println("↓");
+		num=CheckNumber.checkAndReturnNumber(1,6);
+		this.chooseEquipNewLightSub(num);
+		this.equipWeaponBeforeBattle();
+}
 	//戦闘中武器持ち替えメソッド
 	public void changeEquip(Weapon o) {
 		Random random=new Random();

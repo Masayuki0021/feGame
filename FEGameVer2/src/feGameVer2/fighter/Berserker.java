@@ -2,12 +2,13 @@ package feGameVer2.fighter;
 
 import java.util.Random;
 
+import feGameVer2.CheckNumber;
 import feGameVer2.weapon.Axe;
-import feGameVer2.weapon.Lance;
 import feGameVer2.weapon.Weapon;
 
 public class Berserker extends Fighter{
 	Axe axe;
+	Axe axesub;
 	String cName="バーサーカー";
 	//斧武器生成メソッド
 	public void equipNewAxe() {
@@ -31,7 +32,79 @@ public class Berserker extends Fighter{
 			this.axe  =new Axe("銀の斧",15,12,55,0,1);
 		}
 		else if(rand<=1) {
-			this.axe =new Axe("トマホーク",13,14,55,5,1);
+			this.axe =new Axe("トマホーク",13,14,55,5,3);
+		}
+	}//選択斧武器生成メソッド
+	public void chooseEquipNewAxe(int num) {
+		if(num==1) {
+			this.axe=new Axe("鉄の斧",8,10,65,0,1);
+		}
+		else if(num==2) {
+			this.axe =new Axe("ておの",7,15,50,0,3);
+		}
+		else if(num==3) {
+			this.axe =new Axe("デビルアクス",18,18,30,0,1);
+		}
+		else if(num==4) {
+			this.axe =new Axe("鋼の斧",11,15,50,0,1);
+		}
+		else if(num==5) {
+			this.axe =new Axe("キラーアクス",11,11,65,30,1);
+		}
+		else if(num==6) {
+			this.axe  =new Axe("銀の斧",15,12,55,0,1);
+		}
+		else if(num==7) {
+			this.axe =new Axe("トマホーク",13,14,55,5,3);
+		}
+	}
+	//サブ斧武器生成メソッド
+	public void equipNewAxeSub() {
+		double rand = Math.random();
+		if(rand<0.35) {
+			this.axesub=new Axe("鉄の斧",8,10,65,0,1);
+		}
+		else if(rand<0.5) {
+			this.axesub =new Axe("ておの",7,15,50,0,3);
+		}
+		else if(rand<0.6) {
+			this.axesub =new Axe("デビルアクス",18,18,30,0,1);
+		}
+		else if(rand<0.7) {
+			this.axesub =new Axe("鋼の斧",11,15,50,0,1);
+		}
+		else if(rand<0.8) {
+			this.axesub =new Axe("キラーアクス",11,11,65,30,1);
+		}
+		else if(rand<0.9) {
+			this.axesub  =new Axe("銀の斧",15,12,55,0,1);
+		}
+		else if(rand<=1) {
+			this.axesub =new Axe("トマホーク",13,14,55,5,3);
+		}
+	}
+	//選択斧武器生成メソッド
+	public void chooseEquipNewAxeSub(int num) {
+		if(num==1) {
+			this.axesub=new Axe("鉄の斧",8,10,65,0,1);
+		}
+		else if(num==2) {
+			this.axe =new Axe("ておの",7,15,50,0,3);
+		}
+		else if(num==3) {
+			this.axesub =new Axe("デビルアクス",18,18,30,0,1);
+		}
+		else if(num==4) {
+			this.axesub =new Axe("鋼の斧",11,15,50,0,1);
+		}
+		else if(num==5) {
+			this.axesub =new Axe("キラーアクス",11,11,65,30,1);
+		}
+		else if(num==6) {
+			this.axesub  =new Axe("銀の斧",15,12,55,0,1);
+		}
+		else if(num==7) {
+			this.axesub =new Axe("トマホーク",13,14,55,5,3);
 		}
 	}
 
@@ -42,18 +115,60 @@ public class Berserker extends Fighter{
 	//全武器一括生成メソッド
 	public void equipNewWeapon() {
 		this.equipNewAxe();
+		this.equipNewAxeSub();
 		this.equipWeaponBeforeBattle();
 		this.criticalUpper();
+	}
+	//武器選択、生成メソッド
+		public void chooseEquipNewWeapon(){
+			System.out.println("メイン武器を選択してください");
+			System.out.println(" :名前			威力	重さ	命中	必殺	距離");
+			System.out.println("1:鉄の斧		8,		10,		65,		0,		近");
+			System.out.println("2:ておの		7,		15,		50,		0,		遠近");
+			System.out.println("3:デビルアクス	18,		18,		30,		0,		近");
+			System.out.println("4:鋼の斧		11,		15,		50,		0,		近");
+			System.out.println("5:キラーアクス	11,		11,		65,		30,		近");
+			System.out.println("6:銀の斧		15,		12,		55,		0,		近");
+			System.out.println("7:トマホーク	13,		14,		55,		5,		遠近");
+			System.out.println("↓");
+			int num=CheckNumber.checkAndReturnNumber(1,7);
+			this.chooseEquipNewAxe(num);
+			System.out.println("サブ武器を選択してください");
+			System.out.println(" :名前			威力	重さ	命中	必殺	距離");
+			System.out.println("1:鉄の斧		8,		10,		65,		0,		近");
+			System.out.println("2:ておの		7,		15,		50,		0,		遠近");
+			System.out.println("3:デビルアクス	18,		18,		30,		0,		近");
+			System.out.println("4:鋼の斧		11,		15,		50,		0,		近");
+			System.out.println("5:キラーアクス	11,		11,		65,		30,		近");
+			System.out.println("6:銀の斧		15,		12,		55,		0,		近");
+			System.out.println("7:トマホーク	13,		14,		55,		5,		遠近");
+			System.out.println("↓");
+			num=CheckNumber.checkAndReturnNumber(1,7);
+			this.chooseEquipNewAxeSub(num);
+			this.equipWeaponBeforeBattle();
+			this.criticalUpper();
 	}
 
 
 	//戦闘中武器持ち替えメソッド
 	public void changeEquip(Weapon o) {
-		if(o instanceof Lance) {
-			this.equip=null;
-			this.equip=(Axe)this.axe;
-			System.out.println(this.name+"は"+this.equip.getName()+"を装備！");
-	}
+		Random random=new Random();
+		int rand=random.nextInt(2);
+		if(o instanceof Axe) {
+			if(rand==0) {
+				if(o instanceof Weapon) {
+					this.equip=null;
+					this.equip=(Axe)this.axe;
+					System.out.println(this.name+"は"+this.equip.getName()+"を装備！");
+				}
+			}else if(rand==1){
+				if(o instanceof Weapon) {
+					this.equip=null;
+					this.equip=(Axe)this.axesub;
+					System.out.println(this.name+"は"+this.equip.getName()+"を装備！");
+				}
+			}
+		}
 	}
 	//必殺補正メソッド
 	public void criticalUpper() {
