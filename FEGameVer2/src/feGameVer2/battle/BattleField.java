@@ -967,6 +967,7 @@ public  class BattleField {
 	//戦闘ターン中の行動を記述
 	//攻撃メソッドの選択、武器の持ち替え、再計算を行う
 	public void BattleSet(Fighter p1,Fighter p2,BattleField b) throws InterruptedException {
+		System.out.println("ターン開始！");
 		//戦闘ターン開始
 		//p1視点から判定
 		//実速が高い方が65％の確率で相手に有利な武器に持ち替える
@@ -1070,7 +1071,7 @@ public  class BattleField {
 				p1.getEquip().three_way_relation_back(p2.getEquip());
 				p2.getEquip().three_way_relation_back(p1.getEquip());
 				b.reCalBattleStatus(p1, p2);
-
+				System.out.println("ターン終了！");
 
 		}
 	}
