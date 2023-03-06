@@ -38,7 +38,7 @@ public class DragonMaster extends Fighter{
 			this.lance =new Lance("スレンドスピア",10,10,65,5,3);
 		}
 	}
-	//槍武器生成メソッド
+	//選択槍武器生成メソッド
 	public void chooseEquipNewLance(int num) {
 		if(num==1) {
 			this.lance=new Lance("鉄の槍",7,8,70,0,1);
@@ -84,11 +84,14 @@ public class DragonMaster extends Fighter{
 		else if(rand<0.9) {
 			this.axe  =new Axe("銀の斧",15,12,55,0,1);
 		}
-		else if(rand<=1) {
+		else if(rand<0.95) {
 			this.axe =new Axe("トマホーク",13,14,55,5,3);
 		}
+		else if(rand<=1) {
+			this.axe=new Axe("アルマーズ",18,18,85,0,1);
+		}
 	}
-	//斧武器生成メソッド
+	//選択斧武器生成メソッド
 	public void chooseEquipNewAxe(int num) {
 		if(num==1) {
 			this.axe=new Axe("鉄の斧",8,10,65,0,1);
@@ -111,12 +114,14 @@ public class DragonMaster extends Fighter{
 		else if(num==7) {
 			this.axe =new Axe("トマホーク",13,14,55,5,3);
 		}
+		else if(num==8) {
+			this.axe=new Axe("アルマーズ",18,18,85,0,1);
+		}
 	}
 
 
 	//戦闘前武器装備メソッド
 	public void equipWeaponBeforeBattle() {
-		Weapon[] w={lance,axe};
 		Random random=new Random();
 		int rand=random.nextInt(2);
 		switch(rand) {
@@ -138,28 +143,31 @@ public class DragonMaster extends Fighter{
 	}
 	//武器選択、生成メソッド
 	public void chooseEquipNewWeapon(){
-		System.out.println("メイン武器を選択してください");
+		System.out.println("槍武器を選択してください");
 		System.out.println(" :名前			威力	重さ	命中	必殺	距離");
 		System.out.println("1:鉄の槍		7,		8,		70,		0,		近");
 		System.out.println("2:てやり		6,		11,		55,		0,		遠近");
 		System.out.println("3:細身の槍		4,		4,		80,		5,		近");
-		System.out.println("4:鋼の槍\",10,13,55,0,1近");
-		System.out.println("5:アルジローレ	12,		19,		85,		0,		遠近");
-		System.out.println("6:アーリアル	15,		16,		90,		5,		遠近");
+		System.out.println("4:鋼の槍		10,		13,		55,		0,		近");
+		System.out.println("5:キラーランス	10,		9,		75,		30,		近");
+		System.out.println("6:銀の槍		14,		10,		65,		0		近");
+		System.out.println("7:スレンドスピア10,		10,		65,		5		遠近");
 		System.out.println("↓");
-		int num=CheckNumber.checkAndReturnNumber(1,6);
-		this.chooseEquipNewLight(num);
-		System.out.println("サブ武器を選択してください");
+		int num=CheckNumber.checkAndReturnNumber(1,7);
+		this.chooseEquipNewLance(num);
+		System.out.println("斧武器を選択してください");
 		System.out.println(" :名前			威力	重さ	命中	必殺	距離");
-		System.out.println("1:ライトニング	5,		1,		75,		0,		遠近");
-		System.out.println("2:ディヴァイン	8,		3,		75,		0,		遠近");
-		System.out.println("3:シャイン		6,		3,		85,		0,		遠近");
-		System.out.println("4:パージ		10,		15,		70,		5,		遠近");
-		System.out.println("5:アルジローレ	12,		19,		85,		0,		遠近");
-		System.out.println("6:アーリアル	15,		16,		90,		5,		遠近");
+		System.out.println("1:鉄の斧		8,		10,		65,		0,		近");
+		System.out.println("2:ておの		7,		15,		50,		0,		遠近");
+		System.out.println("3;デビルアクス	24,		18,		20,		0,		近");
+		System.out.println("4:鋼の斧		11,		15,		50,		0,		近");
+		System.out.println("5:キラーアクス	11,		11,		65,		30,		近");
+		System.out.println("6:銀の斧		15,		12,		55,		0,		近");
+		System.out.println("7:トマホーク	13,		14,		55,		5,		遠近");
+		System.out.println("8:アルマーズ	18,		18,		85,		0,		近");
 		System.out.println("↓");
-		num=CheckNumber.checkAndReturnNumber(1,6);
-		this.chooseEquipNewLightSub(num);
+				num=CheckNumber.checkAndReturnNumber(1,7);
+		this.chooseEquipNewAxe(num);
 		this.equipWeaponBeforeBattle();
 }
 
@@ -174,12 +182,25 @@ public class DragonMaster extends Fighter{
 			this.equip=null;
 			this.equip=(Axe)this.axe;
 			System.out.println(this.name+"は"+this.equip.getName()+"を装備！");
-		}else if(o instanceof Axe) {
+		}
+		else if(o instanceof Axe) {
 			this.equip=null;
 			this.equip=(Axe)this.axe;
 			System.out.println(this.name+"は"+this.equip.getName()+"を装備！");
 		}
-
+		else {
+			Random random=new Random();
+			int rand=random.nextInt(2);
+			if(rand==0) {
+				this.equip=null;
+				this.equip=(Lance)this.lance;
+				System.out.println(this.name+"は"+this.equip.getName()+"を装備！");
+			}else if(rand==1) {
+				this.equip=null;
+				this.equip=(Axe)this.axe;
+				System.out.println(this.name+"は"+this.equip.getName()+"を装備！");
+			}
+		}
 
 	}
 
@@ -428,31 +449,31 @@ public class DragonMaster extends Fighter{
 		}
 		//体格
 		if(rand8<=0.1) {
-			this.setConstitution(12);
+			this.setConstitution(10);
 		}
 		else if(rand8<=0.2) {
-			this.setConstitution(14);
+			this.setConstitution(11);
 		}
 		else if(rand8<=0.3) {
-			this.setConstitution(16);
+			this.setConstitution(12);
 		}
 		else if(rand8<=0.4) {
-			this.setConstitution(18);
+			this.setConstitution(13);
 		}
 		else if(rand8<=0.6) {
-			this.setConstitution(20);
+			this.setConstitution(14);
 		}
 		else if(rand8<=0.7) {
-			this.setConstitution(22);
+			this.setConstitution(15);
 		}
 		else if(rand8<=0.8) {
-			this.setConstitution(24);
+			this.setConstitution(16);
 		}
 		else if(rand8<=0.9) {
-			this.setConstitution(26);
+			this.setConstitution(17);
 		}
 		else if(rand8<=1) {
-			this.setConstitution(28);
+			this.setConstitution(18);
 		}
 	}
 	public String toString() {

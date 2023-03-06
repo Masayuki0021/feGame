@@ -2,6 +2,7 @@ package feGameVer2.fighter;
 
 import java.util.Random;
 
+import feGameVer2.CheckNumber;
 import feGameVer2.weapon.Bow;
 import feGameVer2.weapon.Weapon;
 
@@ -35,31 +36,79 @@ public class Sniper extends Fighter{
 			this.bow  =new Bow("ミュルグレ",16,9,80,20,2);
 		}
 	}
-	//サブ弓武器生成メソッド
-		public void equipNewBowSub() {
-			double rand = Math.random();
-			if(rand<0.35) {
-				this.bowsub=new Bow("鉄の弓",6,5,80,10,2);
-			}
-			else if(rand<0.45) {
-				this.bowsub =new Bow("鋼の弓",9,9,65,10,2);
-			}
-			else if(rand<0.60) {
-				this.bowsub =new Bow("短弓",5,3,80,20,2);
-			}
-			else if(rand<0.75) {
-				this.bowsub =new Bow("キラーボウ",9,7,80,40,2);
-			}
-			else if(rand<0.9) {
-				this.bowsub =new Bow("銀の弓",13,6,70,10,2);
-			}
-			else if(rand<0.95) {
-				this.bowsub=new Bow("リヤンフルチェ",9,7,70,20,3);
-			}
-			else if(rand<=1) {
-				this.bowsub  =new Bow("ミュルグレ",16,9,80,20,2);
-			}
+	//選択弓武器生成メソッド
+	public void chooseEquipNewBow(int num) {
+		if(num==1) {
+			this.bow=new Bow("鉄の弓",6,5,80,10,2);
 		}
+		else if(num==2) {
+			this.bow =new Bow("鋼の弓",9,9,65,10,2);
+		}
+		else if(num==3) {
+			this.bow =new Bow("短弓",5,3,80,20,2);
+		}
+		else if(num==4) {
+			this.bow =new Bow("キラーボウ",9,7,80,40,2);
+		}
+		else if(num==5) {
+			this.bow =new Bow("銀の弓",13,6,70,10,2);
+		}
+		else if(num==6) {
+			this.bow=new Bow("リヤンフルチェ",9,7,70,20,3);
+		}
+		else if(num==7) {
+			this.bow  =new Bow("ミュルグレ",16,9,80,10,2);
+		}
+	}
+//サブ弓武器生成メソッド
+	public void equipNewBowSub() {
+		double rand = Math.random();
+		if(rand<0.35) {
+			this.bowsub=new Bow("鉄の弓",6,5,80,10,2);
+		}
+		else if(rand<0.45) {
+			this.bowsub =new Bow("鋼の弓",9,9,65,10,2);
+		}
+		else if(rand<0.60) {
+			this.bowsub =new Bow("短弓",5,3,80,20,2);
+		}
+		else if(rand<0.75) {
+			this.bowsub =new Bow("キラーボウ",9,7,80,40,2);
+		}
+		else if(rand<0.9) {
+			this.bowsub =new Bow("銀の弓",13,6,70,10,2);
+		}
+		else if(rand<0.95) {
+			this.bowsub=new Bow("リヤンフルチェ",9,7,70,20,3);
+		}
+		else if(rand<=1) {
+			this.bowsub  =new Bow("ミュルグレ",16,9,80,20,2);
+		}
+	}
+	//サブ選択弓武器生成メソッド
+	public void chooseEquipNewBowSub(int num) {
+		if(num==1) {
+			this.bowsub=new Bow("鉄の弓",6,5,80,10,2);
+		}
+		else if(num==2) {
+			this.bowsub =new Bow("鋼の弓",9,9,65,10,2);
+		}
+		else if(num==3) {
+			this.bowsub =new Bow("短弓",5,3,80,20,2);
+		}
+		else if(num==4) {
+			this.bowsub =new Bow("キラーボウ",9,7,80,40,2);
+		}
+		else if(num==5) {
+			this.bowsub =new Bow("銀の弓",13,6,70,10,2);
+		}
+		else if(num==6) {
+			this.bowsub=new Bow("リヤンフルチェ",9,7,70,20,3);
+		}
+		else if(num==7) {
+			this.bowsub  =new Bow("ミュルグレ",16,9,80,10,2);
+		}
+	}
 	//戦闘前武器装備メソッド
 	public void equipWeaponBeforeBattle() {
 			this.equip=this.bow;
@@ -71,24 +120,47 @@ public class Sniper extends Fighter{
 		this.equipWeaponBeforeBattle();
 		this.criticalUpper();
 	}
+	//武器選択、生成メソッド
+	public void chooseEquipNewWeapon(){
+		System.out.println("メイン武器を選択してください");
+		System.out.println(" :名前			威力	重さ	命中	必殺	距離");
+		System.out.println("1:鉄の弓		6,		5,		80,		10,		遠");
+		System.out.println("2:鋼の弓		9,		9,		65,		10,		遠");
+		System.out.println("3:短弓			5,		3,		80,		20,		遠");
+		System.out.println("4:キラーボウ	9,		7,		80,		40,		遠");
+		System.out.println("5:銀の弓		13,		6,		70,		10,		遠");
+		System.out.println("6:リヤンフルチェ9,		7,		70,		20,		遠近");
+		System.out.println("7:ミュルグレ	16,		9,		80,		10,		遠");
+		System.out.println("↓");
+		int num=CheckNumber.checkAndReturnNumber(1,7);
+		this.chooseEquipNewBow(num);
+		System.out.println("サブを選択してください");
+		System.out.println(" :名前			威力	重さ	命中	必殺	距離");
+		System.out.println("1:鉄の弓		6,		5,		80,		10,		遠");
+		System.out.println("2:鋼の弓		9,		9,		65,		10,		遠");
+		System.out.println("3:短弓			5,		3,		80,		20,		遠");
+		System.out.println("4:キラーボウ	9,		7,		80,		40,		遠");
+		System.out.println("5:銀の弓		13,		6,		70,		10,		遠");
+		System.out.println("6:リヤンフルチェ9,		7,		70,		20,		遠近");
+		System.out.println("7:ミュルグレ	16,		9,		80,		10,		遠");
+		System.out.println("↓");
+		num=CheckNumber.checkAndReturnNumber(1,7);
+		this.chooseEquipNewBowSub(num);
+		this.equipWeaponBeforeBattle();
+	}
+
 	//戦闘中武器持ち替えメソッド
 	public void changeEquip(Weapon o) {
 		Random random=new Random();
 		int rand=random.nextInt(2);
-		if(o instanceof Weapon) {
-			if(rand==0) {
-				if(o instanceof Weapon) {
-					this.equip=null;
-					this.equip=(Bow)this.bow;
-					System.out.println(this.name+"は"+this.equip.getName()+"を装備！");
-				}
-			}else if(rand==1){
-				if(o instanceof Weapon) {
-					this.equip=null;
-					this.equip=(Bow)this.bowsub;
-					System.out.println(this.name+"は"+this.equip.getName()+"を装備！");
-				}
-			}
+		if(rand==0) {
+			this.equip=null;
+			this.equip=(Bow)this.bow;
+			System.out.println(this.name+"は"+this.equip.getName()+"を装備！");
+		}else if(rand==1){
+			this.equip=null;
+			this.equip=(Bow)this.bowsub;
+			System.out.println(this.name+"は"+this.equip.getName()+"を装備！");
 		}
 	}
 	//必殺補正メソッド
@@ -336,31 +408,31 @@ public class Sniper extends Fighter{
 		}
 		//体格
 		if(rand8<=0.1) {
-			this.setConstitution(12);
+			this.setConstitution(7);
 		}
 		else if(rand8<=0.2) {
-			this.setConstitution(14);
+			this.setConstitution(8);
 		}
 		else if(rand8<=0.3) {
-			this.setConstitution(16);
+			this.setConstitution(9);
 		}
 		else if(rand8<=0.4) {
-			this.setConstitution(18);
+			this.setConstitution(10);
 		}
 		else if(rand8<=0.6) {
-			this.setConstitution(20);
+			this.setConstitution(11);
 		}
 		else if(rand8<=0.7) {
-			this.setConstitution(22);
+			this.setConstitution(12);
 		}
 		else if(rand8<=0.8) {
-			this.setConstitution(24);
+			this.setConstitution(13);
 		}
 		else if(rand8<=0.9) {
-			this.setConstitution(26);
+			this.setConstitution(14);
 		}
 		else if(rand8<=1) {
-			this.setConstitution(28);
+			this.setConstitution(15);
 		}
 	}
 

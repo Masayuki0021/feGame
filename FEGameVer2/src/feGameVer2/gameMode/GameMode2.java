@@ -31,8 +31,13 @@ public class GameMode2 {
 		pb.upperPara(p1);
 		//重要でないと思うステータスを二回下げる
 		pb.downerPara(p1);
-		//キャラクター変数をそれぞれの型に合わせる
-		p1=pb.equipFighterBack(p1,2);
+		//キャラクター変数をそれぞれの兵種（クラス）の型に合わせ,
+		//それぞれのクラスに応じた武器を生成する
+		System.out.println("武器を選択しますか？1:yes 2:no↓");
+		int num=CheckNumber.checkAndReturnNumber(1,2);
+		if(num==1) {p1=pb.equipFighterBack(p1,false);}
+		else {p1=pb.equipFighterBack(p1,true);}
+		num=0;
 		System.out.println();
 
 		System.out.println("プレイヤー2のキャラメイクです。");
@@ -41,7 +46,11 @@ public class GameMode2 {
 		pb.putName(p2);
 		pb.upperPara(p2);
 		pb.downerPara(p2);
-		p2=pb.equipFighterBack(p2,2);
+		System.out.println("武器を選択しますか？1:yes 2:no↓");
+		num=CheckNumber.checkAndReturnNumber(1,2);
+		if(num==1) {p2=pb.equipFighterBack(p2,false);}
+		else {p2=pb.equipFighterBack(p2,true);}
+		num=0;
 		System.out.println();
 
 		BattleField b=new BattleField(p1,p2);
@@ -55,7 +64,7 @@ public class GameMode2 {
 			System.out.println(p1.getName()+"の勝利！！！");
 		}
 		System.out.println("続ける? 1:yes 2:no  番号を入力して下さい");
-		int num=CheckNumber.checkAndReturnNumber(1,2);
+		num=CheckNumber.checkAndReturnNumber(1,2);
 		while(num==1) {
 			p1.setHp(p1.getMaxHp());
 			p2.setHp(p2.getMaxHp());
@@ -71,6 +80,7 @@ public class GameMode2 {
 			System.out.println("続ける? 1:yes 2:no  番号を入力して下さい");
 			num=CheckNumber.checkAndReturnNumber(1,2);
 		}
+		num=0;
 		System.out.println("メインメニューに戻ります。");
 		Thread.sleep(1000);
 		ChooseGameMode.chooseGameMode();

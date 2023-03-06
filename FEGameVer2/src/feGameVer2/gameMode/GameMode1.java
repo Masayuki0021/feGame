@@ -26,13 +26,13 @@ public class GameMode1 {
 		p1=pb.chooseCharacterRandom(p1);
 		//変数の型を各クラス（兵種）に更新
 		//それぞれのクラスのメソッドを使用しそれぞれの武器インスタンスを生成する
-		p1=pb.equipFighterBack(p1,1);
+		p1=pb.equipFighterBack(p1,true);
 
 		Thread.sleep(1000);
 		System.out.println("キャラクター2はこちら！");
 		//キャラクター2のインスタンスを生成
 		p2=pb.chooseCharacterRandom(p2);
-		p2=pb.equipFighterBack(p2,1);
+		p2=pb.equipFighterBack(p2,true);
 
 
 
@@ -53,7 +53,7 @@ public class GameMode1 {
 		System.out.println("続ける? 1:yes 2:no  番号を入力して下さい");
 		int num=CheckNumber.checkAndReturnNumber(1,2);
 		//戦闘を続ける場合、両方のキャラクターを回復させる
-		if(num==1) {
+		while(num==1) {
 			p1.setHp(p1.getMaxHp());
 			p2.setHp(p2.getMaxHp());
 			while(p1.getHp()>0&&p2.getHp()>0) {
@@ -71,8 +71,6 @@ public class GameMode1 {
 		System.out.println("メインメニューに戻ります。");
 		Thread.sleep(1000);
 		ChooseGameMode.chooseGameMode();
-
-
 	}
 }
 

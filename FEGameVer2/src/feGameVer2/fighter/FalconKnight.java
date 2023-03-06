@@ -2,6 +2,7 @@ package feGameVer2.fighter;
 
 import java.util.Random;
 
+import feGameVer2.CheckNumber;
 import feGameVer2.weapon.Axe;
 import feGameVer2.weapon.Lance;
 import feGameVer2.weapon.Sword;
@@ -19,6 +20,9 @@ public class FalconKnight extends Fighter{
 		if(rand<0.3) {
 			this.sword=new Sword("鉄の剣",5,5,85,0,1);
 		}
+		else if(rand<0.4) {
+			this.sword =new Sword("ひかりの剣",9,9,70,0,3);
+		}
 		else if(rand<0.5) {
 			this.sword =new Sword("細身の剣",3,2,95,5,1);
 		}
@@ -32,6 +36,28 @@ public class FalconKnight extends Fighter{
 			this.sword =new Sword("銀の剣",13,8,75,0,1);
 		}
 	}
+	//選択剣武器生成メソッド
+	public void chooseEquipNewSword(int num) {
+		if(num==1) {
+			this.sword=new Sword("鉄の剣",5,5,85,0,1);
+		}
+		else if(num==2) {
+			this.sword =new Sword("細身の剣",3,2,95,5,1);
+		}
+		else if(num==3) {
+			this.sword =new Sword("鋼の剣",8,10,70,0,1);
+		}
+		else if(num==4) {
+			this.sword =new Sword("キルソード",9,7,80,30,1);
+		}
+		else if(num==5) {
+			this.sword =new Sword("銀の剣",13,8,75,0,1);
+		}
+		else if(num==6) {
+			this.sword =new Sword("ひかりの剣",9,9,70,0,3);
+		}
+	}
+
 	//槍武器生成メソッド
 	public void equipNewLance() {
 		double rand = Math.random();
@@ -60,9 +86,36 @@ public class FalconKnight extends Fighter{
 			this.lance =new Lance("マルテ",16,11,80,0,3);
 		}
 	}
+	//選択槍武器生成メソッド
+	public void chooseEquipNewLance(int num) {
+		if(num==1) {
+			this.lance=new Lance("鉄の槍",7,8,70,0,1);
+		}
+		else if(num==2) {
+			this.lance =new Lance("てやり",6,11,55,0,3);
+		}
+		else if(num==3) {
+			this.lance =new Lance("細身の槍",4,4,80,5,1);
+		}
+		else if(num==4) {
+			this.lance =new Lance("鋼の槍",10,13,55,0,1);
+		}
+		else if(num==5) {
+			this.lance =new Lance("キラーランス",10,9,75,30,1);
+		}
+		else if(num==6) {
+			this.lance =new Lance("銀の槍",14,10,65,0,1);
+		}
+		else if(num==7) {
+			this.lance =new Lance("スレンドスピア",10,10,65,5,3);
+		}
+		else if(num==8) {
+			this.lance =new Lance("マルテ",16,11,80,0,3);
+		}
+	}
+
 	//戦闘前武器装備メソッド
 	public void equipWeaponBeforeBattle() {
-		Weapon[] w={sword,lance};
 		Random random=new Random();
 		int rand=random.nextInt(2);
 		switch(rand) {
@@ -82,7 +135,34 @@ public class FalconKnight extends Fighter{
 		this.equipNewLance();
 		this.equipWeaponBeforeBattle();
 	}
-
+//武器選択、生成メソッド
+	public void chooseEquipNewWeapon(){
+		System.out.println("剣武器を選択してください");
+		System.out.println(" :名前			威力	重さ	命中	必殺	距離");
+		System.out.println("1:鉄の剣		5,		5,		85,		0,		近");
+		System.out.println("2:細身の剣		3,		2,		95,		5,		近");
+		System.out.println("3:鋼の剣		8,		10,		70,		0,		近");
+		System.out.println("4:キルソード	9,		7,		80,		30,		近");
+		System.out.println("5:銀の剣		13,		8,		75,		0,		近");
+		System.out.println("6:ひかりの剣	9,		9,		70,		0,		遠近");
+		System.out.println("↓");
+		int num=CheckNumber.checkAndReturnNumber(1,6);
+		this.chooseEquipNewSword(num);
+		System.out.println("槍武器を選択してください");
+		System.out.println(" :名前			威力	重さ	命中	必殺	距離");
+		System.out.println("1:鉄の槍		7,		8,		70,		0,		近");
+		System.out.println("2:てやり		6,		11,		55,		0,		遠近");
+		System.out.println("3:細身の槍		4,		4,		80,		5,		近");
+		System.out.println("4:鋼の槍		10,		13,		55,		0,		近");
+		System.out.println("5:キラーランス	10,		9,		75,		30,		近");
+		System.out.println("6:銀の槍		14,		10,		65,		0,		近");
+		System.out.println("7:スレンドスピア10,		10,		65,		5,		遠近");
+		System.out.println("8:マルテ		16,		11,		80,		0,		遠近");
+		System.out.println("↓");
+		num=CheckNumber.checkAndReturnNumber(1,8);
+		this.chooseEquipNewLance(num);
+		this.equipWeaponBeforeBattle();
+	}
 
 	//戦闘中武器持ち替えメソッド
 	public void changeEquip(Weapon o) {
@@ -101,6 +181,20 @@ public class FalconKnight extends Fighter{
 			this.equip=(Lance)this.lance;
 			System.out.println(this.name+"は"+this.equip.getName()+"を装備！");
 		}
+		else {
+			Random random=new Random();
+			int rand=random.nextInt(2);
+			if(rand==0) {
+				this.equip=null;
+				this.equip=(Lance)this.lance;
+				System.out.println(this.name+"は"+this.equip.getName()+"を装備！");
+			}else if(rand==1) {
+				this.equip=null;
+				this.equip=(Sword)this.sword;
+				System.out.println(this.name+"は"+this.equip.getName()+"を装備！");
+			}
+		}
+
 
 	}
 	public FalconKnight() {
@@ -349,31 +443,31 @@ public class FalconKnight extends Fighter{
 		}
 		//体格
 		if(rand8<=0.1) {
-			this.setConstitution(8);
+			this.setConstitution(6);
 		}
 		else if(rand8<=0.2) {
-			this.setConstitution(9);
+			this.setConstitution(7);
 		}
 		else if(rand8<=0.3) {
-			this.setConstitution(10);
+			this.setConstitution(8);
 		}
 		else if(rand8<=0.4) {
-			this.setConstitution(11);
+			this.setConstitution(9);
 		}
 		else if(rand8<=0.6) {
-			this.setConstitution(12);
+			this.setConstitution(10);
 		}
 		else if(rand8<=0.7) {
-			this.setConstitution(13);
+			this.setConstitution(11);
 		}
 		else if(rand8<=0.8) {
-			this.setConstitution(14);
+			this.setConstitution(12);
 		}
 		else if(rand8<=0.9) {
-			this.setConstitution(15);
+			this.setConstitution(13);
 		}
 		else if(rand8<=1) {
-			this.setConstitution(16);
+			this.setConstitution(14);
 		}
 	}
 	public String toString() {

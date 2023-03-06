@@ -3,7 +3,6 @@ package feGameVer2.fighter;
 import java.util.Random;
 
 import feGameVer2.CheckNumber;
-import feGameVer2.weapon.Axe;
 import feGameVer2.weapon.Sword;
 import feGameVer2.weapon.Weapon;
 
@@ -87,20 +86,14 @@ public class Assassin extends Fighter {
 	public void changeEquip(Weapon o) {
 		Random random=new Random();
 		int rand=random.nextInt(2);
-		if(o instanceof Axe) {
-			if(rand==0) {
-				if(o instanceof Weapon) {
-					this.equip=null;
-					this.equip=(Sword)this.sword;
-					System.out.println(this.name+"は"+this.equip.getName()+"を装備！");
-				}
-			}else if(rand==1){
-				if(o instanceof Weapon) {
-					this.equip=null;
-					this.equip=(Sword)this.swordsub;
-					System.out.println(this.name+"は"+this.equip.getName()+"を装備！");
-				}
-			}
+		if(rand==0) {
+			this.equip=null;
+			this.equip=(Sword)this.sword;
+			System.out.println(this.name+"は"+this.equip.getName()+"を装備！");
+		}else if(rand==1){
+			this.equip=null;
+			this.equip=(Sword)this.swordsub;
+			System.out.println(this.name+"は"+this.equip.getName()+"を装備！");
 		}
 	}
 	public void criticalUpper() {
@@ -336,31 +329,31 @@ public class Assassin extends Fighter {
 		}
 		//体格
 		if(rand8<=0.1) {
-			this.setConstitution(10);
+			this.setConstitution(6);
 		}
 		else if(rand8<=0.2) {
-			this.setConstitution(11);
+			this.setConstitution(7);
 		}
 		else if(rand8<=0.3) {
-			this.setConstitution(12);
+			this.setConstitution(8);
 		}
 		else if(rand8<=0.4) {
-			this.setConstitution(13);
+			this.setConstitution(9);
 		}
 		else if(rand8<=0.6) {
-			this.setConstitution(14);
+			this.setConstitution(10);
 		}
 		else if(rand8<=0.7) {
-			this.setConstitution(15);
+			this.setConstitution(11);
 		}
 		else if(rand8<=0.8) {
-			this.setConstitution(16);
+			this.setConstitution(12);
 		}
 		else if(rand8<=0.9) {
-			this.setConstitution(17);
+			this.setConstitution(13);
 		}
 		else if(rand8<=1) {
-			this.setConstitution(18);
+			this.setConstitution(14);
 		}
 	}
 	public String toString() {

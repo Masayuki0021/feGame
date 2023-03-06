@@ -2,7 +2,7 @@ package feGameVer2.fighter;
 
 import java.util.Random;
 
-import feGameVer2.weapon.Axe;
+import feGameVer2.CheckNumber;
 import feGameVer2.weapon.Sword;
 import feGameVer2.weapon.Weapon;
 
@@ -33,28 +33,70 @@ public class SwordMaster extends Fighter{
 			this.sword =new Sword("倭刀",8,5,75,40,1);
 		}
 	}
-	//サブ剣武器生成メソッド
-		public void equipNewSwordsub() {
-			double rand = Math.random();
-			if(rand<0.3) {
-				this.sword=new Sword("鉄の剣",5,5,85,0,1);
-			}
-			else if(rand<0.4) {
-				this.sword =new Sword("細身の剣",3,2,95,5,1);
-			}
-			else if(rand<0.5) {
-				this.sword =new Sword("鋼の剣",8,10,70,0,1);
-			}
-			else if(rand<0.75) {
-				this.sword =new Sword("キルソード",9,7,80,30,1);
-			}
-			else if(rand<0.85) {
-				this.sword =new Sword("銀の剣",13,8,75,0,1);
-			}
-			else if(rand<=1) {
-				this.sword =new Sword("倭刀",8,5,75,40,1);
-			}
+	//選択剣武器生成メソッド
+	public void chooseEquipNewSword(int num) {
+		if(num==1) {
+			this.sword=new Sword("鉄の剣",5,5,85,0,1);
 		}
+		else if(num==2) {
+			this.sword =new Sword("細身の剣",3,2,95,5,1);
+		}
+		else if(num==3) {
+			this.sword =new Sword("鋼の剣",8,10,70,0,1);
+		}
+		else if(num==4) {
+			this.sword =new Sword("キルソード",9,7,80,30,1);
+		}
+		else if(num==5) {
+			this.sword =new Sword("銀の剣",13,8,75,0,1);
+		}
+		else if(num==6) {
+			this.sword =new Sword("倭刀",8,5,75,40,1);
+		}
+	}
+//サブ剣武器生成メソッド
+	public void equipNewSwordsub() {
+		double rand = Math.random();
+		if(rand<0.3) {
+			this.swordsub=new Sword("鉄の剣",5,5,85,0,1);
+		}
+		else if(rand<0.4) {
+			this.swordsub =new Sword("細身の剣",3,2,95,5,1);
+		}
+		else if(rand<0.5) {
+			this.swordsub =new Sword("鋼の剣",8,10,70,0,1);
+		}
+		else if(rand<0.75) {
+			this.swordsub =new Sword("キルソード",9,7,80,30,1);
+		}
+		else if(rand<0.85) {
+			this.swordsub =new Sword("銀の剣",13,8,75,0,1);
+		}
+		else if(rand<=1) {
+			this.swordsub =new Sword("倭刀",8,5,75,40,1);
+		}
+	}
+	//選択剣武器生成メソッド
+	public void chooseEquipNewSwordSub(int num) {
+		if(num==1) {
+			this.swordsub=new Sword("鉄の剣",5,5,85,0,1);
+		}
+		else if(num==2) {
+			this.swordsub =new Sword("細身の剣",3,2,95,5,1);
+		}
+		else if(num==3) {
+			this.swordsub =new Sword("鋼の剣",8,10,70,0,1);
+		}
+		else if(num==4) {
+			this.swordsub =new Sword("キルソード",9,7,80,30,1);
+		}
+		else if(num==5) {
+			this.swordsub =new Sword("銀の剣",13,8,75,0,1);
+		}
+		else if(num==6) {
+			this.swordsub =new Sword("倭刀",8,5,75,40,1);
+		}
+	}
 	//戦闘前武器装備メソッド
 	public void equipWeaponBeforeBattle() {
 			this.equip=this.sword;
@@ -66,26 +108,48 @@ public class SwordMaster extends Fighter{
 		this.equipWeaponBeforeBattle();
 		this.criticalUpper();
 	}
+//武器選択、生成メソッド
+	public void chooseEquipNewWeapon(){
+		System.out.println("メイン武器を選択してください");
+		System.out.println(" :名前			威力	重さ	命中	必殺	距離");
+		System.out.println("1:鉄の剣		5,		5,		85,		0,		近");
+		System.out.println("2:細身の剣		3,		2,		95,		5,		近");
+		System.out.println("3:鋼の剣		8,		10,		70,		0,		近");
+		System.out.println("4:キルソード	9,		7,		80,		30,		近");
+		System.out.println("5:銀の剣		13,		8,		75,		0,		近");
+		System.out.println("6:倭刀			8,		5,		75,		40,		近");
+		System.out.println("↓");
+		int num=CheckNumber.checkAndReturnNumber(1,6);
+		this.chooseEquipNewSword(num);
+		System.out.println("サブ武器を選択してください");
+		System.out.println(" :名前			威力	重さ	命中	必殺	距離");
+		System.out.println("1:鉄の剣		5,		5,		85,		0,		近");
+		System.out.println("2:細身の剣		3,		2,		95,		5,		近");
+		System.out.println("3:鋼の剣		8,		10,		70,		0,		近");
+		System.out.println("4:キルソード	9,		7,		80,		30,		近");
+		System.out.println("5:銀の剣		13,		8,		75,		0,		近");
+		System.out.println("6:倭刀			8,		5,		75,		40,		近");
+		System.out.println("↓");
+		num=CheckNumber.checkAndReturnNumber(1,6);
+		this.chooseEquipNewSwordSub(num);
+		this.equipWeaponBeforeBattle();
+		this.criticalUpper();
+
+	}
 
 
 	//戦闘中武器持ち替えメソッド
 	public void changeEquip(Weapon o) {
 		Random random=new Random();
 		int rand=random.nextInt(2);
-		if(o instanceof Axe) {
-			if(rand==0) {
-				if(o instanceof Weapon) {
-					this.equip=null;
-					this.equip=(Sword)this.sword;
-					System.out.println(this.name+"は"+this.equip.getName()+"を装備！");
-				}
-			}else if(rand==1){
-				if(o instanceof Weapon) {
-					this.equip=null;
-					this.equip=(Sword)this.swordsub;
-					System.out.println(this.name+"は"+this.equip.getName()+"を装備！");
-				}
-			}
+		if(rand==0) {
+			this.equip=null;
+			this.equip=(Sword)this.sword;
+			System.out.println(this.name+"は"+this.equip.getName()+"を装備！");
+		}else if(rand==1){
+			this.equip=null;
+			this.equip=(Sword)this.swordsub;
+			System.out.println(this.name+"は"+this.equip.getName()+"を装備！");
 		}
 	}
 	//必殺補正メソッド
@@ -336,31 +400,31 @@ public class SwordMaster extends Fighter{
 		}
 		//体格
 		if(rand8<=0.1) {
-			this.setConstitution(10);
+			this.setConstitution(5);
 		}
 		else if(rand8<=0.2) {
-			this.setConstitution(11);
+			this.setConstitution(6);
 		}
 		else if(rand8<=0.3) {
-			this.setConstitution(12);
+			this.setConstitution(7);
 		}
 		else if(rand8<=0.4) {
-			this.setConstitution(13);
+			this.setConstitution(8);
 		}
 		else if(rand8<=0.6) {
-			this.setConstitution(14);
+			this.setConstitution(9);
 		}
 		else if(rand8<=0.7) {
-			this.setConstitution(15);
+			this.setConstitution(10);
 		}
 		else if(rand8<=0.8) {
-			this.setConstitution(16);
+			this.setConstitution(11);
 		}
 		else if(rand8<=0.9) {
-			this.setConstitution(17);
+			this.setConstitution(12);
 		}
 		else if(rand8<=1) {
-			this.setConstitution(18);
+			this.setConstitution(13);
 		}
 	}
 	public String toString() {

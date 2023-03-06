@@ -20,7 +20,7 @@ public class Berserker extends Fighter{
 			this.axe =new Axe("ておの",7,15,50,0,3);
 		}
 		else if(rand<0.6) {
-			this.axe =new Axe("デビルアクス",18,18,30,0,1);
+			this.axe =new Axe("デビルアクス",24,18,20,0,1);
 		}
 		else if(rand<0.7) {
 			this.axe =new Axe("鋼の斧",11,15,50,0,1);
@@ -31,10 +31,14 @@ public class Berserker extends Fighter{
 		else if(rand<0.9) {
 			this.axe  =new Axe("銀の斧",15,12,55,0,1);
 		}
-		else if(rand<=1) {
+		else if(rand<0.95) {
 			this.axe =new Axe("トマホーク",13,14,55,5,3);
 		}
-	}//選択斧武器生成メソッド
+		else if(rand<=1) {
+			this.axe=new Axe("アルマーズ",18,18,85,0,1);
+		}
+	}
+	//選択斧武器生成メソッド
 	public void chooseEquipNewAxe(int num) {
 		if(num==1) {
 			this.axe=new Axe("鉄の斧",8,10,65,0,1);
@@ -43,7 +47,7 @@ public class Berserker extends Fighter{
 			this.axe =new Axe("ておの",7,15,50,0,3);
 		}
 		else if(num==3) {
-			this.axe =new Axe("デビルアクス",18,18,30,0,1);
+			this.axe =new Axe("デビルアクス",24,18,20,0,1);
 		}
 		else if(num==4) {
 			this.axe =new Axe("鋼の斧",11,15,50,0,1);
@@ -57,7 +61,11 @@ public class Berserker extends Fighter{
 		else if(num==7) {
 			this.axe =new Axe("トマホーク",13,14,55,5,3);
 		}
+		else if(num==8) {
+			this.axe=new Axe("アルマーズ",18,18,85,0,1);
+		}
 	}
+
 	//サブ斧武器生成メソッド
 	public void equipNewAxeSub() {
 		double rand = Math.random();
@@ -68,7 +76,7 @@ public class Berserker extends Fighter{
 			this.axesub =new Axe("ておの",7,15,50,0,3);
 		}
 		else if(rand<0.6) {
-			this.axesub =new Axe("デビルアクス",18,18,30,0,1);
+			this.axesub =new Axe("デビルアクス",24,18,20,0,1);
 		}
 		else if(rand<0.7) {
 			this.axesub =new Axe("鋼の斧",11,15,50,0,1);
@@ -79,8 +87,11 @@ public class Berserker extends Fighter{
 		else if(rand<0.9) {
 			this.axesub  =new Axe("銀の斧",15,12,55,0,1);
 		}
-		else if(rand<=1) {
+		else if(rand<0.95) {
 			this.axesub =new Axe("トマホーク",13,14,55,5,3);
+		}
+		else if(rand<=1) {
+			this.axesub=new Axe("アルマーズ",18,18,85,0,1);
 		}
 	}
 	//選択斧武器生成メソッド
@@ -89,10 +100,10 @@ public class Berserker extends Fighter{
 			this.axesub=new Axe("鉄の斧",8,10,65,0,1);
 		}
 		else if(num==2) {
-			this.axe =new Axe("ておの",7,15,50,0,3);
+			this.axesub =new Axe("ておの",7,15,50,0,3);
 		}
 		else if(num==3) {
-			this.axesub =new Axe("デビルアクス",18,18,30,0,1);
+			this.axesub =new Axe("デビルアクス",24,18,20,0,1);
 		}
 		else if(num==4) {
 			this.axesub =new Axe("鋼の斧",11,15,50,0,1);
@@ -105,6 +116,9 @@ public class Berserker extends Fighter{
 		}
 		else if(num==7) {
 			this.axesub =new Axe("トマホーク",13,14,55,5,3);
+		}
+		else if(num==8) {
+			this.axesub=new Axe("アルマーズ",18,18,85,0,1);
 		}
 	}
 
@@ -119,33 +133,35 @@ public class Berserker extends Fighter{
 		this.equipWeaponBeforeBattle();
 		this.criticalUpper();
 	}
-	//武器選択、生成メソッド
-		public void chooseEquipNewWeapon(){
-			System.out.println("メイン武器を選択してください");
-			System.out.println(" :名前			威力	重さ	命中	必殺	距離");
-			System.out.println("1:鉄の斧		8,		10,		65,		0,		近");
-			System.out.println("2:ておの		7,		15,		50,		0,		遠近");
-			System.out.println("3:デビルアクス	18,		18,		30,		0,		近");
-			System.out.println("4:鋼の斧		11,		15,		50,		0,		近");
-			System.out.println("5:キラーアクス	11,		11,		65,		30,		近");
-			System.out.println("6:銀の斧		15,		12,		55,		0,		近");
-			System.out.println("7:トマホーク	13,		14,		55,		5,		遠近");
-			System.out.println("↓");
-			int num=CheckNumber.checkAndReturnNumber(1,7);
-			this.chooseEquipNewAxe(num);
-			System.out.println("サブ武器を選択してください");
-			System.out.println(" :名前			威力	重さ	命中	必殺	距離");
-			System.out.println("1:鉄の斧		8,		10,		65,		0,		近");
-			System.out.println("2:ておの		7,		15,		50,		0,		遠近");
-			System.out.println("3:デビルアクス	18,		18,		30,		0,		近");
-			System.out.println("4:鋼の斧		11,		15,		50,		0,		近");
-			System.out.println("5:キラーアクス	11,		11,		65,		30,		近");
-			System.out.println("6:銀の斧		15,		12,		55,		0,		近");
-			System.out.println("7:トマホーク	13,		14,		55,		5,		遠近");
-			System.out.println("↓");
-			num=CheckNumber.checkAndReturnNumber(1,7);
-			this.chooseEquipNewAxeSub(num);
-			this.equipWeaponBeforeBattle();
+//武器選択、生成メソッド
+	public void chooseEquipNewWeapon(){
+		System.out.println("メイン武器を選択してください");
+		System.out.println(" :名前			威力	重さ	命中	必殺	距離");
+		System.out.println("1:鉄の斧		8,		10,		65,		0,		近");
+		System.out.println("2:ておの		7,		15,		50,		0,		遠近");
+		System.out.println("3;デビルアクス	24,		18,		20,		0,		近");
+		System.out.println("4:鋼の斧		11,		15,		50,		0,		近");
+		System.out.println("5:キラーアクス	11,		11,		65,		30,		近");
+		System.out.println("6:銀の斧		15,		12,		55,		0,		近");
+		System.out.println("7:トマホーク	13,		14,		55,		5,		遠近");
+		System.out.println("8:アルマーズ	18,		18,		85,		0,		近");
+		System.out.println("↓");
+		int num=CheckNumber.checkAndReturnNumber(1,8);
+		this.chooseEquipNewAxe(num);
+		System.out.println("サブ武器を選択してください");
+		System.out.println(" :名前			威力	重さ	命中	必殺	距離");
+		System.out.println("1:鉄の斧		8,		10,		65,		0,		近");
+		System.out.println("2:ておの		7,		15,		50,		0,		遠近");
+		System.out.println("3;デビルアクス	24,		18,		20,		0,		近");
+		System.out.println("4:鋼の斧		11,		15,		50,		0,		近");
+		System.out.println("5:キラーアクス	11,		11,		65,		30,		近");
+		System.out.println("6:銀の斧		15,		12,		55,		0,		近");
+		System.out.println("7:トマホーク	13,		14,		55,		5,		遠近");
+		System.out.println("8:アルマーズ	18,		18,		85,		0,		近");
+		System.out.println("↓");;
+		num=CheckNumber.checkAndReturnNumber(1,8);
+		this.chooseEquipNewAxeSub(num);
+		this.equipWeaponBeforeBattle();
 			this.criticalUpper();
 	}
 
@@ -154,20 +170,14 @@ public class Berserker extends Fighter{
 	public void changeEquip(Weapon o) {
 		Random random=new Random();
 		int rand=random.nextInt(2);
-		if(o instanceof Axe) {
-			if(rand==0) {
-				if(o instanceof Weapon) {
-					this.equip=null;
-					this.equip=(Axe)this.axe;
-					System.out.println(this.name+"は"+this.equip.getName()+"を装備！");
-				}
-			}else if(rand==1){
-				if(o instanceof Weapon) {
-					this.equip=null;
-					this.equip=(Axe)this.axesub;
-					System.out.println(this.name+"は"+this.equip.getName()+"を装備！");
-				}
-			}
+		if(rand==0) {
+			this.equip=null;
+			this.equip=(Axe)this.axe;
+			System.out.println(this.name+"は"+this.equip.getName()+"を装備！");
+		}else if(rand==1){
+			this.equip=null;
+			this.equip=(Axe)this.axesub;
+			System.out.println(this.name+"は"+this.equip.getName()+"を装備！");
 		}
 	}
 	//必殺補正メソッド
@@ -401,31 +411,31 @@ public class Berserker extends Fighter{
 		}
 		//体格
 		if(rand8<=0.1) {
-			this.setConstitution(20);
+			this.setConstitution(12);
 		}
 		else if(rand8<=0.2) {
-			this.setConstitution(22);
+			this.setConstitution(13);
 		}
 		else if(rand8<=0.3) {
-			this.setConstitution(24);
+			this.setConstitution(14);
 		}
 		else if(rand8<=0.4) {
-			this.setConstitution(24);
+			this.setConstitution(15);
 		}
 		else if(rand8<=0.6) {
-			this.setConstitution(26);
+			this.setConstitution(16);
 		}
 		else if(rand8<=0.7) {
-			this.setConstitution(28);
+			this.setConstitution(17);
 		}
 		else if(rand8<=0.8) {
-			this.setConstitution(30);
+			this.setConstitution(18);
 		}
 		else if(rand8<=0.9) {
-			this.setConstitution(32);
+			this.setConstitution(19);
 		}
 		else if(rand8<=1) {
-			this.setConstitution(34);
+			this.setConstitution(20);
 		}
 	}
 	public String toString() {

@@ -2,7 +2,7 @@ package feGameVer2.fighter;
 
 import java.util.Random;
 
-import feGameVer2.weapon.Light;
+import feGameVer2.CheckNumber;
 import feGameVer2.weapon.Nature;
 import feGameVer2.weapon.Weapon;
 
@@ -36,29 +36,78 @@ public class Sage extends Fighter {
 			this.nature =new Nature("フォルブレイズ",14,10,85,5,3);
 		}
 	}
+	//理魔法生成メソッド
+	public void chooseEquipNewNature(int num) {
+		if(num==1) {
+			this.nature=new Nature("ファイアー",5,2,90,0,3);
+		}
+		else if(num==2) {
+			this.nature =new Nature("サンダー",8,4,80,5,3);
+		}
+		else if(num==3) {
+			this.nature =new Nature("エルファイアー",10,6,85,0,3);
+		}
+		else if(num==4) {
+			this.nature =new Nature("サンダーストーム",12,10,70,10,3);
+		}
+		else if(num==5) {
+			this.nature =new Nature("フィンブル",13,8,80,5,3);
+		}
+		else if(num==6) {
+			this.nature =new Nature("エイルカリバー",8,8,90,10,3);
+		}
+		else if(num==7) {
+			this.nature =new Nature("フォルブレイズ",14,10,85,5,3);
+		}
+	}
+
 	//サブ理魔法生成メソッド
 	public void equipNewNatureSub() {
 		double rand = Math.random();
 		if(rand<0.3) {
-			this.nature=new Nature("ファイアー",5,2,90,0,3);
+			this.naturesub=new Nature("ファイアー",5,2,90,0,3);
 		}
 		else if(rand<0.4) {
-			this.nature =new Nature("サンダー",8,4,80,5,3);
+			this.naturesub =new Nature("サンダー",8,4,80,5,3);
 		}
 		else if(rand<0.5) {
-			this.nature =new Nature("エルファイアー",10,6,85,0,3);
+			this.naturesub =new Nature("エルファイアー",10,6,85,0,3);
 		}
 		else if(rand<0.6) {
-			this.nature =new Nature("サンダーストーム",12,10,70,10,3);
+			this.naturesub =new Nature("サンダーストーム",12,10,70,10,3);
 		}
 		else if(rand<0.7) {
-			this.nature =new Nature("フィンブル",13,8,80,5,3);
+			this.naturesub =new Nature("フィンブル",13,8,80,5,3);
 		}
 		else if(rand<0.95) {
-			this.nature =new Nature("エイルカリバー",8,8,90,10,3);
+			this.naturesub =new Nature("エイルカリバー",8,8,90,10,3);
 		}
 		else if(rand<1) {
-			this.nature =new Nature("フォルブレイズ",14,10,85,5,3);
+			this.naturesub =new Nature("フォルブレイズ",14,10,85,5,3);
+		}
+	}
+	//選択サブ理魔法生成メソッド
+	public void chooseEquipNewNatureSub(int num) {
+		if(num==1) {
+			this.naturesub=new Nature("ファイアー",5,2,90,0,3);
+		}
+		else if(num==2) {
+			this.naturesub =new Nature("サンダー",8,4,80,5,3);
+		}
+		else if(num==3) {
+			this.naturesub =new Nature("エルファイアー",10,6,85,0,3);
+		}
+		else if(num==4) {
+			this.naturesub =new Nature("サンダーストーム",12,10,70,10,3);
+		}
+		else if(num==5) {
+			this.naturesub =new Nature("フィンブル",13,8,80,5,3);
+		}
+		else if(num==6) {
+			this.naturesub =new Nature("エイルカリバー",8,8,90,10,3);
+		}
+		else if(num==7) {
+			this.naturesub =new Nature("フォルブレイズ",14,10,85,5,3);
 		}
 	}
 	//戦闘前武器装備メソッド
@@ -72,24 +121,47 @@ public class Sage extends Fighter {
 		this.equipNewNatureSub();
 		this.equipWeaponBeforeBattle();
 	}
+	//武器選択、生成メソッド
+	public void chooseEquipNewWeapon(){
+		System.out.println("メイン武器を選択してください");
+		System.out.println(" :名前				威力	重さ	命中	必殺	距離");
+		System.out.println("1:ファイアー		5,		2,		90,		0,		遠近");
+		System.out.println("2:サンダー			8,		4,		80,		5,		遠近");
+		System.out.println("3:エルファイアー	10,		6,		85,		0,		遠近");
+		System.out.println("4:サンダーストーム	12,		10,		70,		10,		遠近");
+		System.out.println("5:フィンブル		13,		8,		80,		5,		遠近");
+		System.out.println("6:エイルカリバー	8,		8,		90,		10,		遠近");
+		System.out.println("7:フォルブレイズ	14,		10,		85,		5,		遠近");
+		System.out.println("↓");
+		int num=CheckNumber.checkAndReturnNumber(1,7);
+		this.chooseEquipNewNature(num);
+		System.out.println("サブ武器を選択してください");
+		System.out.println(" :名前				威力	重さ	命中	必殺	距離");
+		System.out.println("1:ファイアー		5,		2,		90,		0,		遠近");
+		System.out.println("2:サンダー			8,		4,		80,		5,		遠近");
+		System.out.println("3:エルファイアー	10,		6,		85,		0,		遠近");
+		System.out.println("4:サンダーストーム	12,		10,		70,		10,		遠近");
+		System.out.println("5:フィンブル		13,		8,		80,		5,		遠近");
+		System.out.println("6:エイルカリバー	8,		8,		90,		10,		遠近");
+		System.out.println("7:フォルブレイズ	14,		10,		85,		5,		遠近");
+		System.out.println("↓");
+		num=CheckNumber.checkAndReturnNumber(1,7);
+		this.chooseEquipNewNatureSub(num);
+		this.equipWeaponBeforeBattle();
+	}
+
 	//戦闘中武器持ち替えメソッド
 	public void changeEquip(Weapon o) {
 		Random random=new Random();
 		int rand=random.nextInt(2);
-		if(o instanceof Light) {
-			if(rand==0) {
-				if(o instanceof Weapon) {
-					this.equip=null;
-					this.equip=(Nature)this.nature;
-					System.out.println(this.name+"は"+this.equip.getName()+"を装備！");
-				}
-			}else if(rand==1){
-				if(o instanceof Weapon) {
-					this.equip=null;
-					this.equip=(Nature)this.naturesub;
-					System.out.println(this.name+"は"+this.equip.getName()+"を装備！");
-				}
-			}
+		if(rand==0) {
+			this.equip=null;
+			this.equip=(Nature)this.nature;
+			System.out.println(this.name+"は"+this.equip.getName()+"を装備！");
+		}else if(rand==1){
+			this.equip=null;
+			this.equip=(Nature)this.naturesub;
+			System.out.println(this.name+"は"+this.equip.getName()+"を装備！");
 		}
 	}
 	public Sage() {
@@ -328,31 +400,31 @@ public class Sage extends Fighter {
 		}
 		//体格
 		if(rand8<=0.1) {
-			this.setConstitution(8);
+			this.setConstitution(4);
 		}
 		else if(rand8<=0.2) {
-			this.setConstitution(10);
+			this.setConstitution(5);
 		}
 		else if(rand8<=0.3) {
-			this.setConstitution(11);
+			this.setConstitution(6);
 		}
 		else if(rand8<=0.4) {
-			this.setConstitution(12);
+			this.setConstitution(7);
 		}
 		else if(rand8<=0.6) {
-			this.setConstitution(13);
+			this.setConstitution(8);
 		}
 		else if(rand8<=0.7) {
-			this.setConstitution(14);
+			this.setConstitution(9);
 		}
 		else if(rand8<=0.8) {
-			this.setConstitution(15);
+			this.setConstitution(10);
 		}
 		else if(rand8<=0.9) {
-			this.setConstitution(16);
+			this.setConstitution(11);
 		}
 		else if(rand8<=1) {
-			this.setConstitution(17);
+			this.setConstitution(12);
 		}
 	}
 	public String toString() {

@@ -123,6 +123,7 @@ public  class BattleField {
 		int p1hitRate=p1.getEquip().getAccuracy()+p1.getSkill()*2+p1.getLuck()/2;
 		int p1power=p1.getStrength()+p1.getEquip().getPower();
 		int p1critical=p1.getEquip().getCritical()+p1.getSkill()/2;
+		if(p1critical>90) {p1critical=90;}
 		//プレイヤー2	計算前要素計算
 		int p2weaponLoad=p2.getEquip().getWeight()-p2.getConstitution();
 		if(p2weaponLoad<=0) {
@@ -133,7 +134,7 @@ public  class BattleField {
 		int p2hitRate=p2.getEquip().getAccuracy()+p2.getSkill()*2+p2.getLuck()/2;
 		int p2power=p2.getStrength()+p2.getEquip().getPower();
 		int p2critical=p2.getEquip().getCritical()+p2.getSkill()/2;
-
+		if(p2critical>90) {p2critical=90;}
 
 		//p1 戦闘数値	計算
 		this.p1ActHitRate=p1hitRate-p2avoidRate;
@@ -151,7 +152,8 @@ public  class BattleField {
 			this.p1ActPowerMagic=2;
 		}
 
-		this.p1ActCritical=p1critical+p2.getLuck();
+		this.p1ActCritical=p1critical-p2.getLuck();
+		if(this.p1ActCritical<0) {this.p1ActCritical=0;}
 
 		//p2 戦闘数値	計算
 		this.p2ActHitRate=p2hitRate-p1avoidRate;
@@ -169,7 +171,8 @@ public  class BattleField {
 		if(this.p2ActPowerMagic<=2) {
 			this.p2ActPowerMagic=2;
 		}
-		this.p2ActCritical=p2critical+p1.getLuck();
+		this.p2ActCritical=p2critical-p1.getLuck();
+		if(this.p2ActCritical<0) {this.p2ActCritical=0;}
 
 	}
 
@@ -970,6 +973,7 @@ public  class BattleField {
 		if(this.p1attackSpeed>this.p2attackSpeed) {
 			double rand=Math.random();
 			if(rand<0.65) {
+				System.out.println(p1.getName()+"は武器を選びなおしている！！");
 				Thread.sleep(1000);
 				//武器持ち替えメソッド
 				p1.changeEquip(p2.getEquip());
@@ -978,6 +982,7 @@ public  class BattleField {
 			}
 			//遅い方: 35％の確率で武器を持ち替える
 			else {
+				System.out.println(p2.getName()+"は武器を選びなおしている！！");
 				Thread.sleep(1000);
 				//武器持ち替えメソッド
 				p2.changeEquip(p1.getEquip());
@@ -1028,10 +1033,12 @@ public  class BattleField {
 			//p2視点から判定　（ロジックは同上）
 			double rand=Math.random();
 			if(rand<0.65) {
+				System.out.println(p2.getName()+"は武器を選びなおしている！！");
 				Thread.sleep(1000);
 				p2.changeEquip(p1.getEquip());
 				Thread.sleep(1000);
 			}else {
+				System.out.println(p1.getName()+"は武器を選びなおしている！！");
 				Thread.sleep(1000);
 				p1.changeEquip(p2.getEquip());
 

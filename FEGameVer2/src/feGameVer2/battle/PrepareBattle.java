@@ -414,8 +414,8 @@ public class PrepareBattle {
 		}
 	}
 //変数の型を各兵種に更新
-	public Fighter equipFighterBack(Fighter f,int gameMode) {
-		if(gameMode==1) {
+	public Fighter equipFighterBack(Fighter f,boolean isRandom) {
+		if(isRandom==true) {
 			if(f instanceof Paladin) {
 				Paladin fP=(Paladin)f;
 				//各クラス（兵種）に応じた武器インスタンスを生成
@@ -487,61 +487,61 @@ public class PrepareBattle {
 			if(f instanceof Paladin) {
 				Paladin fP=(Paladin)f;
 				//各クラス（兵種）に応じた武器インスタンスを生成
-				fP.equipNewWeapon();
+				fP.chooseEquipNewWeapon();
 				return fP;
 			}
 			else if(f instanceof Warrior) {
 				Warrior fW=(Warrior) f;
-				fW.equipNewWeapon();
+				fW.chooseEquipNewWeapon();
 				return fW;
 			}
 			else if(f instanceof General) {
 				General fG=(General) f;
-				fG.equipNewWeapon();
+				fG.chooseEquipNewWeapon();
 				return fG;
 			}else if(f instanceof FalconKnight) {
 				FalconKnight fF=(FalconKnight) f;
-				fF.equipNewWeapon();
+				fF.chooseEquipNewWeapon();
 				return fF;
 			}else if(f instanceof Berserker) {
 				Berserker fB=(Berserker) f;
-				fB.equipNewWeapon();
+				fB.chooseEquipNewWeapon();
 				return fB;
 			}else if(f instanceof SwordMaster) {
 				SwordMaster fS=(SwordMaster) f;
-				fS.equipNewWeapon();
+				fS.chooseEquipNewWeapon();
 				return fS;
 			}else if(f instanceof Sniper) {
 				Sniper fS=(Sniper) f;
-				fS.equipNewWeapon();
+				fS.chooseEquipNewWeapon();
 				return fS;
 			}else if(f instanceof DragonMaster) {
 				DragonMaster fD=(DragonMaster) f;
-				fD.equipNewWeapon();
+				fD.chooseEquipNewWeapon();
 				return fD;
 			}else if(f instanceof Druid) {
 				Druid fD=(Druid) f;
-				fD.equipNewWeapon();
+				fD.chooseEquipNewWeapon();
 				return fD;
 			}else if(f instanceof Hero) {
 				Hero fH=(Hero) f;
-				fH.equipNewWeapon();
+				fH.chooseEquipNewWeapon();
 				return fH;
 			}else if(f instanceof NomadicCavalry) {
 				NomadicCavalry fN=(NomadicCavalry) f;
-				fN.equipNewWeapon();
+				fN.chooseEquipNewWeapon();
 				return fN;
 			}else if(f instanceof Sage) {
 				Sage fS=(Sage) f;
-				fS.equipNewWeapon();
+				fS.chooseEquipNewWeapon();
 				return fS;
 			}else if(f instanceof Bishop) {
 				Bishop fB=(Bishop) f;
-				fB.equipNewWeapon();
+				fB.chooseEquipNewWeapon();
 				return fB;
 			}else if(f instanceof Valkyria) {
 				Valkyria fV=(Valkyria) f;
-				fV.equipNewWeapon();
+				fV.chooseEquipNewWeapon();
 				return fV;
 			}else if(f instanceof Assassin) {
 				Assassin fA=(Assassin) f;

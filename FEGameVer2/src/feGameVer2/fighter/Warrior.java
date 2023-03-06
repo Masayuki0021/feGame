@@ -2,9 +2,11 @@ package feGameVer2.fighter;
 
 import java.util.Random;
 
+import feGameVer2.CheckNumber;
 import feGameVer2.weapon.Axe;
 import feGameVer2.weapon.Bow;
 import feGameVer2.weapon.Lance;
+import feGameVer2.weapon.Sword;
 import feGameVer2.weapon.Weapon;
 
 public class Warrior extends Fighter{
@@ -35,6 +37,30 @@ public class Warrior extends Fighter{
 			this.bow=new Bow("リヤンフルチェ",9,7,70,20,3);
 		}
 		else if(rand<=1) {
+			this.bow  =new Bow("ミュルグレ",16,9,80,20,2);
+		}
+	}
+	//選択弓武器生成メソッド
+	public void chooseEquipNewBow(int num) {
+		if(num==1) {
+			this.bow=new Bow("鉄の弓",6,5,80,10,2);
+		}
+		else if(num==2) {
+			this.bow =new Bow("鋼の弓",9,9,65,10,2);
+		}
+		else if(num==3) {
+			this.bow =new Bow("短弓",5,3,80,20,2);
+		}
+		else if(num==4) {
+			this.bow =new Bow("キラーボウ",9,7,80,40,2);
+		}
+		else if(num==5) {
+			this.bow =new Bow("銀の弓",13,6,70,10,2);
+		}
+		else if(num==6) {
+			this.bow=new Bow("リヤンフルチェ",9,7,70,20,3);
+		}
+		else if(num==7) {
 			this.bow  =new Bow("ミュルグレ",16,9,80,10,2);
 		}
 	}
@@ -50,21 +76,47 @@ public class Warrior extends Fighter{
 			this.axe =new Axe("ておの",7,15,50,0,3);
 		}
 		else if(rand<0.6) {
-			this.axe =new Axe("デビルアクス",24,18,20,0,1);
-		}
-		else if(rand<0.7) {
 			this.axe =new Axe("鋼の斧",11,15,50,0,1);
 		}
-		else if(rand<0.8) {
+		else if(rand<0.7) {
 			this.axe =new Axe("キラーアクス",11,11,65,30,1);
 		}
-		else if(rand<0.9) {
+		else if(rand<0.85) {
 			this.axe  =new Axe("銀の斧",15,12,55,0,1);
 		}
-		else if(rand<=1) {
+		else if(rand<0.95) {
 			this.axe =new Axe("トマホーク",13,14,55,5,3);
 		}
+		else if(rand<=1) {
+			this.axe=new Axe("アルマーズ",18,18,85,0,1);
+		}
 	}
+	//選択斧武器生成メソッド
+	public void chooseEquipNewAxe(int num) {
+		if(num==1) {
+			this.axe=new Axe("鉄の斧",8,10,65,0,1);
+		}
+		else if(num==2) {
+			this.axe =new Axe("ておの",7,15,50,0,3);
+		}
+		else if(num==3) {
+			this.axe =new Axe("鋼の斧",11,15,50,0,1);
+		}
+		else if(num==4) {
+			this.axe =new Axe("キラーアクス",11,11,65,30,1);
+		}
+		else if(num==5) {
+			this.axe  =new Axe("銀の斧",15,12,55,0,1);
+		}
+		else if(num==6) {
+			this.axe =new Axe("トマホーク",13,14,55,5,3);
+		}
+		else if(num==7) {
+			this.axe=new Axe("アルマーズ",18,18,85,0,1);
+		}
+	}
+
+
 
 	//戦闘前武器装備メソッド
 	public void equipWeaponBeforeBattle() {
@@ -86,7 +138,35 @@ public class Warrior extends Fighter{
 		this.equipNewBow();
 		this.equipWeaponBeforeBattle();
 	}
-
+	//武器選択、生成メソッド
+	public void chooseEquipNewWeapon(){
+		System.out.println("斧武器を選択してください");
+		System.out.println(" :名前			威力	重さ	命中	必殺	距離");
+		System.out.println("1:鉄の斧		8,		10,		65,		0,		近");
+		System.out.println("2:ておの		7,		15,		50,		0,		遠近");
+		System.out.println("3;デビルアクス	24,		18,		20,		0,		近");
+		System.out.println("4:鋼の斧		11,		15,		50,		0,		近");
+		System.out.println("5:キラーアクス	11,		11,		65,		30,		近");
+		System.out.println("6:銀の斧		15,		12,		55,		0,		近");
+		System.out.println("7:トマホーク	13,		14,		55,		5,		遠近");
+		System.out.println("8:アルマーズ	18,		18,		85,		0,		近");
+		System.out.println("↓");
+		int num=CheckNumber.checkAndReturnNumber(1,8);
+		this.chooseEquipNewAxe(num);
+		System.out.println("弓武器を選択してください");
+		System.out.println(" :名前			威力	重さ	命中	必殺	距離");
+		System.out.println("1:鉄の弓		6,		5,		80,		10,		遠");
+		System.out.println("2:鋼の弓		9,		9,		65,		10,		遠");
+		System.out.println("3:短弓			5,		3,		80,		20,		遠");
+		System.out.println("4:キラーボウ	9,		7,		80,		40,		遠");
+		System.out.println("5:銀の弓		13,		6,		70,		10,		遠");
+		System.out.println("6:リヤンフルチェ9,		7,		70,		20,		遠近");
+		System.out.println("7:ミュルグレ	16,		9,		80,		10,		遠");
+		System.out.println("↓");
+		num=CheckNumber.checkAndReturnNumber(1,7);
+		this.chooseEquipNewBow(num);
+		this.equipWeaponBeforeBattle();
+	}
 	//戦闘中武器持ち替えメソッド
 	public void changeEquip(Weapon o) {
 		Random random=new Random();
@@ -94,7 +174,13 @@ public class Warrior extends Fighter{
 		if(o instanceof Lance) {
 			this.equip=null;
 			this.equip=(Axe)this.axe;
-		}else {
+			System.out.println(this.name+"は"+this.equip.getName()+"を装備！");
+		}else if(o instanceof Sword) {
+			this.equip=null;
+			this.equip=(Bow)this.bow;
+			System.out.println(this.name+"は"+this.equip.getName()+"を装備！");
+		}
+		else {
 			if(rand==0) {
 				if(o instanceof Weapon) {
 					this.equip=null;
@@ -357,31 +443,31 @@ public class Warrior extends Fighter{
 		}
 		//体格
 		if(rand8<=0.1) {
-			this.setConstitution(20);
+			this.setConstitution(12);
 		}
 		else if(rand8<=0.2) {
-			this.setConstitution(22);
+			this.setConstitution(13);
 		}
 		else if(rand8<=0.3) {
-			this.setConstitution(24);
+			this.setConstitution(14);
 		}
 		else if(rand8<=0.4) {
-			this.setConstitution(26);
+			this.setConstitution(15);
 		}
 		else if(rand8<=0.6) {
-			this.setConstitution(28);
+			this.setConstitution(16);
 		}
 		else if(rand8<=0.7) {
-			this.setConstitution(30);
+			this.setConstitution(17);
 		}
 		else if(rand8<=0.8) {
-			this.setConstitution(32);
+			this.setConstitution(18);
 		}
 		else if(rand8<=0.9) {
-			this.setConstitution(34);
+			this.setConstitution(19);
 		}
 		else if(rand8<=1) {
-			this.setConstitution(36);
+			this.setConstitution(20);
 		}
 	}
 	public String toString() {
