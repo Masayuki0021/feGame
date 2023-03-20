@@ -11,7 +11,7 @@ public class Main {
 		System.out.println("\n\n\n");
 		//ゲームモード選択メソッド呼び出し
 	ChooseGameMode.chooseGameMode();
-
+		//Gitテスト
 	}
 
 
