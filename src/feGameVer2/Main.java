@@ -12,6 +12,7 @@ public class Main {
 		//ゲームモード選択メソッド呼び出し
 	ChooseGameMode.chooseGameMode();
 		//Gitテスト
+	//gitテスト2
 	}
 
 
