@@ -3,7 +3,7 @@ package feGameVer2.gameMode;
 import java.util.Scanner;
 
 import feGameVer2.CheckNumber;
-import feGameVer2.ChooseGameMode;
+import feGameVer2.StartGame;
 import feGameVer2.battle.BattleField;
 import feGameVer2.battle.PrepareBattle;
 import feGameVer2.fighter.Fighter;
@@ -21,6 +21,7 @@ public class GameMode3 {
 		Fighter o3=null;
 		Fighter o4=null;
 		Fighter o5=null;
+		StartGame startGame=new StartGame();
 		System.out.println("このゲームモードではプレイヤーは\n"
 				+ "キャラクターを一体作り、そのキャラクターと\n"
 				+ "ランダムに生成されたキャラクターとで連戦を行います。\n"
@@ -56,7 +57,8 @@ public class GameMode3 {
 			System.out.println("このモードでは、さらにキャラクターを強化することができます");
 			pb.levelUp(p);
 			System.out.println("武器を選択しますか？1:yes 2:no↓");
-			int num=CheckNumber.checkAndReturnNumber(1,2);
+			CheckNumber checkNumber=new CheckNumber();
+			int num=checkNumber.checkAndReturnNumber(1,2);
 			if(num==1) {p=pb.equipFighterBack(p,false);}
 			else {p=pb.equipFighterBack(p,true);}
 			num=0;
@@ -84,8 +86,9 @@ public class GameMode3 {
 		}else {System.out.println("ゲームオーバー....");
 			System.out.println("メインメニューに戻ります。");
 			Thread.sleep(1000);
-			ChooseGameMode.chooseGameMode();
-		}
+
+			startGame.chooseGameMode();
+			}
 		System.out.println("第二戦目始めます！");
 		while(p.getHp()>0&&o2.getHp()>0) {
 				b.BattleSet(p, o2,b);
@@ -96,7 +99,7 @@ public class GameMode3 {
 		}else {System.out.println("ゲームオーバー....");
 			System.out.println("メインメニューに戻ります。");
 			Thread.sleep(1000);
-			ChooseGameMode.chooseGameMode();
+			startGame.chooseGameMode();
 		}
 		System.out.println("第三戦目始めます！");
 		while(p.getHp()>0&&o3.getHp()>0) {
@@ -108,7 +111,7 @@ public class GameMode3 {
 		}else {System.out.println("ゲームオーバー....");
 			System.out.println("メインメニューに戻ります。");
 			Thread.sleep(1000);
-			ChooseGameMode.chooseGameMode();
+			startGame.chooseGameMode();
 		}
 		System.out.println("第四戦目始めます！");
 		while(p.getHp()>0&&o4.getHp()>0) {
@@ -120,7 +123,7 @@ public class GameMode3 {
 		}else {System.out.println("ゲームオーバー....");
 			System.out.println("メインメニューに戻ります。");
 			Thread.sleep(1000);
-			ChooseGameMode.chooseGameMode();
+			startGame.chooseGameMode();
 		}
 		System.out.println("第五戦目始めます！");
 		while(p.getHp()>0&&o5.getHp()>0) {
@@ -132,11 +135,11 @@ public class GameMode3 {
 			Thread.sleep(1000);
 			System.out.println("メインメニューに戻ります。");
 			Thread.sleep(1000);
-			ChooseGameMode.chooseGameMode();
+			startGame.chooseGameMode();
 		}else {System.out.println("ゲームオーバー....");
 			System.out.println("メインメニューに戻ります。");
 			Thread.sleep(1000);
-			ChooseGameMode.chooseGameMode();
+			startGame.chooseGameMode();
 		}
 	}
 }

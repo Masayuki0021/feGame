@@ -119,7 +119,8 @@ public class SwordMaster extends Fighter{
 		System.out.println("5:銀の剣		13,		8,		75,		0,		近");
 		System.out.println("6:倭刀			8,		5,		75,		40,		近");
 		System.out.println("↓");
-		int num=CheckNumber.checkAndReturnNumber(1,6);
+		CheckNumber checkNumber=new CheckNumber();
+		int num=checkNumber.checkAndReturnNumber(1,6);
 		this.chooseEquipNewSword(num);
 		System.out.println("サブ武器を選択してください");
 		System.out.println(" :名前			威力	重さ	命中	必殺	距離");
@@ -130,7 +131,7 @@ public class SwordMaster extends Fighter{
 		System.out.println("5:銀の剣		13,		8,		75,		0,		近");
 		System.out.println("6:倭刀			8,		5,		75,		40,		近");
 		System.out.println("↓");
-		num=CheckNumber.checkAndReturnNumber(1,6);
+		num=checkNumber.checkAndReturnNumber(1,6);
 		this.chooseEquipNewSwordSub(num);
 		this.equipWeaponBeforeBattle();
 		this.criticalUpper();

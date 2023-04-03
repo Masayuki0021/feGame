@@ -10,9 +10,8 @@ public class Main {
 		System.out.println("お楽しみ下さい！！");
 		System.out.println("\n\n\n");
 		//ゲームモード選択メソッド呼び出し
-	ChooseGameMode.chooseGameMode();
-		//Gitテスト
-	//gitテスト2
+		StartGame startGame=new StartGame();
+	startGame.chooseGameMode();
 	}
 
 

@@ -68,14 +68,15 @@ public class Assassin extends Fighter {
 		System.out.println("1:キルソード	9,		7,		80,		30,		近");
 		System.out.println("2:銀の剣		13,		8,		75,		0,		近");
 		System.out.println("↓");
-		int num=CheckNumber.checkAndReturnNumber(1,2);
+		CheckNumber checkNumber=new CheckNumber();
+		int num=checkNumber.checkAndReturnNumber(1,2);
 		this.chooseEquipNewSword(num);
 		System.out.println("サブ武器を選択してください");
 		System.out.println(" :名前			威力	重さ	命中	必殺	距離");
 		System.out.println("1:キルソード	9,		7,		80,		30,		近");
 		System.out.println("2:銀の剣		13,		8,		75,		0,		近");
 		System.out.println("↓");
-		num=CheckNumber.checkAndReturnNumber(1,2);
+		num=checkNumber.checkAndReturnNumber(1,2);
 		this.chooseEquipNewSwordSub(num);
 		this.equipWeaponBeforeBattle();
 		this.criticalUpper();

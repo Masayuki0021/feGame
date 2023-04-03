@@ -15,7 +15,13 @@ public abstract class Fighter {
 	private int resist;			//魔防
 	private int constitution;	//体格
 	private int luck;			//幸運
-	
+	private int attackSpeed;		//実速
+	private int ActHitRate;		//実命中率
+	private int ActPowerPhy;		//実物理威力
+	private int ActPowerMagic;	//実魔法威力
+	private int ActCritical;		//実必殺率
+	private int attacktimes;		//攻撃回数（１回or2回）
+
 
 	public void setName(String name) {
 		if(name==null) {
@@ -95,5 +101,41 @@ public abstract class Fighter {
 	}
 	public void setConstitution(int constitution) {
 		this.constitution = constitution;
+	}
+	public int getAttackSpeed() {
+		return attackSpeed;
+	}
+	public void setAttackSpeed(int attackSpeed) {
+		this.attackSpeed = attackSpeed;
+	}
+	public int getActHitRate() {
+		return ActHitRate;
+	}
+	public void setActHitRate(int actHitRate) {
+		ActHitRate = actHitRate;
+	}
+	public int getActPowerPhy() {
+		return ActPowerPhy;
+	}
+	public void setActPowerPhy(int actPowerPhy) {
+		ActPowerPhy = actPowerPhy;
+	}
+	public int getActPowerMagic() {
+		return ActPowerMagic;
+	}
+	public void setActPowerMagic(int actPowerMagic) {
+		ActPowerMagic = actPowerMagic;
+	}
+	public int getActCritical() {
+		return ActCritical;
+	}
+	public void setActCritical(int actCritical) {
+		ActCritical = actCritical;
+	}
+	public int getAttacktimes() {
+		return attacktimes;
+	}
+	public void setAttacktimes(int attacktimes) {
+		this.attacktimes = attacktimes;
 	}
 }

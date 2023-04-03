@@ -100,18 +100,21 @@ public class Warrior extends Fighter{
 			this.axe =new Axe("ておの",7,15,50,0,3);
 		}
 		else if(num==3) {
-			this.axe =new Axe("鋼の斧",11,15,50,0,1);
+			this.axe =new Axe("デビルアクス",28,18,20,0,1);
 		}
 		else if(num==4) {
-			this.axe =new Axe("キラーアクス",11,11,65,30,1);
+			this.axe =new Axe("鋼の斧",11,15,50,0,1);
 		}
 		else if(num==5) {
-			this.axe  =new Axe("銀の斧",15,12,55,0,1);
+			this.axe =new Axe("キラーアクス",11,11,65,30,1);
 		}
 		else if(num==6) {
-			this.axe =new Axe("トマホーク",13,14,55,5,3);
+			this.axe  =new Axe("銀の斧",15,12,55,0,1);
 		}
 		else if(num==7) {
+			this.axe =new Axe("トマホーク",13,14,55,5,3);
+		}
+		else if(num==8) {
 			this.axe=new Axe("アルマーズ",18,18,85,0,1);
 		}
 	}
@@ -151,7 +154,8 @@ public class Warrior extends Fighter{
 		System.out.println("7:トマホーク	13,		14,		55,		5,		遠近");
 		System.out.println("8:アルマーズ	18,		18,		85,		0,		近");
 		System.out.println("↓");
-		int num=CheckNumber.checkAndReturnNumber(1,8);
+		CheckNumber checkNumber=new CheckNumber();
+		int num=checkNumber.checkAndReturnNumber(1,8);
 		this.chooseEquipNewAxe(num);
 		System.out.println("弓武器を選択してください");
 		System.out.println(" :名前			威力	重さ	命中	必殺	距離");
@@ -163,7 +167,7 @@ public class Warrior extends Fighter{
 		System.out.println("6:リヤンフルチェ9,		7,		70,		20,		遠近");
 		System.out.println("7:ミュルグレ	16,		9,		80,		10,		遠");
 		System.out.println("↓");
-		num=CheckNumber.checkAndReturnNumber(1,7);
+		num=checkNumber.checkAndReturnNumber(1,7);
 		this.chooseEquipNewBow(num);
 		this.equipWeaponBeforeBattle();
 	}

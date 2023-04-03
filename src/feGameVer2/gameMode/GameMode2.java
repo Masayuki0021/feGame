@@ -1,7 +1,7 @@
 package feGameVer2.gameMode;
 
 import feGameVer2.CheckNumber;
-import feGameVer2.ChooseGameMode;
+import feGameVer2.StartGame;
 import feGameVer2.battle.BattleField;
 import feGameVer2.battle.PrepareBattle;
 import feGameVer2.fighter.Fighter;
@@ -34,7 +34,8 @@ public class GameMode2 {
 		//キャラクター変数をそれぞれの兵種（クラス）の型に合わせ,
 		//それぞれのクラスに応じた武器を生成する
 		System.out.println("武器を選択しますか？1:yes 2:no↓");
-		int num=CheckNumber.checkAndReturnNumber(1,2);
+		CheckNumber checkNumber=new CheckNumber();
+		int num=checkNumber.checkAndReturnNumber(1,2);
 		if(num==1) {p1=pb.equipFighterBack(p1,false);}
 		else {p1=pb.equipFighterBack(p1,true);}
 		num=0;
@@ -47,7 +48,7 @@ public class GameMode2 {
 		pb.upperPara(p2);
 		pb.downerPara(p2);
 		System.out.println("武器を選択しますか？1:yes 2:no↓");
-		num=CheckNumber.checkAndReturnNumber(1,2);
+		num=checkNumber.checkAndReturnNumber(1,2);
 		if(num==1) {p2=pb.equipFighterBack(p2,false);}
 		else {p2=pb.equipFighterBack(p2,true);}
 		num=0;
@@ -64,7 +65,7 @@ public class GameMode2 {
 			System.out.println(p1.getName()+"の勝利！！！");
 		}
 		System.out.println("続ける? 1:yes 2:no  番号を入力して下さい");
-		num=CheckNumber.checkAndReturnNumber(1,2);
+		num=checkNumber.checkAndReturnNumber(1,2);
 		while(num==1) {
 			p1.setHp(p1.getMaxHp());
 			p2.setHp(p2.getMaxHp());
@@ -78,13 +79,13 @@ public class GameMode2 {
 				System.out.println(p1.getName()+"の勝利！！！");
 			}
 			System.out.println("続ける? 1:yes 2:no  番号を入力して下さい");
-			num=CheckNumber.checkAndReturnNumber(1,2);
+			num=checkNumber.checkAndReturnNumber(1,2);
 		}
 		num=0;
 		System.out.println("メインメニューに戻ります。");
 		Thread.sleep(1000);
-		ChooseGameMode.chooseGameMode();
-
+		StartGame startGame=new StartGame();
+		startGame.chooseGameMode();
 
 	}
 }

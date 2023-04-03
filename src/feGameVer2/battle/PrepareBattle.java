@@ -55,7 +55,8 @@ public class PrepareBattle {
 		System.out.println("10:勇者、11:遊牧騎兵、12：賢者、13：司祭、14：ヴァルキュリア\n"
 				+ "15：アサシン");
 		System.out.println("↓");
-		int num=CheckNumber.checkAndReturnNumber(1,15);
+		CheckNumber checkNumber=new CheckNumber();
+		int num=checkNumber.checkAndReturnNumber(1,15);
 		//キャラクターインスタンスを生成
 		if(num==1) {
 			f= new Paladin();
@@ -251,14 +252,15 @@ public class PrepareBattle {
 	}
 	//キャラクター名変更メソッド
 	public void putName(Fighter f) {
-			System.out.println("名前を入力しなおしますか？↓（しない場合はこのまま決定されます。）"
-					+ "\nする場合は1を、しない場合は2を入力して下さい");
-			int num=CheckNumber.checkAndReturnNumber(1,2);
+		System.out.println("名前を入力しなおしますか？↓（しない場合はこのまま決定されます。）"
+				+ "\nする場合は1を、しない場合は2を入力して下さい");
+		CheckNumber checkNumber=new CheckNumber();
+		int num=checkNumber.checkAndReturnNumber(1,2);
 		if(num==1) {
 			try {
-			System.out.print("名前を入力してください→");
-			String pName=new Scanner(System.in).nextLine();
-			f.setName(pName);
+				System.out.print("名前を入力してください→");
+				String pName=new Scanner(System.in).nextLine();
+				f.setName(pName);
 			}catch(IllegalArgumentException e) {
 				System.out.println("名前が入っていません\n"
 						+ "名前を入力してください");
@@ -283,7 +285,8 @@ public class PrepareBattle {
 		System.out.println("上げるパラメーターを二つ選んでください");
 		for(int i=0;i<2;i++) {
 			System.out.println("1:HP、2:力、3：技、4：速さ、\n5：守備、６：魔防、7：幸運、8：体格");
-			int num=CheckNumber.checkAndReturnNumber(1,8);
+			CheckNumber checkNumber=new CheckNumber();
+			int num=checkNumber.checkAndReturnNumber(1,8);
 
 
 			if(num==1) {
@@ -317,8 +320,8 @@ public class PrepareBattle {
 	//キャラステータス微調整メソッド（ランダム）
 	public void upperParaRandom(Fighter f) {
 		for(int i=0;i<2;i++) {
-				Random random=new Random();
-				int rand=random.nextInt(8);
+			Random random=new Random();
+			int rand=random.nextInt(8);
 
 			if(rand==0) {
 				f.setHp(f.getHp() + 8);
@@ -352,7 +355,8 @@ public class PrepareBattle {
 		System.out.println("下げるパラメーターを二つ選んでください");
 		for(int i=0;i<2;i++) {
 			System.out.println("1:HP、2:力、3：技、4：速さ、\n5：守備、６：魔防、7：幸運、8：体格");
-			int num=CheckNumber.checkAndReturnNumber(1,8);
+			CheckNumber checkNumber=new CheckNumber();
+			int num=checkNumber.checkAndReturnNumber(1,8);
 			if(num==1) {
 				f.setHp(f.getHp() - 8);
 			}
@@ -413,7 +417,7 @@ public class PrepareBattle {
 
 		}
 	}
-//変数の型を各兵種に更新
+	//変数の型を各兵種に更新
 	public Fighter equipFighterBack(Fighter f,boolean isRandom) {
 		if(isRandom==true) {
 			if(f instanceof Paladin) {

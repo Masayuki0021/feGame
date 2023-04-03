@@ -153,7 +153,8 @@ public class DragonMaster extends Fighter{
 		System.out.println("6:銀の槍		14,		10,		65,		0		近");
 		System.out.println("7:スレンドスピア10,		10,		65,		5		遠近");
 		System.out.println("↓");
-		int num=CheckNumber.checkAndReturnNumber(1,7);
+		CheckNumber checkNumber=new CheckNumber();
+		int num=checkNumber.checkAndReturnNumber(1,7);
 		this.chooseEquipNewLance(num);
 		System.out.println("斧武器を選択してください");
 		System.out.println(" :名前			威力	重さ	命中	必殺	距離");
@@ -166,7 +167,7 @@ public class DragonMaster extends Fighter{
 		System.out.println("7:トマホーク	13,		14,		55,		5,		遠近");
 		System.out.println("8:アルマーズ	18,		18,		85,		0,		近");
 		System.out.println("↓");
-				num=CheckNumber.checkAndReturnNumber(1,7);
+				num=checkNumber.checkAndReturnNumber(1,7);
 		this.chooseEquipNewAxe(num);
 		this.equipWeaponBeforeBattle();
 }

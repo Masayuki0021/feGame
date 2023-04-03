@@ -133,7 +133,8 @@ public class Sage extends Fighter {
 		System.out.println("6:エイルカリバー	8,		8,		90,		10,		遠近");
 		System.out.println("7:フォルブレイズ	14,		10,		85,		5,		遠近");
 		System.out.println("↓");
-		int num=CheckNumber.checkAndReturnNumber(1,7);
+		CheckNumber checkNumber=new CheckNumber();
+		int num=checkNumber.checkAndReturnNumber(1,7);
 		this.chooseEquipNewNature(num);
 		System.out.println("サブ武器を選択してください");
 		System.out.println(" :名前				威力	重さ	命中	必殺	距離");
@@ -145,7 +146,7 @@ public class Sage extends Fighter {
 		System.out.println("6:エイルカリバー	8,		8,		90,		10,		遠近");
 		System.out.println("7:フォルブレイズ	14,		10,		85,		5,		遠近");
 		System.out.println("↓");
-		num=CheckNumber.checkAndReturnNumber(1,7);
+		num=checkNumber.checkAndReturnNumber(1,7);
 		this.chooseEquipNewNatureSub(num);
 		this.equipWeaponBeforeBattle();
 	}

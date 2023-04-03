@@ -214,7 +214,8 @@ public class Paladin extends Fighter{
 		System.out.println("7:鋼の大剣		11,		14,		60,		0,		近");
 		System.out.println("8:銀の大剣		17,		13,		55,		0,		近");
 		System.out.println("↓");
-		int num=CheckNumber.checkAndReturnNumber(1,8);
+		CheckNumber checkNumber=new CheckNumber();
+		int num=checkNumber.checkAndReturnNumber(1,8);
 		this.chooseEquipNewSword(num);
 		System.out.println("槍武器を選択してください");
 		System.out.println(" :名前			威力	重さ	命中	必殺	距離");
@@ -227,7 +228,7 @@ public class Paladin extends Fighter{
 		System.out.println("7:スレンドスピア10,		10,		65,		5,		遠近");
 		System.out.println("8:マルテ		16,		11,		80,		0,		遠近");
 		System.out.println("↓");
-		num=CheckNumber.checkAndReturnNumber(1,8);
+		num=checkNumber.checkAndReturnNumber(1,8);
 		this.chooseEquipNewLance(num);
 		System.out.println("斧武器を選択してください");
 		System.out.println(" :名前			威力	重さ	命中	必殺	距離");
@@ -238,7 +239,7 @@ public class Paladin extends Fighter{
 		System.out.println("5:銀の斧		15,		12,		55,		0,		近");
 		System.out.println("6:トマホーク	13,		14,		55,		5,		遠近");
 		System.out.println("↓");
-		num=CheckNumber.checkAndReturnNumber(1,6);
+		num=checkNumber.checkAndReturnNumber(1,6);
 		this.chooseEquipNewAxe(num);
 		this.equipWeaponBeforeBattle();
 	}

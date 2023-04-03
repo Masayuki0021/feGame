@@ -146,7 +146,8 @@ public class FalconKnight extends Fighter{
 		System.out.println("5:銀の剣		13,		8,		75,		0,		近");
 		System.out.println("6:ひかりの剣	9,		9,		70,		0,		遠近");
 		System.out.println("↓");
-		int num=CheckNumber.checkAndReturnNumber(1,6);
+		CheckNumber checkNumber=new CheckNumber();
+		int num=checkNumber.checkAndReturnNumber(1,6);
 		this.chooseEquipNewSword(num);
 		System.out.println("槍武器を選択してください");
 		System.out.println(" :名前			威力	重さ	命中	必殺	距離");
@@ -159,7 +160,7 @@ public class FalconKnight extends Fighter{
 		System.out.println("7:スレンドスピア10,		10,		65,		5,		遠近");
 		System.out.println("8:マルテ		16,		11,		80,		0,		遠近");
 		System.out.println("↓");
-		num=CheckNumber.checkAndReturnNumber(1,8);
+		num=checkNumber.checkAndReturnNumber(1,8);
 		this.chooseEquipNewLance(num);
 		this.equipWeaponBeforeBattle();
 	}

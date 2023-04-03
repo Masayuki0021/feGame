@@ -3,7 +3,7 @@ package feGameVer2;
 import java.util.Scanner;
 
 public class CheckNumber {
-	public static int checkAndReturnNumber(int start,int end) {
+	public int checkAndReturnNumber(int start,int end) {
 		int num;
 		try {
 			num=new Scanner(System.in).nextInt();
@@ -23,7 +23,7 @@ public class CheckNumber {
 		return num;
 
 	}
-	public static void checkNumber(int num,int start, int end) {
+	public void checkNumber(int num,int start, int end) {
 		if(num>end||num<start) {
 			throw new IllegalArgumentException(start+"～"+end+"の中から選択してください");
 		}

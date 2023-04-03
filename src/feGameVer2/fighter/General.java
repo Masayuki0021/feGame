@@ -155,7 +155,8 @@ public class General extends Fighter{
 		System.out.println("7:スレンドスピア10,		10,		65,		5,		遠近");
 		System.out.println("8:マルテ		16,		11,		80,		0,		遠近");
 		System.out.println("↓");
-		int num=CheckNumber.checkAndReturnNumber(1,8);
+		CheckNumber checkNumber=new CheckNumber();
+		int num=checkNumber.checkAndReturnNumber(1,8);
 		this.chooseEquipNewLance(num);
 		System.out.println("斧武器を選択してください");
 		System.out.println(" :名前			威力	重さ	命中	必殺	距離");
@@ -167,7 +168,7 @@ public class General extends Fighter{
 		System.out.println("6:トマホーク	13,		14,		55,		5,		遠近");
 		System.out.println("7:アルマーズ	18,		18,		85,		0,		近");
 		System.out.println("↓");
-		num=CheckNumber.checkAndReturnNumber(1,7);
+		num=checkNumber.checkAndReturnNumber(1,7);
 		this.chooseEquipNewAxe(num);
 		this.equipWeaponBeforeBattle();
 	}

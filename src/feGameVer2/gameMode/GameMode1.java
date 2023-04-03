@@ -2,7 +2,7 @@ package feGameVer2.gameMode;
 
 
 import feGameVer2.CheckNumber;
-import feGameVer2.ChooseGameMode;
+import feGameVer2.StartGame;
 import feGameVer2.battle.BattleField;
 import feGameVer2.battle.PrepareBattle;
 import feGameVer2.fighter.Fighter;
@@ -51,7 +51,8 @@ public class GameMode1 {
 		}
 		//続けるかどうかの選択
 		System.out.println("続ける? 1:yes 2:no  番号を入力して下さい");
-		int num=CheckNumber.checkAndReturnNumber(1,2);
+		CheckNumber checkNumber=new CheckNumber();
+		int num=checkNumber.checkAndReturnNumber(1,2);
 		//戦闘を続ける場合、両方のキャラクターを回復させる
 		while(num==1) {
 			p1.setHp(p1.getMaxHp());
@@ -66,12 +67,12 @@ public class GameMode1 {
 				System.out.println(p1.getName()+"の勝利！！！");
 			}
 			System.out.println("続ける? 1:yes 2:no  番号を入力して下さい");
-			num=CheckNumber.checkAndReturnNumber(1,2);
+			num=checkNumber.checkAndReturnNumber(1,2);
 		}
 		System.out.println("メインメニューに戻ります。");
 		Thread.sleep(1000);
-		ChooseGameMode.chooseGameMode();
-	}
+		StartGame startGame=new StartGame();
+		startGame.chooseGameMode();	}
 }
 
 

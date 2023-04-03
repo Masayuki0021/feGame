@@ -132,7 +132,8 @@ public class Druid extends Fighter{
 		System.out.println("6:ルナ			10,		8,		65,		20,		遠近");
 		System.out.println("7:アポカリプス	18,		17,		80,		5,		遠近");
 		System.out.println("↓");
-		int num=CheckNumber.checkAndReturnNumber(1,7);
+		CheckNumber checkNumber=new CheckNumber();
+		int num=checkNumber.checkAndReturnNumber(1,7);
 		this.chooseEquipNewDark(num);
 		System.out.println("サブ武器を選択してください");
 		System.out.println(" :名前			威力	重さ	命中	必殺	距離");
@@ -144,7 +145,7 @@ public class Druid extends Fighter{
 		System.out.println("6:ルナ			10,		8,		65,		20,		遠近");
 		System.out.println("7:アポカリプス	18,		17,		80,		5,		遠近");
 		System.out.println("↓");
-		num=CheckNumber.checkAndReturnNumber(1,7);
+		num=checkNumber.checkAndReturnNumber(1,7);
 		this.chooseEquipNewDarkSub(num);
 		this.equipWeaponBeforeBattle();
 }
