@@ -322,7 +322,7 @@ public  class BattleField {
 		System.out.println("HP\t\t"+p1.getHp()+"\t\t\t\t\t"+p2.getHp());
 		System.out.println("命中率\t"+p1.getActHitRate()+"%"+"\t\t\t\t\t"+p2.getActHitRate()+"%");
 		if(p1.getEquip() instanceof PhysicsWeap&&p2.getEquip() instanceof PhysicsWeap) {
-			System.out.println("攻撃力\t"+p1.getActPowerMagic()+"\t\t\t\t\t"+p2.getActPowerPhy());
+			System.out.println("攻撃力\t"+p1.getActPowerPhy()+"\t\t\t\t\t"+p2.getActPowerPhy());
 		}else if(p1.getEquip() instanceof MagicWeap&&p2.getEquip() instanceof PhysicsWeap) {
 			System.out.println("攻撃力\t"+p1.getActPowerMagic()+"\t\t\t\t\t"+p2.getActPowerPhy());
 		}else if(p1.getEquip() instanceof PhysicsWeap&&p2.getEquip() instanceof MagicWeap) {
@@ -411,7 +411,9 @@ public  class BattleField {
 					to.setHp(to.getHp() - from.getActPowerMagic()*3);
 				}
 				Thread.sleep(1000);
-				System.out.println(to.getName()+"("+to.getCName()+")"+"のHPは"+to.getHp()+"!\n");
+				System.out.println(to.getName()+"("+to.getCName()+")"+"のHPは"+to.getHp(
+
+						)+"!\n");
 				Thread.sleep(1000);
 			}else {
 				Thread.sleep(1000);

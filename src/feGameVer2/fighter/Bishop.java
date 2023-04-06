@@ -145,7 +145,7 @@ public class Bishop extends Fighter{
 			System.out.println(this.name+"は"+this.equip.getName()+"を装備！");
 		}else if(rand==1){
 			this.equip=null;
-			this.equip=(Light)this.light;
+			this.equip=(Light)this.lightsub;
 			System.out.println(this.name+"は"+this.equip.getName()+"を装備！");
 		}
 	}

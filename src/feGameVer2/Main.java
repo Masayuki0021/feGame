@@ -1,8 +1,6 @@
 package feGameVer2;
 
 public class Main {
-
-
 	public static void main(String[] args) throws InterruptedException {
 		System.out.println("feGameへようこそ！\n"
 				+ "これのゲームは任天堂のファイアーエムブレムシリーズの\n"
@@ -13,9 +11,4 @@ public class Main {
 		StartGame startGame=new StartGame();
 	startGame.chooseGameMode();
 	}
-
-
-
-
-
 }

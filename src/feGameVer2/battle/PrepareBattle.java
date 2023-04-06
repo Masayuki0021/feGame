@@ -46,7 +46,7 @@ public class PrepareBattle {
 	public int getGameMode3_modeNum() {
 		return this.gameMode3_ModeNum;
 	}
-	public Fighter chooseCharacter(Fighter f) {
+	public Fighter chooseCharacter() {
 		System.out.println("クラス(兵種)の選択");
 		System.out.println("番号を入力してください");
 		System.out.println("1:パラディン、2：ジェネラル、3：ウォーリアー");
@@ -59,195 +59,196 @@ public class PrepareBattle {
 		int num=checkNumber.checkAndReturnNumber(1,15);
 		//キャラクターインスタンスを生成
 		if(num==1) {
-			f= new Paladin();
-			f.showSt();
+			Fighter fighter= new Paladin();
+			fighter.showSt();
 			System.out.println();
-			return f;
+			return fighter;
 		}
 		if(num==2) {
-			f=new General();
-			f.showSt();
+			Fighter fighter=new General();
+			fighter.showSt();
 			System.out.println();
-			return f;
+			return fighter;
 		}
 		if(num==3) {
-			f=new Warrior();
-			f.showSt();
+			Fighter fighter=new Warrior();
+			fighter.showSt();
 			System.out.println();
-			return f;
+			return fighter;
 		}
 		if(num==4) {
-			f=new FalconKnight();
-			f.showSt();
+			Fighter fighter=new FalconKnight();
+			fighter.showSt();
 			System.out.println();
-			return f;
+			return fighter;
 		}
 		if(num==5) {
-			f=new Berserker();
-			f.showSt();
+			Fighter fighter=new Berserker();
+			fighter.showSt();
 			System.out.println();
-			return f;
+			return fighter;
 		}
 		if(num==6) {
-			f=new SwordMaster();
-			f.showSt();
+			Fighter fighter=new SwordMaster();
+			fighter.showSt();
 			System.out.println();
-			return f;
+			return fighter;
 		}
 		if(num==7) {
-			f=new Sniper();
-			f.showSt();
+			Fighter fighter=new Sniper();
+			fighter.showSt();
 			System.out.println();
-			return f;
+			return fighter;
 		}
 		if(num==8) {
-			f=new DragonMaster();
-			f.showSt();
+			Fighter fighter=new DragonMaster();
+			fighter.showSt();
 			System.out.println();
-			return f;
+			return fighter;
 		}
 		if(num==9) {
-			f=new Druid();
-			f.showSt();
+			Fighter fighter=new Druid();
+			fighter.showSt();
 			System.out.println();
-			return f;
+			return fighter;
 		}
 		if(num==10) {
-			f=new Hero();
-			f.showSt();
+			Fighter fighter=new Hero();
+			fighter.showSt();
 			System.out.println();
-			return f;
+			return fighter;
 		}
 		if(num==11) {
-			f=new NomadicCavalry();
-			f.showSt();
+			Fighter fighter=new NomadicCavalry();
+			fighter.showSt();
 			System.out.println();
-			return f;
+			return fighter;
 		}
 		if(num==12) {
-			f=new Sage();
-			f.showSt();
+			Fighter fighter=new Sage();
+			fighter.showSt();
 			System.out.println();
-			return f;
+			return fighter;
 		}
 		if(num==13) {
-			f=new Bishop();
-			f.showSt();
+			Fighter fighter=new Bishop();
+			fighter.showSt();
 			System.out.println();
-			return f;
+			return fighter;
 		}
 		if(num==14) {
-			f=new Valkyria();
-			f.showSt();
+			Fighter fighter=new Valkyria();
+			fighter.showSt();
 			System.out.println();
-			return f;
+			return fighter;
 		}
 		if(num==15) {
-			f=new Assassin();
-			f.showSt();
+			Fighter fighter=new Assassin();
+			fighter.showSt();
 			System.out.println();
-			return f;
+			return fighter;
 		}
-		return f;
+		return null;
 
 	}
 
 	//ランダムにキャラクターインスタンスを生成
-	public Fighter chooseCharacterRandom(Fighter f) {
+	public Fighter chooseCharacterRandom() {
 		//乱数でクラス（兵種）ランダムに指定
 		Random random=new Random();
 		int rand=random.nextInt(15);
 		if(rand==0) {
-			f= new Paladin();
-			f.showSt();
+			Fighter fighter= new Paladin();
+			fighter.showSt();
 			System.out.println();
-			return f;
+			return fighter;
 		}
 		if(rand==1) {
-			f=new General();
-			f.showSt();
+			Fighter fighter= new General();
+			fighter.showSt();
 			System.out.println();
-			return f;
+			return fighter;
 		}
 		if(rand==2) {
-			f=new Warrior();
-			f.showSt();
+			Fighter fighter= new Warrior();
+			fighter.showSt();
 			System.out.println();
-			return f;
+			return fighter;
+
 		}
 		if(rand==3) {
-			f=new FalconKnight();
-			f.showSt();
+			Fighter fighter= new FalconKnight();
+			fighter.showSt();
 			System.out.println();
-			return f;
+			return fighter;
 		}
 		if(rand==4) {
-			f=new Berserker();
-			f.showSt();
+			Fighter fighter= new Berserker();
+			fighter.showSt();
 			System.out.println();
-			return f;
+			return fighter;
 		}
 		if(rand==5) {
-			f=new SwordMaster();
-			f.showSt();
+			Fighter fighter= new SwordMaster();
+			fighter.showSt();
 			System.out.println();
-			return f;
+			return fighter;
 		}
 		if(rand==6) {
-			f=new Sniper();
-			f.showSt();
+			Fighter fighter= new Sniper();
+			fighter.showSt();
 			System.out.println();
-			return f;
+			return fighter;
 		}
 		if(rand==7) {
-			f=new DragonMaster();
-			f.showSt();
+			Fighter fighter= new DragonMaster();
+			fighter.showSt();
 			System.out.println();
-			return f;
+			return fighter;
 		}
 		if(rand==8) {
-			f=new Druid();
-			f.showSt();
+			Fighter fighter= new Druid();
+			fighter.showSt();
 			System.out.println();
-			return f;
+			return fighter;
 		}
 		if(rand==9) {
-			f=new Hero();
-			f.showSt();
+			Fighter fighter= new Hero();
+			fighter.showSt();
 			System.out.println();
-			return f;
+			return fighter;
 		}
 		if(rand==10) {
-			f=new NomadicCavalry();
-			f.showSt();
+			Fighter fighter= new NomadicCavalry();
+			fighter.showSt();
 			System.out.println();
-			return f;
+			return fighter;
 		}
 		if(rand==11) {
-			f=new Sage();
-			f.showSt();
+			Fighter fighter= new Sage();
+			fighter.showSt();
 			System.out.println();
-			return f;
+			return fighter;
 		}
 		if(rand==12) {
-			f=new Bishop();
-			f.showSt();
+			Fighter fighter= new Bishop();
+			fighter.showSt();
 			System.out.println();
-			return f;
+			return fighter;
 		}
 		if(rand==13) {
-			f=new Valkyria();
-			f.showSt();
+			Fighter fighter= new Valkyria();
+			fighter.showSt();
 			System.out.println();
-			return f;
+			return fighter;
 		}
 		if(rand==14) {
-			f=new Assassin();
-			f.showSt();
+			Fighter fighter= new Assassin();
+			fighter.showSt();
 			System.out.println();
-			return f;
+			return fighter;
 		}
-		return f;
+		return null;
 
 	}
 	//キャラクター名変更メソッド
@@ -418,142 +419,118 @@ public class PrepareBattle {
 		}
 	}
 	//変数の型を各兵種に更新
-	public Fighter equipFighterBack(Fighter f,boolean isRandom) {
+	public void equipFighterBack(Fighter f,boolean isRandom) {
 		if(isRandom==true) {
 			if(f instanceof Paladin) {
 				Paladin fP=(Paladin)f;
 				//各クラス（兵種）に応じた武器インスタンスを生成
 				fP.equipNewWeapon();
-				return fP;
 			}
 			else if(f instanceof Warrior) {
 				Warrior fW=(Warrior) f;
 				fW.equipNewWeapon();
-				return fW;
 			}
 			else if(f instanceof General) {
 				General fG=(General) f;
 				fG.equipNewWeapon();
-				return fG;
 			}else if(f instanceof FalconKnight) {
 				FalconKnight fF=(FalconKnight) f;
 				fF.equipNewWeapon();
-				return fF;
 			}else if(f instanceof Berserker) {
 				Berserker fB=(Berserker) f;
 				fB.equipNewWeapon();
-				return fB;
 			}else if(f instanceof SwordMaster) {
 				SwordMaster fS=(SwordMaster) f;
 				fS.equipNewWeapon();
-				return fS;
 			}else if(f instanceof Sniper) {
 				Sniper fS=(Sniper) f;
 				fS.equipNewWeapon();
-				return fS;
 			}else if(f instanceof DragonMaster) {
 				DragonMaster fD=(DragonMaster) f;
 				fD.equipNewWeapon();
-				return fD;
 			}else if(f instanceof Druid) {
 				Druid fD=(Druid) f;
 				fD.equipNewWeapon();
-				return fD;
 			}else if(f instanceof Hero) {
 				Hero fH=(Hero) f;
 				fH.equipNewWeapon();
-				return fH;
 			}else if(f instanceof NomadicCavalry) {
 				NomadicCavalry fN=(NomadicCavalry) f;
 				fN.equipNewWeapon();
-				return fN;
 			}else if(f instanceof Sage) {
 				Sage fS=(Sage) f;
 				fS.equipNewWeapon();
-				return fS;
 			}else if(f instanceof Bishop) {
 				Bishop fB=(Bishop) f;
 				fB.equipNewWeapon();
-				return fB;
 			}else if(f instanceof Valkyria) {
 				Valkyria fV=(Valkyria) f;
 				fV.equipNewWeapon();
-				return fV;
 			}else if(f instanceof Assassin) {
 				Assassin fA=(Assassin) f;
 				fA.equipNewWeapon();
-				return fA;
-			}
-			else {
-				return f;
 			}
 		}else {
 			if(f instanceof Paladin) {
 				Paladin fP=(Paladin)f;
 				//各クラス（兵種）に応じた武器インスタンスを生成
 				fP.chooseEquipNewWeapon();
-				return fP;
 			}
 			else if(f instanceof Warrior) {
 				Warrior fW=(Warrior) f;
 				fW.chooseEquipNewWeapon();
-				return fW;
 			}
 			else if(f instanceof General) {
 				General fG=(General) f;
 				fG.chooseEquipNewWeapon();
-				return fG;
-			}else if(f instanceof FalconKnight) {
+			}
+			else if(f instanceof FalconKnight) {
 				FalconKnight fF=(FalconKnight) f;
 				fF.chooseEquipNewWeapon();
-				return fF;
-			}else if(f instanceof Berserker) {
+			}
+			else if(f instanceof Berserker) {
 				Berserker fB=(Berserker) f;
 				fB.chooseEquipNewWeapon();
-				return fB;
-			}else if(f instanceof SwordMaster) {
+			}
+			else if(f instanceof SwordMaster) {
 				SwordMaster fS=(SwordMaster) f;
 				fS.chooseEquipNewWeapon();
-				return fS;
-			}else if(f instanceof Sniper) {
+			}
+			else if(f instanceof Sniper) {
 				Sniper fS=(Sniper) f;
 				fS.chooseEquipNewWeapon();
-				return fS;
-			}else if(f instanceof DragonMaster) {
+			}
+			else if(f instanceof DragonMaster) {
 				DragonMaster fD=(DragonMaster) f;
 				fD.chooseEquipNewWeapon();
-				return fD;
-			}else if(f instanceof Druid) {
+			}
+			else if(f instanceof Druid) {
 				Druid fD=(Druid) f;
 				fD.chooseEquipNewWeapon();
-				return fD;
-			}else if(f instanceof Hero) {
+			}
+			else if(f instanceof Hero) {
 				Hero fH=(Hero) f;
 				fH.chooseEquipNewWeapon();
-				return fH;
-			}else if(f instanceof NomadicCavalry) {
+			}
+			else if(f instanceof NomadicCavalry) {
 				NomadicCavalry fN=(NomadicCavalry) f;
 				fN.chooseEquipNewWeapon();
-				return fN;
-			}else if(f instanceof Sage) {
+			}
+			else if(f instanceof Sage) {
 				Sage fS=(Sage) f;
 				fS.chooseEquipNewWeapon();
-				return fS;
-			}else if(f instanceof Bishop) {
+			}
+			else if(f instanceof Bishop) {
 				Bishop fB=(Bishop) f;
 				fB.chooseEquipNewWeapon();
-				return fB;
-			}else if(f instanceof Valkyria) {
+			}
+			else if(f instanceof Valkyria) {
 				Valkyria fV=(Valkyria) f;
 				fV.chooseEquipNewWeapon();
-				return fV;
-			}else if(f instanceof Assassin) {
+			}
+			else if(f instanceof Assassin) {
 				Assassin fA=(Assassin) f;
 				fA.chooseEquipNewWeapon();
-				return fA;
-			}
-			else {
-				return f;
 			}
 		}
 

@@ -6,8 +6,12 @@ import feGameVer2.gameMode.GameMode3;
 
 public class StartGame {
 	public void chooseGameMode() throws InterruptedException {
-		SetGameModeNumber setGameModeNumber=new SetGameModeNumber();
-		int gameNum=setGameModeNumber.setGameModeNumbere();
+		System.out.println("ゲームモードを選んでください↓");
+		System.out.println("1: ランダムゲームモード");
+		System.out.println("2: P1vsP2モード");
+		System.out.println("3: 勝ち抜けモード");
+		CheckNumber checkNumber =new CheckNumber();
+		int gameNum=checkNumber.checkAndReturnNumber(1, 3);
 		//各ゲームモードインスタンス取得、メソッド呼び出し
 		if(gameNum==1) {
 			GameMode1 game1=new GameMode1();

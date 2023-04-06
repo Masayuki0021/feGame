@@ -15,12 +15,6 @@ public class GameMode3 {
 		// そのキャラでランダムキャラと連戦
 		PrepareBattle pb =new PrepareBattle();
 		//キャラクター変数宣言
-		Fighter p=null;
-		Fighter o1=null;
-		Fighter o2=null;
-		Fighter o3=null;
-		Fighter o4=null;
-		Fighter o5=null;
 		StartGame startGame=new StartGame();
 		System.out.println("このゲームモードではプレイヤーは\n"
 				+ "キャラクターを一体作り、そのキャラクターと\n"
@@ -50,7 +44,7 @@ public class GameMode3 {
 
 			System.out.println("プレイヤー1のキャラメイクです。");
 			System.out.println();
-			p=pb.chooseCharacter(p);
+			Fighter p=pb.chooseCharacter();
 			pb.putName(p);
 			pb.upperPara(p);
 			pb.downerPara(p);
@@ -59,8 +53,8 @@ public class GameMode3 {
 			System.out.println("武器を選択しますか？1:yes 2:no↓");
 			CheckNumber checkNumber=new CheckNumber();
 			int num=checkNumber.checkAndReturnNumber(1,2);
-			if(num==1) {p=pb.equipFighterBack(p,false);}
-			else {p=pb.equipFighterBack(p,true);}
+			if(num==1) {pb.equipFighterBack(p,false);}
+			else {pb.equipFighterBack(p,true);}
 			num=0;
 			System.out.println();
 
@@ -68,11 +62,11 @@ public class GameMode3 {
 
 
 		//対戦相手
-		o1=pb.chooseCharacterRandom(o1);o1=pb.equipFighterBack(o1,true);
-		o2=pb.chooseCharacterRandom(o2);o2=pb.equipFighterBack(o2,true);
-		o3=pb.chooseCharacterRandom(o3);o3=pb.equipFighterBack(o3,true);
-		o4=pb.chooseCharacterRandom(o4);o4=pb.equipFighterBack(o4,true);
-		o5=pb.chooseCharacterRandom(o5);o5=pb.equipFighterBack(o5,true);
+		Fighter o1=pb.chooseCharacterRandom();pb.equipFighterBack(o1,true);
+		Fighter o2=pb.chooseCharacterRandom();pb.equipFighterBack(o2,true);
+		Fighter o3=pb.chooseCharacterRandom();pb.equipFighterBack(o3,true);
+		Fighter o4=pb.chooseCharacterRandom();pb.equipFighterBack(o4,true);
+		Fighter o5=pb.chooseCharacterRandom();pb.equipFighterBack(o5,true);
 		//対戦
 		BattleField b=new BattleField(p,o1);
 		System.out.println("第一戦目始めます！");
