@@ -28,7 +28,6 @@ public class PrepareBattle {
 	//ユーザーにどのステータスを調整するか選択させる時に使用する番号
 	private int levelUpNum;
 	//ゲームモード3，使用時、連戦後キャラクターを回復するかどうか選択させる時に使用する番号
-	private int gameMode3_ModeNum;	//
 
 
 	public void setLevelUpNum(int num,Map<Integer,String> statusMap) {
@@ -36,15 +35,6 @@ public class PrepareBattle {
 			throw new IllegalArgumentException("1～7の中から選択してください");
 		}
 		this.levelUpNum=num;
-	}
-	public void setGameMode3_ModeNum(int num) {
-		if(num<1||num>2) {
-			throw new IllegalArgumentException("1か2の中から選択してください");
-		}
-		this.gameMode3_ModeNum=num;
-	}
-	public int getGameMode3_modeNum() {
-		return this.gameMode3_ModeNum;
 	}
 	public Fighter chooseCharacter() {
 		System.out.println("クラス(兵種)の選択");
