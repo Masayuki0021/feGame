@@ -166,7 +166,8 @@ public class Sniper extends Fighter{
 	}
 	//必殺補正メソッド
 		public void criticalUpper() {
-			this.equip.setCritical(this.equip.getCritical() + 15);
+			this.bow.setCritical(this.bow.getCritical() + 30);
+			this.bowsub.setCritical(this.bowsub.getCritical() + 30);
 		}
 	public Sniper() {
 		//名前

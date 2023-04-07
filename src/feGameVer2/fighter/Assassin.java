@@ -98,7 +98,8 @@ public class Assassin extends Fighter {
 		}
 	}
 	public void criticalUpper() {
-		this.equip.setCritical(this.equip.getCritical() + 50);
+		this.sword.setCritical(this.sword.getCritical() + 50);
+		this.swordsub.setCritical(this.swordsub.getCritical() + 50);
 	}
 	//暗殺メソッド
 /*	public void Assassinate(Fighter me,Fighter o) {

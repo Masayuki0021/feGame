@@ -183,7 +183,8 @@ public class Berserker extends Fighter{
 	}
 	//必殺補正メソッド
 	public void criticalUpper() {
-		this.equip.setCritical(this.equip.getCritical() + 30);
+		this.axe.setCritical(this.axe.getCritical() + 30);
+		this.axesub.setCritical(this.axesub.getCritical() + 30);
 	}
 
 	public Berserker() {

@@ -155,7 +155,8 @@ public class SwordMaster extends Fighter{
 	}
 	//必殺補正メソッド
 	public void criticalUpper() {
-		this.equip.setCritical(this.equip.getCritical() + 30);
+		this.sword.setCritical(this.sword.getCritical() + 30);
+		this.swordsub.setCritical(this.swordsub.getCritical() + 30);
 	}
 	public SwordMaster() {
 		//名前

@@ -27,9 +27,6 @@ public class PrepareBattle {
 	//ゲームモード3、使用時、ユーザーの作ったキャラクターをさらにパワーアップさせる時、
 	//ユーザーにどのステータスを調整するか選択させる時に使用する番号
 	private int levelUpNum;
-	//ゲームモード3，使用時、連戦後キャラクターを回復するかどうか選択させる時に使用する番号
-
-
 	public void setLevelUpNum(int num,Map<Integer,String> statusMap) {
 		if(num<1||num>7||statusMap.get(num)==null) {
 			throw new IllegalArgumentException("1～7の中から選択してください");
