@@ -11,7 +11,7 @@ public class GameMode3 {
 	public void playGameMode3() throws InterruptedException {
 		// １体パラメータからキャラメイク
 		// そのキャラでランダムキャラと連戦
-		PrepareBattle pb =new PrepareBattle();
+		PrepareBattle prepareBattle =new PrepareBattle();
 		//キャラクター変数宣言
 		StartGame startGame=new StartGame();
 		System.out.println("このゲームモードではプレイヤーは\n"
@@ -22,27 +22,29 @@ public class GameMode3 {
 		System.out.println();
 		System.out.println("モード選択です。\n"
 				+ "回復ありの場合は1を、なしの場合は2を入力してください。↓");
+		//プレイヤーに番号を選ばせ（戻り値）エラー処理も同時に行う
 		CheckNumber checkNumber=new CheckNumber();
+
 		int hpRecoverNum=checkNumber.checkAndReturnNumber(1, 2);
 		System.out.println("");
 		System.out.println("プレイヤー1のキャラメイクです。");
 		System.out.println();
-		Fighter p=pb.chooseCharacter();
-		pb.putName(p);
-		pb.upperPara(p);
-		pb.downerPara(p);
+		Fighter p=prepareBattle.chooseCharacter();
+		prepareBattle.putName(p);
+		prepareBattle.upperPara(p);
+		prepareBattle.downerPara(p);
 		System.out.println("このモードでは、さらにキャラクターを強化することができます");
-		pb.levelUp(p);
+		prepareBattle.levelUp(p);
 		System.out.println("武器を選択しますか？1:yes 2:no↓");
 		int num=checkNumber.checkAndReturnNumber(1,2);
-		if(num==1) {pb.equipFighterBack(p,false);}
-		else {pb.equipFighterBack(p,true);}
+		if(num==1) {prepareBattle.equipFighterBack(p,false);}
+		else {prepareBattle.equipFighterBack(p,true);}
 		num=0;
 		System.out.println();
 
 		for(int i=1;i<=5;i++) {
 			//対戦相手
-			Fighter o=pb.chooseCharacterRandom();pb.equipFighterBack(o,true);
+			Fighter o=prepareBattle.chooseCharacterRandom();prepareBattle.equipFighterBack(o,true);
 			BattleField b=new BattleField(p,o);
 			System.out.println("第"+i+"戦目始めます！");
 			//対戦
