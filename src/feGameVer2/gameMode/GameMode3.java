@@ -9,6 +9,7 @@ import feGameVer2.fighter.Fighter;
 public class GameMode3 {
 
 	public void playGameMode3() throws InterruptedException {
+		//プレイヤーキャラクターとランダムで生成したキャラクターで５連戦行うモード
 		// １体パラメータからキャラメイク
 		// そのキャラでランダムキャラと連戦
 		PrepareBattle prepareBattle =new PrepareBattle();
@@ -24,9 +25,10 @@ public class GameMode3 {
 				+ "回復ありの場合は1を、なしの場合は2を入力してください。↓");
 		//プレイヤーに番号を選ばせ（戻り値）エラー処理も同時に行う
 		CheckNumber checkNumber=new CheckNumber();
-
+		//連戦時、一戦ごとに回復するかどうかを決定する数値
 		int hpRecoverNum=checkNumber.checkAndReturnNumber(1, 2);
-		System.out.println("");
+		System.out.println();
+		//基本的にはGameMode2の処理と同様
 		System.out.println("プレイヤー1のキャラメイクです。");
 		System.out.println();
 		Fighter p=prepareBattle.chooseCharacter();
@@ -34,14 +36,16 @@ public class GameMode3 {
 		prepareBattle.upperPara(p);
 		prepareBattle.downerPara(p);
 		System.out.println("このモードでは、さらにキャラクターを強化することができます");
+		//このモードでは連戦に向けてキャラクターを成長させることができる
 		prepareBattle.levelUp(p);
 		System.out.println("武器を選択しますか？1:yes 2:no↓");
 		int num=checkNumber.checkAndReturnNumber(1,2);
 		if(num==1) {prepareBattle.equipFighterBack(p,false);}
 		else {prepareBattle.equipFighterBack(p,true);}
+		//値の初期化
 		num=0;
 		System.out.println();
-
+		//５連戦をfor文を使い５回回転させることで表現する
 		for(int i=1;i<=5;i++) {
 			//対戦相手
 			Fighter o=prepareBattle.chooseCharacterRandom();prepareBattle.equipFighterBack(o,true);
