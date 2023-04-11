@@ -112,8 +112,8 @@ public class Sage extends Fighter {
 	}
 	//戦闘前武器装備メソッド
 	public void equipWeaponBeforeBattle() {
-			this.equip=this.nature;
-			System.out.println(this.name+"は"+this.equip.getName()+"を装備！");
+		this.equip=this.nature;
+		System.out.println(this.name+"は"+this.equip.getName()+"を装備！");
 	}
 	//全武器一括生成メソッド
 	public void equipNewWeapon() {
@@ -187,7 +187,7 @@ public class Sage extends Fighter {
 			break;
 		case 5:
 			this.name="ルーテ";
-				break;
+			break;
 		case 6:
 			this.name="サレフ";
 			break;
@@ -430,7 +430,7 @@ public class Sage extends Fighter {
 	}
 	public String toString() {
 		return "名前    "+this.name+"\n"+"クラス  "+this.getCName()+"\n"+"HP      "+this.hp+"\n"+"力      "+this.getStrength()+"\n"
-	+"技      "+this.getSkill()+"\n"+"速さ    "+this.getSpeed()+"\n"+"守備    "+this.getDefence()+"\n"+
+				+"技      "+this.getSkill()+"\n"+"速さ    "+this.getSpeed()+"\n"+"守備    "+this.getDefence()+"\n"+
 				"魔防    "+this.getResist()+"\n"+"幸運    "+this.getLuck()+"\n"+"体格    "+this.getConstitution();
 
 	}

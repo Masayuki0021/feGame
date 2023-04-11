@@ -124,7 +124,7 @@ public class Berserker extends Fighter{
 
 	//戦闘前武器装備メソッド
 	public void equipWeaponBeforeBattle() {
-			this.equip=this.axe;
+		this.equip=this.axe;
 	}
 	//全武器一括生成メソッド
 	public void equipNewWeapon() {
@@ -133,7 +133,7 @@ public class Berserker extends Fighter{
 		this.equipWeaponBeforeBattle();
 		this.criticalUpper();
 	}
-//武器選択、生成メソッド
+	//武器選択、生成メソッド
 	public void chooseEquipNewWeapon(){
 		System.out.println("メイン武器を選択してください");
 		System.out.println(" :名前			威力	重さ	命中	必殺	距離");
@@ -163,7 +163,7 @@ public class Berserker extends Fighter{
 		num=checkNumber.checkAndReturnNumber(1,8);
 		this.chooseEquipNewAxeSub(num);
 		this.equipWeaponBeforeBattle();
-			this.criticalUpper();
+		this.criticalUpper();
 	}
 
 
@@ -205,7 +205,7 @@ public class Berserker extends Fighter{
 			break;
 		case 4:
 			this.name="ギース";
-				break;
+			break;
 		}
 		double rand1=Math.random();
 		double rand2=Math.random();
@@ -442,7 +442,7 @@ public class Berserker extends Fighter{
 	}
 	public String toString() {
 		return "名前 "+this.name+"\n"+"HP   "+this.hp+"\n"+"力   "+this.getStrength()+"\n"
-	+"技   "+this.getSkill()+"\n"+"速さ "+this.getSpeed()+"\n"+"守備 "+this.getDefence()+"\n"+
+				+"技   "+this.getSkill()+"\n"+"速さ "+this.getSpeed()+"\n"+"守備 "+this.getDefence()+"\n"+
 				"魔防 "+this.getResist()+"\n"+"幸運 "+this.getLuck()+"\n"+"体格 "+this.getConstitution();
 
 	}

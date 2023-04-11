@@ -56,51 +56,51 @@ public class Bishop extends Fighter{
 	}
 
 	//サブ光魔法生成メソッド
-		public void equipNewLightSub() {
-			double rand = Math.random();
-			if(rand<0.3) {
-				this.lightsub=new Light("ライトニング",5,1,75,0,3);
-			}
-			else if(rand<0.4) {
-				this.lightsub =new Light("ディヴァイン",8,3,75,0,3);
-			}
-			else if(rand<0.5) {
-				this.lightsub =new Light("シャイン",6,3,85,0,3);
-			}
-			else if(rand<0.6) {
-				this.lightsub =new Light("パージ",10,15,70,5,3);
-			}
-			else if(rand<0.7) {
-				this.lightsub =new Light("アルジローレ",12,19,85,0,3);
-			}
-			else if(rand<1) {
-				this.lightsub =new Light("アーリアル",15,16,90,5,3);
-			}
+	public void equipNewLightSub() {
+		double rand = Math.random();
+		if(rand<0.3) {
+			this.lightsub=new Light("ライトニング",5,1,75,0,3);
 		}
-//選択サブ光魔法生成メソッド
-		public void chooseEquipNewLightSub(int num) {
-			if(num==1) {
-				this.lightsub=new Light("ライトニング",5,1,75,0,3);
-			}
-			else if(num==2) {
-				this.lightsub =new Light("ディヴァイン",8,3,75,0,3);
-			}
-			else if(num==3) {
-				this.lightsub =new Light("シャイン",6,3,85,0,3);
-			}
-			else if(num==4) {
-				this.lightsub =new Light("パージ",10,15,70,5,3);
-			}
-			else if(num==5) {
-				this.lightsub =new Light("アルジローレ",12,19,85,0,3);
-			}
-			else if(num==6) {
-				this.lightsub =new Light("アーリアル",15,16,90,5,3);
-			}
+		else if(rand<0.4) {
+			this.lightsub =new Light("ディヴァイン",8,3,75,0,3);
 		}
+		else if(rand<0.5) {
+			this.lightsub =new Light("シャイン",6,3,85,0,3);
+		}
+		else if(rand<0.6) {
+			this.lightsub =new Light("パージ",10,15,70,5,3);
+		}
+		else if(rand<0.7) {
+			this.lightsub =new Light("アルジローレ",12,19,85,0,3);
+		}
+		else if(rand<1) {
+			this.lightsub =new Light("アーリアル",15,16,90,5,3);
+		}
+	}
+	//選択サブ光魔法生成メソッド
+	public void chooseEquipNewLightSub(int num) {
+		if(num==1) {
+			this.lightsub=new Light("ライトニング",5,1,75,0,3);
+		}
+		else if(num==2) {
+			this.lightsub =new Light("ディヴァイン",8,3,75,0,3);
+		}
+		else if(num==3) {
+			this.lightsub =new Light("シャイン",6,3,85,0,3);
+		}
+		else if(num==4) {
+			this.lightsub =new Light("パージ",10,15,70,5,3);
+		}
+		else if(num==5) {
+			this.lightsub =new Light("アルジローレ",12,19,85,0,3);
+		}
+		else if(num==6) {
+			this.lightsub =new Light("アーリアル",15,16,90,5,3);
+		}
+	}
 	//戦闘前武器装備メソッド
 	public void equipWeaponBeforeBattle() {
-			this.equip=this.light;
+		this.equip=this.light;
 	}
 	//全武器一括生成メソッド
 	public void equipNewWeapon() {
@@ -134,7 +134,7 @@ public class Bishop extends Fighter{
 		num=checkNumber.checkAndReturnNumber(1,6);
 		this.chooseEquipNewLightSub(num);
 		this.equipWeaponBeforeBattle();
-}
+	}
 	//戦闘中武器持ち替えメソッド
 	public void changeEquip(Weapon o) {
 		Random random=new Random();
@@ -151,28 +151,28 @@ public class Bishop extends Fighter{
 	}
 	public Bishop() {
 		//名前
-				Random random=new Random();
-				int rand=random.nextInt(6);
-				switch(rand) {
-				case 0:
-					this.name="ヨーデル";
-					break;
-				case 1:
-					this.name="エレン";
-					break;
-				case 2:
-					this.name="セーラ";
-					break;
-				case 3:
-					this.name="ルセア";
-					break;
-				case 4:
-					this.name="ナターシャ";
-						break;
-				case 5:
-					this.name="アーヴ";
-					break;
-				}
+		Random random=new Random();
+		int rand=random.nextInt(6);
+		switch(rand) {
+		case 0:
+			this.name="ヨーデル";
+			break;
+		case 1:
+			this.name="エレン";
+			break;
+		case 2:
+			this.name="セーラ";
+			break;
+		case 3:
+			this.name="ルセア";
+			break;
+		case 4:
+			this.name="ナターシャ";
+			break;
+		case 5:
+			this.name="アーヴ";
+			break;
+		}
 		double rand1=Math.random();
 		double rand2=Math.random();
 		double rand3=Math.random();
@@ -410,7 +410,7 @@ public class Bishop extends Fighter{
 	}
 	public String toString() {
 		return "名前    "+this.name+"\n"+"クラス  "+this.getCName()+"\n"+"HP      "+this.hp+"\n"+"力      "+this.getStrength()+"\n"
-	+"技      "+this.getSkill()+"\n"+"速さ    "+this.getSpeed()+"\n"+"守備    "+this.getDefence()+"\n"+
+				+"技      "+this.getSkill()+"\n"+"速さ    "+this.getSpeed()+"\n"+"守備    "+this.getDefence()+"\n"+
 				"魔防    "+this.getResist()+"\n"+"幸運    "+this.getLuck()+"\n"+"体格    "+this.getConstitution();
 
 	}

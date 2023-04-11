@@ -167,10 +167,10 @@ public class DragonMaster extends Fighter{
 		System.out.println("7:トマホーク	13,		14,		55,		5,		遠近");
 		System.out.println("8:アルマーズ	18,		18,		85,		0,		近");
 		System.out.println("↓");
-				num=checkNumber.checkAndReturnNumber(1,7);
+		num=checkNumber.checkAndReturnNumber(1,7);
 		this.chooseEquipNewAxe(num);
 		this.equipWeaponBeforeBattle();
-}
+	}
 
 	//戦闘中武器持ち替えメソッド
 	public void changeEquip(Weapon o) {
@@ -228,7 +228,7 @@ public class DragonMaster extends Fighter{
 			break;
 		case 5:
 			this.name="ゲイル";
-				break;
+			break;
 		case 6:
 			this.name="ハール";
 			break;
@@ -479,7 +479,7 @@ public class DragonMaster extends Fighter{
 	}
 	public String toString() {
 		return "名前    "+this.name+"\n"+"クラス  "+this.getCName()+"\n"+"HP      "+this.hp+"\n"+"力      "+this.getStrength()+"\n"
-	+"技      "+this.getSkill()+"\n"+"速さ    "+this.getSpeed()+"\n"+"守備    "+this.getDefence()+"\n"+
+				+"技      "+this.getSkill()+"\n"+"速さ    "+this.getSpeed()+"\n"+"守備    "+this.getDefence()+"\n"+
 				"魔防    "+this.getResist()+"\n"+"幸運    "+this.getLuck()+"\n"+"体格    "+this.getConstitution();
 
 	}

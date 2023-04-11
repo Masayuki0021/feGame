@@ -36,7 +36,7 @@ public abstract class Fighter {
 	public abstract void equipWeaponBeforeBattle();
 	public String toString() {
 		return "名前    "+this.name+"\n"+"クラス  "+this.getCName()+"\n"+"HP   "+this.hp+"\n"+"力      "+this.getStrength()+"\n"
-	+"技      "+this.getSkill()+"\n"+"速さ    "+this.getSpeed()+"\n"+"守備    "+this.getDefence()+"\n"+
+				+"技      "+this.getSkill()+"\n"+"速さ    "+this.getSpeed()+"\n"+"守備    "+this.getDefence()+"\n"+
 				"魔防    "+this.getResist()+"\n"+"幸運    "+this.getLuck()+"\n"+"体格    "+this.getConstitution();
 
 	}

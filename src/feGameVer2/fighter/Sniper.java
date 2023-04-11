@@ -60,7 +60,7 @@ public class Sniper extends Fighter{
 			this.bow  =new Bow("ミュルグレ",16,9,80,10,2);
 		}
 	}
-//サブ弓武器生成メソッド
+	//サブ弓武器生成メソッド
 	public void equipNewBowSub() {
 		double rand = Math.random();
 		if(rand<0.35) {
@@ -111,7 +111,7 @@ public class Sniper extends Fighter{
 	}
 	//戦闘前武器装備メソッド
 	public void equipWeaponBeforeBattle() {
-			this.equip=this.bow;
+		this.equip=this.bow;
 	}
 	//全武器一括生成メソッド
 	public void equipNewWeapon() {
@@ -165,10 +165,10 @@ public class Sniper extends Fighter{
 		}
 	}
 	//必殺補正メソッド
-		public void criticalUpper() {
-			this.bow.setCritical(this.bow.getCritical() + 30);
-			this.bowsub.setCritical(this.bowsub.getCritical() + 30);
-		}
+	public void criticalUpper() {
+		this.bow.setCritical(this.bow.getCritical() + 30);
+		this.bowsub.setCritical(this.bowsub.getCritical() + 30);
+	}
 	public Sniper() {
 		//名前
 		Random random=new Random();
@@ -191,7 +191,7 @@ public class Sniper extends Fighter{
 			break;
 		case 5:
 			this.name="ウィル";
-				break;
+			break;
 		case 6:
 			this.name="ルイーズ";
 			break;

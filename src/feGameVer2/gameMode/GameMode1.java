@@ -29,7 +29,7 @@ public class GameMode1 {
 			ランダムで武器を選ぶ→true
 			プレイヤーが選ぶ→false
 		を取る
-		*/
+		 */
 		prepareBattle.equipFighterBack(p1,true);
 
 		Thread.sleep(1000);

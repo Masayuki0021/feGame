@@ -403,7 +403,7 @@ public class PrepareBattle {
 				fA.equipNewWeapon();
 			}
 
-		//isRandomがfalseの場合プレイヤーが選んで武器インスタンスを生成する
+			//isRandomがfalseの場合プレイヤーが選んで武器インスタンスを生成する
 		}else {
 			if(f instanceof Paladin) {
 				Paladin fP=(Paladin)f;
@@ -501,7 +501,7 @@ public class PrepareBattle {
 				繰り返し回数 i
 				選択されたステータスを示す番号levelUpNum
 			を取る
-			*/
+			 */
 			levelUpPriority(f,i,levelUpNum);
 			//選ばれた選択肢を消去する
 			statusPriority.remove(levelUpNum);

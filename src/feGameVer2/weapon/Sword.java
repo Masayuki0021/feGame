@@ -1,7 +1,7 @@
 package feGameVer2.weapon;
 
 public class Sword extends PhysicsWeap{
-//	武器相性補正メソッド
+	//	武器相性補正メソッド
 	public void three_way_relation(Weapon o) {
 		if(o instanceof Axe) {
 			this.power+=1;

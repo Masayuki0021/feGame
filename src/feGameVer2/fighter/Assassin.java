@@ -23,14 +23,14 @@ public class Assassin extends Fighter {
 		}
 	}
 	//選択剣武器生成メソッド
-		public void chooseEquipNewSword(int num) {
-			if(num==1) {
-				this.sword =new Sword("キルソード",9,7,80,30,1);
-			}
-			else if(num==2) {
-				this.sword =new Sword("銀の剣",13,8,75,0,1);
-			}
+	public void chooseEquipNewSword(int num) {
+		if(num==1) {
+			this.sword =new Sword("キルソード",9,7,80,30,1);
 		}
+		else if(num==2) {
+			this.sword =new Sword("銀の剣",13,8,75,0,1);
+		}
+	}
 	//サブ剣武器生成メソッド
 	public void equipNewSwordSub() {
 		double rand = Math.random();
@@ -52,7 +52,7 @@ public class Assassin extends Fighter {
 	}
 	//戦闘前武器装備メソッド
 	public void equipWeaponBeforeBattle() {
-			this.equip=this.sword;
+		this.equip=this.sword;
 	}
 	//全武器一括生成メソッド
 	public void equipNewWeapon() {
@@ -102,7 +102,7 @@ public class Assassin extends Fighter {
 		this.swordsub.setCritical(this.swordsub.getCritical() + 50);
 	}
 	//暗殺メソッド
-/*	public void Assassinate(Fighter me,Fighter o) {
+	/*	public void Assassinate(Fighter me,Fighter o) {
 		double rand=Math.random();
 		if((me.getSkill()/4)>(rand*100)) {
 			System.out.println("スキル：瞬殺！");
@@ -110,7 +110,7 @@ public class Assassin extends Fighter {
 			System.out.println(o.name+"は倒れた");
 		}
 	}
-*/
+	 */
 	public Assassin() {
 		//名前
 		Random random=new Random();
@@ -360,7 +360,7 @@ public class Assassin extends Fighter {
 	}
 	public String toString() {
 		return "名前    "+this.name+"\n"+"クラス  "+this.getCName()+"\n"+"HP      "+this.hp+"\n"+"力      "+this.getStrength()+"\n"
-	+"技      "+this.getSkill()+"\n"+"速さ    "+this.getSpeed()+"\n"+"守備    "+this.getDefence()+"\n"+
+				+"技      "+this.getSkill()+"\n"+"速さ    "+this.getSpeed()+"\n"+"守備    "+this.getDefence()+"\n"+
 				"魔防    "+this.getResist()+"\n"+"幸運    "+this.getLuck()+"\n"+"体格    "+this.getConstitution();
 
 	}

@@ -23,7 +23,7 @@ public class CheckNumber {
 						+ "正しい数字を入力してください");
 			}
 		}
-	return num;
+		return num;
 	}
 	public void checkNumber(int num,int start, int end) {
 		if(num>end||num<start) {
@@ -47,7 +47,7 @@ public class CheckNumber {
 						+ "正しい数字を入力してください");
 			}
 		}
-	return num;
+		return num;
 	}
 	public void checkNumberForGameMode3(int num,int start, int end,Map<Integer,String> statusMap) {
 		if(num>end||num<start||statusMap.get(num)==null) {

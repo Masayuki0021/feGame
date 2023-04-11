@@ -54,7 +54,7 @@ public class SwordMaster extends Fighter{
 			this.sword =new Sword("倭刀",8,5,75,40,1);
 		}
 	}
-//サブ剣武器生成メソッド
+	//サブ剣武器生成メソッド
 	public void equipNewSwordsub() {
 		double rand = Math.random();
 		if(rand<0.3) {
@@ -99,7 +99,7 @@ public class SwordMaster extends Fighter{
 	}
 	//戦闘前武器装備メソッド
 	public void equipWeaponBeforeBattle() {
-			this.equip=this.sword;
+		this.equip=this.sword;
 	}
 	//全武器一括生成メソッド
 	public void equipNewWeapon() {
@@ -108,7 +108,7 @@ public class SwordMaster extends Fighter{
 		this.equipWeaponBeforeBattle();
 		this.criticalUpper();
 	}
-//武器選択、生成メソッド
+	//武器選択、生成メソッド
 	public void chooseEquipNewWeapon(){
 		System.out.println("メイン武器を選択してください");
 		System.out.println(" :名前			威力	重さ	命中	必殺	距離");
@@ -180,7 +180,7 @@ public class SwordMaster extends Fighter{
 			break;
 		case 5:
 			this.name="ルトガー";
-				break;
+			break;
 		case 6:
 			this.name="ロイド";
 			break;
@@ -431,7 +431,7 @@ public class SwordMaster extends Fighter{
 	}
 	public String toString() {
 		return "名前    "+this.name+"\n"+"クラス  "+this.getCName()+"\n"+"HP      "+this.hp+"\n"+"力      "+this.getStrength()+"\n"
-	+"技      "+this.getSkill()+"\n"+"速さ    "+this.getSpeed()+"\n"+"守備    "+this.getDefence()+"\n"+
+				+"技      "+this.getSkill()+"\n"+"速さ    "+this.getSpeed()+"\n"+"守備    "+this.getDefence()+"\n"+
 				"魔防    "+this.getResist()+"\n"+"幸運    "+this.getLuck()+"\n"+"体格    "+this.getConstitution();
 
 	}
