@@ -1,7 +1,7 @@
 package feGameVer2;
 
 public class Main {
-	public static void main(String[] args) throws InterruptedException {
+	public static void main(String[] args) {
 		System.out.println("feGameへようこそ！\n"
 				+ "これのゲームは任天堂のファイアーエムブレムシリーズの\n"
 				+ "戦闘システムを参考に作った同人ゲームです。");
