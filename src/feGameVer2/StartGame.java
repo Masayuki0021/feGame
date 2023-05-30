@@ -5,7 +5,7 @@ import feGameVer2.gameMode.GameMode2;
 import feGameVer2.gameMode.GameMode3;
 
 public class StartGame {
-	public void chooseGameMode() throws InterruptedException {
+	public void chooseGameMode() {
 		System.out.println("ゲームモードを選んでください↓");
 		System.out.println("1: ランダムゲームモード");
 		System.out.println("2: P1vsP2モード");
